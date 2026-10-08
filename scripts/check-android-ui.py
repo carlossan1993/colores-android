@@ -64,6 +64,55 @@ def capture(name):
     (OUTPUT / f"{name}.png").write_bytes(adb("exec-out", "screencap", "-p"))
 
 
+def stable_layout(root, name):
+    # Android can deliver a second inset/dimension update after cold startup.
+    previous = bounds(find(root, "drawing-canvas"))
+    for attempt in range(5):
+        time.sleep(0.25)
+        root = snapshot(name)
+        current = bounds(find(root, "drawing-canvas"))
+        if current == previous:
+            return root
+        previous = current
+    raise AssertionError(f"Layout did not settle in {name}")
+
+
+def swatches(root):
+    return [
+        n for n in root.iter("node")
+        if n.attrib.get("resource-id", "").split("/")[-1].startswith("color-")
+    ]
+
+
+def scroll_palette(root, name, to_end):
+    left, top, right, bottom = bounds(find(root, "layout-bottom"))
+    node = swatches(root)[0]
+    y = (bounds(node)[1] + bounds(node)[3]) // 2
+    start, end = (right - 24, left + 24) if to_end else (left + 24, right - 24)
+    shell("input", "swipe", start, y, end, y, 400)
+    return snapshot(name)
+
+
+def check_palette(root, name, sidebar):
+    seen = set()
+
+    def collect(tree):
+        for node in swatches(tree):
+            left, top, right, bottom = bounds(node)
+            if right - left >= 48 and bottom - top >= 48:
+                seen.add(node.attrib["resource-id"])
+
+    collect(root)
+    if not sidebar:
+        root = scroll_palette(root, name, True)
+        collect(root)
+        capture(f"{name}-palette-end")
+        root = scroll_palette(root, name, False)
+        collect(root)
+    assert len(seen) == 12, f"Only {len(seen)} full 48dp color targets reachable in {name}"
+    return root
+
+
 def dialog_button(root, text):
     for node in root.iter("node"):
         if node.attrib.get("text", "").casefold() == text.casefold():
@@ -84,25 +133,23 @@ def exercise(name, width, height, full_controls=False):
     shell("wm", "density", 160)
     shell("am", "start", "-W", "-n", ACTIVITY)
     time.sleep(1)
-    root = progress(0, name)
+    root = stable_layout(progress(0, name), name)
     canvas = find(root, "drawing-canvas")
     left, top, right, bottom = bounds(canvas)
     assert right - left > 150 and bottom - top > 80, canvas.attrib
 
-    swatches = [
-        n for n in root.iter("node")
-        if n.attrib.get("resource-id", "").split("/")[-1].startswith("color-")
-    ]
-    assert swatches, "No native palette buttons visible"
+    visible_swatches = swatches(root)
+    assert visible_swatches, "No native palette buttons visible"
     # All 12 fit in the sidebar. Small windows deliberately scroll horizontally.
     sidebar = any(
         n.attrib.get("resource-id", "").endswith("layout-sidebar")
         for n in root.iter("node")
     )
     if sidebar:
-        assert len(swatches) == 12, f"Only {len(swatches)} colors fit in {name}"
-        for node in swatches:
+        assert len(visible_swatches) == 12, f"Only {len(visible_swatches)} colors fit in {name}"
+        for node in visible_swatches:
             assert_target(node, 48)
+    root = check_palette(root, name, sidebar)
     for action in ("undo", "redo", "reset"):
         assert_target(find(root, f"action-{action}"), 48)
 
@@ -121,6 +168,9 @@ def exercise(name, width, height, full_controls=False):
 
     if full_controls:
         # Palette selection and erasure reach the actual native SVG, not a mock.
+        if not sidebar:
+            root = scroll_palette(root, name, True)
+        assert_target(find(root, "color-FFFFFF"), 48)
         tap(find(root, "color-FFFFFF"))
         shell("input", "tap", round(x), round(y))
         root = progress(0, name)
@@ -137,7 +187,9 @@ def exercise(name, width, height, full_controls=False):
     result = {
         "size_dp": [width, height],
         "layout": "sidebar" if sidebar else "bottom",
-        "visible_colors": len(swatches),
+        "visible_colors": len(visible_swatches),
+        "accessible_colors": 12,
+        "palette_scroll": "not needed" if sidebar else "passed",
         "canvas_bounds": bounds(canvas),
         "paint_undo_redo": "passed",
         "erase_reset_confirmation": "passed" if full_controls else "covered on phone",

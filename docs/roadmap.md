@@ -7,7 +7,7 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 0. Preparación | Repositorio público, reglas, documentación y PR | Completada; PR 1 integrado |
 | 1. Fundación Android | Base nativa horizontal y APK generado desde GitHub | Completada; APK validado en Actions y funcionamiento confirmado por el usuario |
 | 2. Motor SVG | Un dibujo, toque por región, paleta, undo/redo y reset | Completada; PR 2 integrado tras APK verificado y confirmación del usuario |
-| 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Implementada; pendiente de completar Actions y confirmar prueba real |
+| 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Implementada y validada en Actions; pendiente de confirmar prueba real |
 | 4. Navegación y catálogo | Inicio, categorías y galería | Pendiente |
 | 5. Persistencia offline | Guardado y restauración local versionados | Pendiente |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Pendiente |
@@ -40,7 +40,7 @@ El usuario confirmó “Si, funcionó bien. Avancemos” después de recibir el 
 - [x] Paleta desplazable y cabecera adaptable en ventanas cortas o estrechas.
 - [x] Etiquetas de accesibilidad y selección identificable sin depender solo del color.
 - [x] Pruebas de dimensiones y conservación de colores/historial al cambiar de tamaño.
-- [ ] APK generado, verificado y ejercitado offline en los seis tamaños del emulador.
+- [x] APK generado, verificado y ejercitado offline en los seis tamaños del emulador: [Actions del PR 3](https://github.com/carlossan1993/colores-android/actions/runs/37822447211).
 - [ ] Usuario confirma comodidad de dibujo, paleta y controles en su dispositivo.
 
 Esta versión de prueba todavía no conserva progreso al cerrar la app. La persistencia corresponde a la etapa 5.
