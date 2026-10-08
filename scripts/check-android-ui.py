@@ -88,7 +88,10 @@ def scroll_palette(root, name, to_end):
     left, top, right, bottom = bounds(find(root, "layout-bottom"))
     node = swatches(root)[0]
     y = (bounds(node)[1] + bounds(node)[3]) // 2
-    start, end = (right - 24, left + 24) if to_end else (left + 24, right - 24)
+    # Stay away from Android's edge-back gesture regions.
+    near_left = left + (right - left) // 4
+    near_right = left + 3 * (right - left) // 4
+    start, end = (near_right, near_left) if to_end else (near_left, near_right)
     shell("input", "swipe", start, y, end, y, 400)
     return snapshot(f"{name}-palette-{'end' if to_end else 'start'}")
 
