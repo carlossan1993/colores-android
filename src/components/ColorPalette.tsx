@@ -73,9 +73,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   horizontal: {
+    // Keep the natural row width: centering overflowing content can place the
+    // final swatch beyond Android's horizontal scroll range.
+    flexGrow: 0,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     paddingHorizontal: 2,
   },
   swatch: {

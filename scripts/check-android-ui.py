@@ -90,7 +90,7 @@ def scroll_palette(root, name, to_end):
     y = (bounds(node)[1] + bounds(node)[3]) // 2
     start, end = (right - 24, left + 24) if to_end else (left + 24, right - 24)
     shell("input", "swipe", start, y, end, y, 400)
-    return snapshot(name)
+    return snapshot(f"{name}-palette-{'end' if to_end else 'start'}")
 
 
 def check_palette(root, name, sidebar):
