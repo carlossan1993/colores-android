@@ -1,6 +1,6 @@
 {
   "name": "colores-android",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -9,12 +9,14 @@
     "test": "jest --runInBand",
     "typecheck": "tsc --noEmit",
     "check:foundation": "node scripts/check-foundation.cjs",
-    "verify": "npm run typecheck && npm run lint && npm test && npm run check:foundation"
+    "verify": "npm run typecheck && npm run lint && npm test && npm run check:foundation && npm run check:drawing",
+    "check:drawing": "node scripts/check-drawing.cjs"
   },
   "dependencies": {
     "react": "19.2.3",
     "react-native": "0.87.1",
-    "react-native-safe-area-context": "^5.5.2"
+    "react-native-safe-area-context": "^5.5.2",
+    "react-native-svg": "15.15.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

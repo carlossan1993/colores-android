@@ -2,9 +2,11 @@
 
 Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
 
-## Primer entregable: etapas 0 y 1
+## Entregable actual: etapa 2 — motor SVG
 
-La base muestra una bienvenida horizontal y una paleta interactiva. Todavía no hay dibujos ni guardado de progreso. Primero se valida que el APK se instala, abre y responde en un teléfono real; después se implementa el motor con un único dibujo.
+La fundación Android fue validada en el teléfono e integrada mediante el PR 1. La versión actual abre directamente **Mi casita**, un dibujo original de ocho regiones SVG, con doce colores, deshacer/rehacer, borrado con blanco y reinicio con confirmación. El contorno permanece fijo.
+
+El historial admite 50 cambios. El progreso se mantiene durante la sesión; todavía no se guarda al cerrar. La pantalla definitiva se trabaja en la etapa 3 y la persistencia en la etapa 5.
 
 **[Cómo descargar e instalar el APK](docs/instalar-apk.md)**
 
@@ -15,7 +17,7 @@ El APK `preview` incluye el código JavaScript y Hermes. No necesita Metro, Andr
 ## Flujo de trabajo online
 
 1. Crear una rama y un PR con un cambio verificable.
-2. GitHub Actions instala desde `package-lock.json`, verifica TypeScript, lint, pruebas y configuración base.
+2. GitHub Actions instala desde `package-lock.json`, verifica TypeScript, lint, pruebas, configuración base e IDs/geometría del SVG de prueba.
 3. Compila Android y verifica firma, bundle incluido, bibliotecas nativas y permisos del APK final.
 4. Descarga el APK y prueba el comportamiento necesario en el teléfono.
 5. Integra el PR revisado y actualiza el estado de la etapa.

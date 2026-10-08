@@ -1,0 +1,45 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "sun",
+      "name": "Sol",
+      "path": "M 585 56 A 32 32 0 1 1 521 56 A 32 32 0 1 1 585 56 Z"
+    },
+    {
+      "id": "trunk",
+      "name": "Tronco",
+      "path": "M 534 179 L 577 179 L 577 272 L 534 272 Z"
+    },
+    {
+      "id": "crown",
+      "name": "Copa del árbol",
+      "path": "M 491 178 C 466 160 470 130 491 122 C 489 94 516 82 539 97 C 562 76 594 93 592 118 C 620 127 624 155 603 169 C 607 197 578 207 558 196 C 535 212 510 204 491 178 Z"
+    },
+    {
+      "id": "wall",
+      "name": "Pared",
+      "path": "M 105 108 L 435 108 L 435 272 L 105 272 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo",
+      "path": "M 78 108 L 270 22 L 462 108 Z"
+    },
+    {
+      "id": "door",
+      "name": "Puerta",
+      "path": "M 231 165 Q 231 151 245 151 L 295 151 Q 309 151 309 165 L 309 272 L 231 272 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventana izquierda",
+      "path": "M 126 139 L 211 139 L 211 221 L 126 221 Z"
+    },
+    {
+      "id": "window_right",
+      "name": "Ventana derecha",
+      "path": "M 329 139 L 414 139 L 414 221 L 329 221 Z"
+    }
+  ]
+}

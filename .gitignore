@@ -17,3 +17,5 @@ artifacts/
 .DS_Store
 .idea/
 .metro-health-check*
+__pycache__/
+*.pyc
