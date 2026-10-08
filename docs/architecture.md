@@ -24,7 +24,7 @@ React Native + TypeScript, Android nativo, assets incluidos y progreso local. No
 
 Proyecto creado con Community CLI 20.2.0 y React Native 0.87.1, con su plantilla oficial. React 19.2.3, Hermes, TypeScript y `react-native-safe-area-context`. `package-lock.json` fija las dependencias resueltas y CI instala con `npm ci`.
 
-Node 24.19.0, JDK 17, Gradle 9.4.1 con checksum, compile SDK 37, target SDK 36, build tools 37.0.0 y NDK 27.1.12297006. La base mantiene las versiones de la plantilla; los requisitos de Play se revisarán de nuevo antes de publicar.
+Node 24.19.0, JDK 17, Gradle 9.4.1 con checksum, compile SDK 36, target SDK 36, build tools 36.0.0 y NDK 27.1.12297006. La base conserva React Native y Gradle de la plantilla; se fija el SDK estable 36 porque CI confirmó que el instalador oficial no ofrece `platforms;android-37`. Los requisitos de Play se revisarán de nuevo antes de publicar.
 
 Paquete provisional: `com.carlossan1993.colores`. Debe quedar definido antes de publicar. Nombre provisional: **Colores**. Paquetes separados `.debug` y `.preview` evitan interferir con la futura versión de producción.
 

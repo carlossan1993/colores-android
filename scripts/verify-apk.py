@@ -6,7 +6,7 @@ import sys
 from zipfile import ZipFile
 
 apk = Path(sys.argv[1]).resolve()
-tools = Path(os.environ["ANDROID_HOME"]) / "build-tools" / "37.0.0"
+tools = Path(os.environ["ANDROID_HOME"]) / "build-tools" / "36.0.0"
 subprocess.run([str(tools / "apksigner"), "verify", "--verbose", str(apk)], check=True)
 badging = subprocess.check_output([str(tools / "aapt2"), "dump", "badging", str(apk)], text=True)
 permissions = subprocess.check_output([str(tools / "aapt2"), "dump", "permissions", str(apk)], text=True)

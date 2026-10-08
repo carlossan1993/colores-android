@@ -44,10 +44,10 @@ jobs:
           java-version: '17'
       - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
       - run: npm ci --no-audit --no-fund
-      - name: Instalar SDK Android de la plantilla
+      - name: Instalar SDK Android estable
         run: >-
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
-          "platforms;android-37" "build-tools;37.0.0" "ndk;27.1.12297006"
+          "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006"
       - name: Compilar APK con JavaScript incluido
         working-directory: android
         run: ./gradlew :app:assemblePreview --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a
