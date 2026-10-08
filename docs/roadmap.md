@@ -4,9 +4,9 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 
 | Etapa | Entregable | Estado |
 | --- | --- | --- |
-| 0. Preparación | Repositorio público, reglas, documentación y PR | Preparada en este cambio |
-| 1. Fundación Android | Base nativa horizontal y APK generado desde GitHub | Implementada; pendiente de validar CI e instalación real |
-| 2. Motor SVG | Un dibujo, toque por región, paleta, undo/redo y reset | Pendiente |
+| 0. Preparación | Repositorio público, reglas, documentación y PR | Completada; PR 1 integrado |
+| 1. Fundación Android | Base nativa horizontal y APK generado desde GitHub | Completada; APK validado en Actions y funcionamiento confirmado por el usuario |
+| 2. Motor SVG | Un dibujo, toque por región, paleta, undo/redo y reset | Implementada en PR 2; pendiente de validar APK y prueba real |
 | 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Pendiente |
 | 4. Navegación y catálogo | Inicio, categorías y galería | Pendiente |
 | 5. Persistencia offline | Guardado y restauración local versionados | Pendiente |
@@ -18,15 +18,21 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 11. Testing Play | Prueba exigida por la cuenta de publicación | Pendiente |
 | 12. Publicación | App aprobada en Google Play | Pendiente |
 
-## Criterio de salida inmediato
+## Validación registrada
 
-- [ ] Controles de TypeScript, lint, pruebas y base en verde en GitHub.
-- [ ] APK generado y validado por GitHub Actions.
-- [ ] APK instalado en el teléfono real del usuario.
-- [ ] Apertura horizontal, paleta táctil y reapertura en modo avión confirmadas.
+El usuario confirmó “funcionó. Avancemos” tras recibir el APK y las instrucciones de instalación, apertura horizontal, paleta y reapertura en modo avión. Se integra el PR 1 y se cierra la fundación Android. GitHub Actions del PR 1 completó los controles y la verificación del APK.
 
-La instalación y apertura se registrarán después de la confirmación del usuario. Hasta entonces no se inicia la producción del catálogo ni se declara terminada la etapa 1.
+## Criterio de salida de la etapa 2
+
+- [x] Dibujo original de prueba con ocho IDs estables y regiones cerradas.
+- [x] Motor puro con pintura, borrado con blanco, undo/redo, reset e historial acotado.
+- [x] Confirmación antes de reiniciar y selección de color conservada entre acciones.
+- [x] Pruebas automáticas de región aislada, historial, completado y conexión UI/SVG.
+- [ ] APK generado y validado en GitHub Actions para el PR 2.
+- [ ] Usuario confirma precisión de toque, controles y funcionamiento offline en su teléfono.
+
+Esta versión de prueba todavía no conserva progreso al cerrar la app. La persistencia corresponde a la etapa 5; la UX horizontal definitiva, a la etapa 3.
 
 ## Próximo cambio
 
-Tras aprobar la instalación, etapa 2 con un SVG original simple. Antes de probar persistencia entre versiones, configurar una firma estable de pruebas en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.
+Tras validar el motor en el teléfono, etapa 3: pulir la pantalla de coloreado para teléfono y tablet. Antes de probar persistencia entre versiones, configurar una firma estable de pruebas en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.

@@ -11,3 +11,14 @@ export type DrawingMetadata = DrawingAccess & {
   asset: string;
   regionIds: readonly string[];
 };
+
+export type SvgRegion = {
+  id: string;
+  name: string;
+  path: string;
+};
+
+export type DrawingDefinition = DrawingMetadata & {
+  viewBox: string;
+  regions: readonly SvgRegion[];
+};
