@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 — Pantalla adaptable (sin publicar)
+
+- Más espacio para el dibujo con colores y controles en un panel lateral.
+- Botones de 48 dp en teléfono y 64 dp en tablet, selección visible e iconos SVG.
+- Paleta inferior desplazable y cabecera adaptable para ventanas pequeñas.
+- Zonas seguras y cambios de tamaño conservando colores e historial.
+- Pruebas de distribución e interacción al cambiar entre seis tamaños.
+- Comprobación del APK offline en emulador Android, con capturas y pruebas de pintura, borrado, undo/redo y confirmación de reinicio.
+- APK de prueba con ARM64 y x86_64 para probar el mismo archivo en dispositivo y emulador.
+- Registro de aprobación e integración del motor SVG.
+
 ## 0.2.0 — Motor SVG (sin publicar)
 
 - Dibujo original Mi casita con ocho regiones cerradas y contornos fijos.

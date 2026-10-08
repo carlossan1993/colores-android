@@ -1,14 +1,15 @@
 import React, { useReducer, useState } from 'react';
 import {
   Alert,
-  Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   View,
   useWindowDimensions,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import { FreeEntitlementManager } from '../access/EntitlementManager';
 import { InteractiveDrawing } from '../coloring/InteractiveDrawing';
 import {
@@ -16,7 +17,10 @@ import {
   createInitialState,
   getDrawingProgress,
 } from '../coloring/coloringReducer';
+import { ColorPalette } from '../components/ColorPalette';
+import { ColoringTools } from '../components/ColoringTools';
 import { testDrawing } from '../content/testDrawing';
+import { getColoringLayout } from '../layout/coloringLayout';
 import { palette } from '../theme/palette';
 import { theme } from '../theme/theme';
 
@@ -26,8 +30,12 @@ const access = new FreeEntitlementManager();
 export function ColoringScreen() {
   const [state, dispatch] = useReducer(reducer, undefined, createInitialState);
   const [selectedColor, setSelectedColor] = useState<string>(palette[0].color);
-  const { height } = useWindowDimensions();
-  const compact = height < 420;
+  const window = useWindowDimensions();
+  const insets = useSafeAreaInsets();
+  const layout = getColoringLayout(
+    window.width - insets.left - insets.right,
+    window.height - insets.top - insets.bottom,
+  );
   const progress = getDrawingProgress(state.colors, testDrawing.regionIds);
 
   const confirmReset = () => {
@@ -49,21 +57,80 @@ export function ColoringScreen() {
     return null;
   }
 
+  const tools = (
+    <ColoringTools
+      layout={layout}
+      canUndo={state.past.length > 0}
+      canRedo={state.future.length > 0}
+      canReset={progress.colored > 0}
+      onUndo={() => dispatch({ type: 'undo' })}
+      onRedo={() => dispatch({ type: 'redo' })}
+      onReset={confirmReset}
+    />
+  );
+  const colors = (
+    <ColorPalette
+      layout={layout}
+      selectedColor={selectedColor}
+      onSelect={setSelectedColor}
+    />
+  );
+  const heading = (
+    <View style={styles.heading}>
+      <Text
+        accessibilityRole="header"
+        numberOfLines={1}
+        maxFontSizeMultiplier={1.3}
+        style={[styles.title, layout.tablet && styles.tabletTitle]}
+      >
+        {testDrawing.name}
+      </Text>
+      <View
+        style={[
+          styles.progressBadge,
+          progress.status === 'completed' && styles.completed,
+        ]}
+      >
+        <Text
+          testID="drawing-progress"
+          accessibilityLiveRegion="polite"
+          accessibilityLabel={`${progress.colored} de ${progress.total} zonas coloreadas`}
+          maxFontSizeMultiplier={1.3}
+          style={styles.progress}
+        >
+          {progress.status === 'completed'
+            ? '¡Lo lograste!'
+            : `${progress.colored} / ${progress.total}`}
+        </Text>
+      </View>
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.workspace}>
-        <View style={styles.main}>
-          <View style={styles.header}>
-            <Text accessibilityRole="header" style={styles.title}>
-              {testDrawing.name}
-            </Text>
-            <Text accessibilityLiveRegion="polite" style={styles.progress}>
-              {progress.status === 'completed'
-                ? '¡Lo lograste!'
-                : `${progress.colored} / ${progress.total}`}
-            </Text>
+      <View
+        testID={layout.bottomPalette ? 'layout-bottom' : 'layout-sidebar'}
+        style={[
+          styles.workspace,
+          { padding: layout.outerPadding, gap: layout.sectionGap },
+          layout.bottomPalette && styles.bottomWorkspace,
+        ]}
+      >
+        <View style={[styles.main, { gap: layout.sectionGap }]}>
+          <View
+            style={[
+              styles.header,
+              layout.stackedHeader && styles.stackedHeader,
+            ]}
+          >
+            {heading}
+            {layout.bottomPalette ? tools : null}
           </View>
-          <View style={styles.canvas}>
+          <View
+            testID="drawing-canvas"
+            collapsable={false}
+            style={styles.canvas}
+          >
             <InteractiveDrawing
               drawing={testDrawing}
               colors={state.colors}
@@ -72,157 +139,96 @@ export function ColoringScreen() {
               }
             />
           </View>
-          <View style={styles.toolbar}>
-            <ToolButton
-              label="Deshacer"
-              symbol="↶"
-              disabled={state.past.length === 0}
-              onPress={() => dispatch({ type: 'undo' })}
-            />
-            <ToolButton
-              label="Rehacer"
-              symbol="↷"
-              disabled={state.future.length === 0}
-              onPress={() => dispatch({ type: 'redo' })}
-            />
-            <ToolButton
-              label="Reiniciar"
-              symbol="↺"
-              disabled={progress.colored === 0}
-              onPress={confirmReset}
-            />
+        </View>
+        {layout.bottomPalette ? (
+          <View style={[styles.bottomPalette, { height: layout.cellSize + 8 }]}>
+            {colors}
           </View>
-        </View>
-
-        <View style={[styles.sidebar, compact && styles.compactSidebar]}>
-          <Text style={styles.paletteTitle}>Colores</Text>
-          <ScrollView
-            contentContainerStyle={styles.palette}
-            showsVerticalScrollIndicator={false}
+        ) : (
+          <View
+            style={[
+              styles.sidebar,
+              {
+                width: layout.panelWidth,
+                padding: layout.panelPadding,
+                gap: layout.sectionGap,
+              },
+            ]}
           >
-            {palette.map(item => (
-              <Pressable
-                key={item.color}
-                accessibilityRole="button"
-                accessibilityLabel={`Elegir ${item.name}`}
-                accessibilityState={{ selected: selectedColor === item.color }}
-                onPress={() => setSelectedColor(item.color)}
+            <View style={styles.paletteHeading}>
+              <View
                 style={[
-                  styles.swatch,
-                  { backgroundColor: item.color },
-                  selectedColor === item.color && styles.selectedSwatch,
+                  styles.selectedColor,
+                  { backgroundColor: selectedColor },
                 ]}
-              >
-                {selectedColor === item.color ? (
-                  <Text style={styles.checkmark}>✓</Text>
-                ) : null}
-              </Pressable>
-            ))}
-          </ScrollView>
-        </View>
+              />
+              <Text maxFontSizeMultiplier={1.2} style={styles.paletteTitle}>
+                Colores
+              </Text>
+            </View>
+            {colors}
+            {tools}
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );
 }
 
-type ToolButtonProps = {
-  label: string;
-  symbol: string;
-  disabled: boolean;
-  onPress: () => void;
-};
-
-function ToolButton({ label, symbol, disabled, onPress }: ToolButtonProps) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      accessibilityLabel={label}
-      accessibilityState={{ disabled }}
-      disabled={disabled}
-      onPress={onPress}
-      style={[styles.toolButton, disabled && styles.disabledButton]}
-    >
-      <Text style={styles.toolSymbol}>{symbol}</Text>
-      <Text style={styles.toolLabel}>{label}</Text>
-    </Pressable>
-  );
-}
-
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: theme.background },
-  workspace: { flex: 1, flexDirection: 'row', padding: 12, gap: 12 },
-  main: { flex: 1, minWidth: 0, gap: 8 },
-  header: {
+  workspace: { flex: 1, flexDirection: 'row' },
+  bottomWorkspace: { flexDirection: 'column' },
+  main: { flex: 1, minWidth: 0, minHeight: 0 },
+  header: { flexDirection: 'row', alignItems: 'center', gap: 8, minHeight: 32 },
+  stackedHeader: { flexDirection: 'column', alignItems: 'stretch' },
+  heading: {
     minHeight: 32,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 8,
+    gap: 8,
   },
-  title: { fontSize: 22, fontWeight: '800', color: theme.text },
-  progress: { fontSize: 16, fontWeight: '700', color: theme.accent },
+  title: { flexShrink: 1, fontSize: 18, fontWeight: '800', color: theme.text },
+  tabletTitle: { fontSize: 26 },
+  progressBadge: {
+    backgroundColor: '#F0EBFC',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 16,
+  },
+  completed: { backgroundColor: '#E1F4E9' },
+  progress: { fontSize: 13, fontWeight: '700', color: theme.text },
   canvas: {
     flex: 1,
+    minHeight: 0,
     backgroundColor: theme.surface,
     borderWidth: 2,
     borderColor: theme.border,
     borderRadius: 24,
     overflow: 'hidden',
   },
-  toolbar: { flexDirection: 'row', justifyContent: 'center', gap: 12 },
-  toolButton: {
-    minHeight: 48,
-    minWidth: 84,
+  sidebar: { backgroundColor: theme.surface, borderRadius: 24 },
+  paletteHeading: {
+    height: 28,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 6,
-    paddingHorizontal: 12,
-    backgroundColor: theme.surface,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: theme.border,
-  },
-  toolSymbol: { fontSize: 30, color: theme.text },
-  toolLabel: { fontSize: 13, fontWeight: '600', color: theme.text },
-  disabledButton: { opacity: 0.35 },
-  sidebar: {
-    width: 136,
-    backgroundColor: theme.surface,
-    borderRadius: 24,
-    padding: 12,
-    gap: 12,
-  },
-  compactSidebar: { width: 124, padding: 8 },
-  paletteTitle: {
-    fontSize: 16,
-    fontWeight: '700',
-    textAlign: 'center',
-    color: theme.text,
-  },
-  palette: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'center',
     gap: 8,
-    paddingBottom: 8,
   },
-  swatch: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+  selectedColor: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
     borderWidth: 2,
-    borderColor: theme.border,
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderColor: theme.text,
   },
-  selectedSwatch: { borderWidth: 3, borderColor: theme.text },
-  checkmark: {
-    fontSize: 24,
-    fontWeight: '800',
-    color: '#FFFFFF',
-    textShadowColor: theme.text,
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 3,
+  paletteTitle: { fontSize: 16, fontWeight: '700', color: theme.text },
+  bottomPalette: {
+    backgroundColor: theme.surface,
+    borderRadius: 20,
+    paddingHorizontal: 4,
+    paddingVertical: 2,
   },
 });
