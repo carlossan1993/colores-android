@@ -1,0 +1,68 @@
+name: Android · Verificar y generar APK
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: TypeScript, lint y pruebas
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run verify
+
+  apk:
+    name: APK Android offline (ARM64)
+    needs: quality
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
+      - run: npm ci --no-audit --no-fund
+      - name: Instalar SDK Android de la plantilla
+        run: >-
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          "platforms;android-37" "build-tools;37.0.0" "ndk;27.1.12297006"
+      - name: Compilar APK con JavaScript incluido
+        working-directory: android
+        run: ./gradlew :app:assemblePreview --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a
+      - name: Verificar firma, contenido y permisos
+        run: python3 scripts/verify-apk.py android/app/build/outputs/apk/preview/app-preview.apk
+      - name: Preparar descarga
+        run: |
+          mkdir -p artifacts
+          cp android/app/build/outputs/apk/preview/app-preview.apk artifacts/colores-android-prueba.apk
+          cp docs/instalar-apk.md artifacts/LEEME.md
+          sha256sum artifacts/colores-android-prueba.apk > artifacts/SHA256SUMS.txt
+      - name: Publicar APK descargable
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: colores-android-apk-${{ github.run_number }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 7
