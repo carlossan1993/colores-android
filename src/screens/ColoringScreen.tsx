@@ -29,6 +29,7 @@ import { testDrawing } from '../content/testDrawing';
 import { getColoringLayout } from '../layout/coloringLayout';
 import { palette } from '../theme/palette';
 import { theme } from '../theme/theme';
+import type { SaveStatus } from '../storage/useProgress';
 
 const access = new FreeEntitlementManager();
 
@@ -42,6 +43,7 @@ type Props = {
   onPrevious?: () => void;
   onNext?: () => void;
   position?: string;
+  saveStatus?: SaveStatus;
 };
 
 export function ColoringScreen({
@@ -54,6 +56,7 @@ export function ColoringScreen({
   onPrevious,
   onNext,
   position,
+  saveStatus,
 }: Props) {
   const reducer = useMemo(
     () => createColoringReducer(drawing.regionIds),
@@ -149,6 +152,19 @@ export function ColoringScreen({
             ? '¡Lo lograste!'
             : `${progress.colored} / ${progress.total}`}
         </Text>
+        {saveStatus ? (
+          <Text
+            testID="storage-status"
+            accessibilityLiveRegion="polite"
+            style={styles.saveStatus}
+          >
+            {saveStatus === 'saved'
+              ? 'Guardado'
+              : saveStatus === 'saving'
+              ? 'Guardando…'
+              : 'Sin guardar'}
+          </Text>
+        ) : null}
       </View>
     </View>
   );
@@ -277,6 +293,7 @@ const styles = StyleSheet.create({
   },
   title: { flexShrink: 1, fontSize: 18, fontWeight: '800', color: theme.text },
   tabletTitle: { fontSize: 26 },
+  saveStatus: { fontSize: 10, color: theme.muted, textAlign: 'center' },
   progressBadge: {
     backgroundColor: '#F0EBFC',
     paddingHorizontal: 10,

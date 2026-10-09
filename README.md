@@ -2,13 +2,13 @@
 
 Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
 
-## Entregable actual: etapa 4 — inicio, categorías y galería
+## Entregable actual: etapa 5 — guardado y restauración offline
 
-Etapas 0–3 confirmadas en el teléfono e integradas. La app inicia con una bienvenida visual, cuatro categorías y galerías con miniaturas del propio SVG. Incluye cinco dibujos de muestra: Gatito, Manzana, Mi casita, Castillo y Auto. El catálogo de 40 dibujos corresponde a la etapa 7.
+Etapas 0–4 confirmadas en el teléfono e integradas. Inicio, cuatro categorías y cinco dibujos de muestra: Gatito, Manzana, Mi casita, Castillo y Auto. El catálogo de 40 dibujos corresponde a la etapa 7.
 
-El recorrido es inicio → categorías → galería → coloreado. Anterior/siguiente se limita a la categoría, y Atrás vuelve por el mismo recorrido. La galería muestra sin empezar, en progreso o terminado, con los colores de la sesión. Cada dibujo conserva colores e historial al navegar; el color seleccionado permanece entre dibujos. Todavía no se guarda al cerrar: etapa 5.
+Los colores y el color seleccionado se guardan automáticamente en el teléfono. Al volver a abrir, las galerías y dibujos restauran el progreso sin Internet. El indicador **Guardado** confirma la escritura en disco; si falla, aparece Reintentar y se conservan los colores en pantalla. La app espera la restauración antes de permitir pintar. Se guardan regiones y preferencias, no imágenes ni historial de deshacer/rehacer: ese historial empieza vacío al reabrir.
 
-Se mantiene la pantalla adaptable de 48/64 dp, doce colores, borrado con blanco, deshacer/rehacer y reinicio confirmado. No se agregaron dependencias ni permisos.
+Formato versionado con validación y copia de recuperación. No se agregaron permisos, dependencias, servidores o SDKs. Desinstalar o borrar los datos elimina el progreso; las futuras actualizaciones deberán conservar paquete y firma. La firma de prueba entre versiones sigue siendo temporal hasta configurar Secrets.
 
 **[Cómo descargar e instalar el APK](docs/instalar-apk.md)**
 

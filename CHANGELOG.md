@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0 — Persistencia offline (sin publicar)
+
+- Guardado automático de colores y selección de color en almacenamiento privado Android.
+- Restauración al reabrir, miniaturas actualizadas y progreso separado por dibujo.
+- Esquema 1, validación, copia de recuperación y protección ante datos de versiones desconocidas.
+- Escrituras ordenadas fuera del hilo de UI, confirmación de disco y reintento de fallos.
+- Bloqueo de interacción durante la carga para no sobrescribir dibujos anteriores.
+- Pruebas de reapertura, reset, errores y conservación al reinstalar el mismo APK.
+- Historial undo/redo de sesión; sin imágenes ni datos remotos.
+- Etapa 4 aprobada por el usuario y PR 4 integrado.
+
 ## 0.4.0 — Navegación y catálogo de muestra (sin publicar)
 
 - Inicio visual, cuatro categorías y galerías con miniaturas SVG y estado de sesión.
