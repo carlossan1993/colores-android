@@ -19,8 +19,8 @@ Android 7 o superior y procesador ARM64 o x86_64. Se incluye x86_64 para comprob
 
 ## Firma de prueba
 
-El APK lleva una firma de desarrollo generada en el runner, sin claves en el repositorio. En esta etapa la firma puede cambiar entre ejecuciones. Si aparece “App no instalada” al reemplazar una prueba anterior, desinstala esa versión y vuelve a instalarla; en esta etapa el progreso solo vive durante la sesión y todavía no se guarda.
+El APK lleva una firma de desarrollo generada en el runner, sin claves en el repositorio. En esta etapa la firma puede cambiar entre ejecuciones. Si aparece “App no instalada” al reemplazar una prueba anterior, puede deberse a una firma distinta. Desinstalar elimina el progreso local; guarda esta precaución para las pruebas siguientes. La etapa 4 todavía no guardaba progreso entre sesiones.
 
-Antes de probar persistencia y actualizaciones se configurará una firma de pruebas estable mediante GitHub Secrets. La firma de producción y el AAB para Play se prepararán en la etapa de publicación. El paquete de prueba termina en `.preview` y no reemplaza la futura app publicada.
+La persistencia al cerrar y reabrir se prueba con este APK. Antes de probar actualizaciones entre APK de ejecuciones distintas se configurará una firma de pruebas estable mediante GitHub Secrets. La firma de producción y el AAB para Play se prepararán en la etapa de publicación. El paquete de prueba termina en `.preview` y no reemplaza la futura app publicada.
 
 Los artefactos se conservan 7 días para limitar almacenamiento. Un nuevo PR o la ejecución manual en Actions vuelve a generarlos.
