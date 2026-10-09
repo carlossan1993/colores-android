@@ -2,11 +2,13 @@
 
 Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
 
-## Entregable actual: etapa 3 — pantalla adaptable
+## Entregable actual: etapa 4 — inicio, categorías y galería
 
-La fundación y el motor SVG fueron validados en el teléfono e integrados mediante los PR 1 y 2. La versión actual abre directamente **Mi casita**, un dibujo original de ocho regiones SVG, con doce colores, deshacer/rehacer, borrado con blanco y reinicio con confirmación. El contorno permanece fijo.
+Etapas 0–3 confirmadas en el teléfono e integradas. La app inicia con una bienvenida visual, cuatro categorías y galerías con miniaturas del propio SVG. Incluye cinco dibujos de muestra: Gatito, Manzana, Mi casita, Castillo y Auto. El catálogo de 40 dibujos corresponde a la etapa 7.
 
-La pantalla reúne colores y acciones en un panel lateral de tres columnas. Usa botones de 48 dp en teléfono y 64 dp en tablet; en ventanas cortas o estrechas cambia a una paleta inferior desplazable. El historial admite 50 cambios y se conserva al cambiar de tamaño. Todavía no se guarda al cerrar; la persistencia corresponde a la etapa 5.
+El recorrido es inicio → categorías → galería → coloreado. Anterior/siguiente se limita a la categoría, y Atrás vuelve por el mismo recorrido. La galería muestra sin empezar, en progreso o terminado, con los colores de la sesión. Cada dibujo conserva colores e historial al navegar; el color seleccionado permanece entre dibujos. Todavía no se guarda al cerrar: etapa 5.
+
+Se mantiene la pantalla adaptable de 48/64 dp, doce colores, borrado con blanco, deshacer/rehacer y reinicio confirmado. No se agregaron dependencias ni permisos.
 
 **[Cómo descargar e instalar el APK](docs/instalar-apk.md)**
 

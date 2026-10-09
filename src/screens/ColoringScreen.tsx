@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useMemo, useReducer, useState } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -17,6 +17,12 @@ import {
   createInitialState,
   getDrawingProgress,
 } from '../coloring/coloringReducer';
+import type {
+  ColoringAction,
+  ColoringState,
+} from '../coloring/coloringReducer';
+import type { DrawingDefinition } from '../content/types';
+import { NavigationButton } from '../components/NavigationButton';
 import { ColorPalette } from '../components/ColorPalette';
 import { ColoringTools } from '../components/ColoringTools';
 import { testDrawing } from '../content/testDrawing';
@@ -24,19 +30,52 @@ import { getColoringLayout } from '../layout/coloringLayout';
 import { palette } from '../theme/palette';
 import { theme } from '../theme/theme';
 
-const reducer = createColoringReducer(testDrawing.regionIds);
 const access = new FreeEntitlementManager();
 
-export function ColoringScreen() {
-  const [state, dispatch] = useReducer(reducer, undefined, createInitialState);
-  const [selectedColor, setSelectedColor] = useState<string>(palette[0].color);
+type Props = {
+  drawing?: DrawingDefinition;
+  state?: ColoringState;
+  onAction?: (action: ColoringAction) => void;
+  selectedColor?: string;
+  onSelectColor?: (color: string) => void;
+  onBack?: () => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
+  position?: string;
+};
+
+export function ColoringScreen({
+  drawing = testDrawing,
+  state: suppliedState,
+  onAction,
+  selectedColor: suppliedColor,
+  onSelectColor,
+  onBack,
+  onPrevious,
+  onNext,
+  position,
+}: Props) {
+  const reducer = useMemo(
+    () => createColoringReducer(drawing.regionIds),
+    [drawing],
+  );
+  const [localState, localDispatch] = useReducer(
+    reducer,
+    undefined,
+    createInitialState,
+  );
+  const state = suppliedState ?? localState;
+  const dispatch = onAction ?? localDispatch;
+  const [localColor, setLocalColor] = useState<string>(palette[0].color);
+  const selectedColor = suppliedColor ?? localColor;
+  const setSelectedColor = onSelectColor ?? setLocalColor;
   const window = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const layout = getColoringLayout(
     window.width - insets.left - insets.right,
     window.height - insets.top - insets.bottom,
   );
-  const progress = getDrawingProgress(state.colors, testDrawing.regionIds);
+  const progress = getDrawingProgress(state.colors, drawing.regionIds);
 
   const confirmReset = () => {
     Alert.alert(
@@ -53,7 +92,7 @@ export function ColoringScreen() {
     );
   };
 
-  if (!access.canAccess(testDrawing)) {
+  if (!access.canAccess(drawing)) {
     return null;
   }
 
@@ -77,13 +116,21 @@ export function ColoringScreen() {
   );
   const heading = (
     <View style={styles.heading}>
+      {onBack ? (
+        <NavigationButton
+          direction="back"
+          testID="coloring-back"
+          label="Volver a la galería"
+          onPress={onBack}
+        />
+      ) : null}
       <Text
         accessibilityRole="header"
         numberOfLines={1}
         maxFontSizeMultiplier={1.3}
         style={[styles.title, layout.tablet && styles.tabletTitle]}
       >
-        {testDrawing.name}
+        {drawing.name}
       </Text>
       <View
         style={[
@@ -106,6 +153,26 @@ export function ColoringScreen() {
     </View>
   );
 
+  const drawingNavigation = onBack ? (
+    <View style={styles.drawingNavigation}>
+      <NavigationButton
+        direction="back"
+        testID="drawing-previous"
+        label="Dibujo anterior"
+        onPress={onPrevious}
+      />
+      <Text testID="drawing-position" style={styles.progress}>
+        {position}
+      </Text>
+      <NavigationButton
+        direction="next"
+        testID="drawing-next"
+        label="Dibujo siguiente"
+        onPress={onNext}
+      />
+    </View>
+  ) : null;
+
   return (
     <SafeAreaView style={styles.screen}>
       <View
@@ -124,7 +191,12 @@ export function ColoringScreen() {
             ]}
           >
             {heading}
-            {layout.bottomPalette ? tools : null}
+            {layout.bottomPalette ? (
+              <View style={styles.compactTools}>
+                {tools}
+                {drawingNavigation}
+              </View>
+            ) : null}
           </View>
           <View
             testID="drawing-canvas"
@@ -132,13 +204,14 @@ export function ColoringScreen() {
             style={styles.canvas}
           >
             <InteractiveDrawing
-              drawing={testDrawing}
+              drawing={drawing}
               colors={state.colors}
               onPaint={regionId =>
                 dispatch({ type: 'paint', regionId, color: selectedColor })
               }
             />
           </View>
+          {!layout.bottomPalette ? drawingNavigation : null}
         </View>
         {layout.bottomPalette ? (
           <View style={[styles.bottomPalette, { height: layout.cellSize + 8 }]}>
@@ -176,6 +249,18 @@ export function ColoringScreen() {
 }
 
 const styles = StyleSheet.create({
+  compactTools: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  drawingNavigation: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 16,
+  },
   screen: { flex: 1, backgroundColor: theme.background },
   workspace: { flex: 1, flexDirection: 'row' },
   bottomWorkspace: { flexDirection: 'column' },

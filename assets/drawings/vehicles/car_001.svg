@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="body" d="M 125 155 L 180 140 L 235 72 L 390 72 L 453 140 L 515 155 L 515 227 L 125 227 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_left" d="M 205 141 L 246 89 L 310 89 L 310 141 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_right" d="M 328 89 L 380 89 L 426 141 L 328 141 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_left" d="M 175 231 A 36 36 0 1 0 247 231 A 36 36 0 1 0 175 231 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_right" d="M 393 231 A 36 36 0 1 0 465 231 A 36 36 0 1 0 393 231 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="light" d="M 473 168 L 506 168 L 506 192 L 473 192 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

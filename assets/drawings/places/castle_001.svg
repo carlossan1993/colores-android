@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="wall" d="M 180 150 L 460 150 L 460 267 L 180 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tower_left" d="M 150 80 L 180 80 L 180 104 L 207 104 L 207 80 L 237 80 L 237 267 L 150 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tower_right" d="M 403 80 L 433 80 L 433 104 L 460 104 L 460 80 L 490 80 L 490 267 L 403 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tower_middle" d="M 260 70 L 380 70 L 380 173 L 260 173 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="roof" d="M 240 70 L 320 18 L 400 70 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="door" d="M 287 267 L 287 221 C 287 179 353 179 353 221 L 353 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_left" d="M 175 132 L 212 132 L 212 177 L 175 177 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_right" d="M 428 132 L 465 132 L 465 177 L 428 177 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -4,13 +4,15 @@
 2. En **Artifacts**, descarga `colores-android-apk-N`. Debes estar conectado a GitHub para descargarlo.
 3. Extrae el ZIP y lleva `colores-android-prueba.apk` a tu teléfono Android.
 4. Abre el APK y, si Android lo pide, habilita temporalmente la instalación desde esa aplicación (navegador o gestor de archivos).
-5. Abre **Colores · Prueba**. Debe aparecer en horizontal el dibujo **Mi casita**.
-6. Comprueba que los doce colores y los tres controles son accesibles. En teléfono los controles son iconos; en tablet también muestran su nombre. El color elegido lleva una marca. Si la ventana es pequeña, desliza la paleta inferior para ver todos los colores.
-7. Elige un color y toca una zona. Comprueba que se rellena solamente esa parte; prueba Deshacer, Rehacer y Reiniciar (incluida la opción Cancelar).
-8. Pinta las ocho zonas y comprueba que aparece “¡Lo lograste!”. El blanco borra una zona.
-9. Activa modo avión, cierra la app y vuelve a abrirla. Debe volver a abrir y permitir pintar sin conexión; el dibujo empieza en blanco porque el guardado aún no está implementado.
+5. Abre **Colores · Prueba** en horizontal y pulsa Empezar.
+6. Entra a las cuatro categorías y abre un dibujo desde su galería.
+7. Prueba pintar, deshacer/rehacer, borrar con blanco y reiniciar con confirmación.
+8. En Lugares, usa siguiente para pasar de Mi casita a Castillo y anterior para volver. Los colores e historial de cada dibujo deben mantenerse separados.
+9. Vuelve a la galería: la miniatura debe reflejar los colores y mostrar En progreso o Terminado según corresponda. Prueba también Atrás de Android.
+10. En una ventana pequeña, desliza la paleta inferior para alcanzar los doce colores.
+11. Repite el recorrido en modo avión. Todavía no se guarda al cerrar el proceso; el guardado corresponde a la etapa 5.
 
-Este APK de la etapa 3 valida la pantalla horizontal adaptable con un único dibujo. Tiene doce colores, historial de 50 cambios y reinicio reversible con confirmación. Todavía no guarda progreso entre sesiones.
+La etapa 4 incluye cinco dibujos de muestra para validar navegación. El catálogo de 40 corresponde a la etapa 7.
 
 ## Compatibilidad de este artefacto
 

@@ -7,8 +7,8 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 0. Preparación | Repositorio público, reglas, documentación y PR | Completada; PR 1 integrado |
 | 1. Fundación Android | Base nativa horizontal y APK generado desde GitHub | Completada; APK validado en Actions y funcionamiento confirmado por el usuario |
 | 2. Motor SVG | Un dibujo, toque por región, paleta, undo/redo y reset | Completada; PR 2 integrado tras APK verificado y confirmación del usuario |
-| 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Implementada y validada en Actions; pendiente de confirmar prueba real |
-| 4. Navegación y catálogo | Inicio, categorías y galería | Pendiente |
+| 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Completada; APK validado por el usuario y PR 3 integrado |
+| 4. Navegación y catálogo | Inicio, categorías y galería | Implementada; pendiente de verificar APK y prueba real |
 | 5. Persistencia offline | Guardado y restauración local versionados | Pendiente |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Pendiente |
 | 7. Catálogo inicial | 40 dibujos, 10 por categoría | Pendiente |
@@ -23,6 +23,8 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 El usuario confirmó “funcionó. Avancemos” tras recibir el APK y las instrucciones de instalación, apertura horizontal, paleta y reapertura en modo avión. Se integra el PR 1 y se cierra la fundación Android. GitHub Actions del PR 1 completó los controles y la verificación del APK.
 
 El usuario confirmó “Si, funcionó bien. Avancemos” después de recibir el APK de la etapa 2. El PR 2 se integró con el commit `73e14659373eb1f6445fa14df0c4613e5a210c1e`. Su [ejecución de Actions](https://github.com/carlossan1993/colores-android/actions/runs/37724906609) aprobó los controles y el APK; se cierra el motor SVG.
+
+El usuario confirmó “Funcionó” para el APK de la etapa 3 y autorizó continuar. PR 3 integrado con `aab3614309d9ee7425032c8186e262b9dcc7d22e`; Actions aprobó la pantalla en seis tamaños, incluidos los doce colores completos.
 
 ## Criterio de salida de la etapa 2
 
@@ -40,11 +42,24 @@ El usuario confirmó “Si, funcionó bien. Avancemos” después de recibir el 
 - [x] Paleta desplazable y cabecera adaptable en ventanas cortas o estrechas.
 - [x] Etiquetas de accesibilidad y selección identificable sin depender solo del color.
 - [x] Pruebas de dimensiones y conservación de colores/historial al cambiar de tamaño.
-- [x] APK generado, verificado y ejercitado offline en los seis tamaños del emulador: [Actions del PR 3](https://github.com/carlossan1993/colores-android/actions/runs/37822447211).
-- [ ] Usuario confirma comodidad de dibujo, paleta y controles en su dispositivo.
+- [x] APK generado, verificado y ejercitado offline en los seis tamaños del emulador: [Actions del PR 3](https://github.com/carlossan1993/colores-android/actions/runs/37826626602).
+- [x] Usuario confirma comodidad de dibujo, paleta y controles en su dispositivo.
 
 Esta versión de prueba todavía no conserva progreso al cerrar la app. La persistencia corresponde a la etapa 5.
 
 ## Próximo cambio
 
-Tras validar la pantalla en el dispositivo, etapa 4: inicio, categorías y galería. Antes de probar persistencia entre versiones, configurar una firma estable de pruebas en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.
+Validar la etapa 4 en el dispositivo: inicio → categorías → galería → coloreado, anterior/siguiente y retorno sin perder el estado durante la sesión. Luego etapa 5: guardado y restauración al cerrar/reabrir. Antes de probar persistencia entre versiones, configurar una firma estable de pruebas en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.
+
+## Criterio de salida de la etapa 4
+
+- [x] Inicio visual y cuatro categorías: animales, frutas, lugares y vehículos.
+- [x] Galería con miniaturas SVG locales y estados sin empezar/en progreso/terminado.
+- [x] Cinco dibujos de muestra; catálogo completo de 40 reservado a la etapa 7.
+- [x] Coloreado genérico, anterior/siguiente limitado a la categoría y retorno a galería.
+- [x] Botón Atrás de Android y estados/undo independientes por dibujo durante la sesión.
+- [x] Pruebas de navegación, límites e independencia de regiones e historial.
+- [ ] APK verificado y recorrido ejercitado offline en Actions.
+- [ ] Usuario confirma el recorrido completo en su teléfono.
+
+Sin nuevas dependencias, permisos, conexión o SDK. El contenido incluido es gratuito; el acceso pasa por la abstracción free/premium existente.

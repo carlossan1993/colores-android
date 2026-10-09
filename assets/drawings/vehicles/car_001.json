@@ -1,0 +1,35 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "body",
+      "name": "Carrocería",
+      "path": "M 125 155 L 180 140 L 235 72 L 390 72 L 453 140 L 515 155 L 515 227 L 125 227 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventana izquierda",
+      "path": "M 205 141 L 246 89 L 310 89 L 310 141 Z"
+    },
+    {
+      "id": "window_right",
+      "name": "Ventana derecha",
+      "path": "M 328 89 L 380 89 L 426 141 L 328 141 Z"
+    },
+    {
+      "id": "wheel_left",
+      "name": "Rueda izquierda",
+      "path": "M 175 231 A 36 36 0 1 0 247 231 A 36 36 0 1 0 175 231 Z"
+    },
+    {
+      "id": "wheel_right",
+      "name": "Rueda derecha",
+      "path": "M 393 231 A 36 36 0 1 0 465 231 A 36 36 0 1 0 393 231 Z"
+    },
+    {
+      "id": "light",
+      "name": "Faro",
+      "path": "M 473 168 L 506 168 L 506 192 L 473 192 Z"
+    }
+  ]
+}

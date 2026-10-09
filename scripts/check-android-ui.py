@@ -129,6 +129,35 @@ def assert_target(node, size):
     assert bottom - top >= size, node.attrib
 
 
+def press_view(test_id, name, scroll=False):
+    for attempt in range(6):
+        root = snapshot(name)
+        try:
+            node = find(root, test_id)
+            left, top, right, bottom = bounds(node)
+            if right - left >= 48 and bottom - top >= 48:
+                tap(node)
+                time.sleep(0.25)
+                return
+        except AssertionError:
+            pass
+        if not scroll:
+            break
+        size = shell("wm", "size").splitlines()[-1]
+        a, b = map(int, re.findall(r"(\d+)x(\d+)", size)[0])
+        w, h = max(a, b), min(a, b)
+        shell("input", "swipe", w // 2, h * 4 // 5, w // 2, h // 3, 400)
+    raise AssertionError(f"Could not reach {test_id} in {name}")
+
+
+def open_house(name):
+    press_view("start-coloring", name)
+    capture(f"{name}-categories")
+    press_view("category-places", name, scroll=True)
+    capture(f"{name}-gallery")
+    press_view("drawing-house_001", name)
+
+
 def exercise(name, width, height, full_controls=False):
     shell("am", "force-stop", PACKAGE)
     # Portrait physical dimensions; the app requests sensorLandscape.
@@ -136,6 +165,8 @@ def exercise(name, width, height, full_controls=False):
     shell("wm", "density", 160)
     shell("am", "start", "-W", "-n", ACTIVITY)
     time.sleep(1)
+    capture(f"{name}-home")
+    open_house(name)
     root = stable_layout(progress(0, name), name)
     canvas = find(root, "drawing-canvas")
     left, top, right, bottom = bounds(canvas)
@@ -187,6 +218,54 @@ def exercise(name, width, height, full_controls=False):
         root = progress(0, name)
         tap(find(root, "action-undo"))
         root = progress(1, name)
+    # Leave a painted drawing, inspect the preview and return without losing it.
+    press_view("coloring-back", name)
+    root = snapshot(f"{name}-session-gallery")
+    assert "En progreso" in find(root, "drawing-house_001").attrib.get("content-desc", "")
+    capture(f"{name}-session-gallery")
+    press_view("drawing-house_001", name)
+    root = progress(1, name)
+    assert_target(find(root, "drawing-next"), 48)
+    tap(find(root, "drawing-next"))
+    root = progress(0, name)
+    assert find(root, "drawing-position").attrib.get("text") == "2 / 2"
+    assert find(root, "drawing-next").attrib.get("enabled") == "false"
+    capture(f"{name}-castle")
+    tap(find(root, "drawing-previous"))
+    root = progress(1, name)
+    shell("input", "keyevent", 4)
+    root = snapshot(f"{name}-android-back")
+    assert "En progreso" in find(root, "drawing-house_001").attrib.get("content-desc", "")
+
+    if full_controls:
+        press_view("browse-back", name)
+        for category, drawing, point in (
+            ("animals", "cat_001", (320, 110)),
+            ("fruits", "apple_001", (320, 180)),
+            ("vehicles", "car_001", (320, 180)),
+        ):
+            press_view(f"category-{category}", name, scroll=True)
+            capture(f"{name}-gallery-{category}")
+            press_view(f"drawing-{drawing}", name)
+            press_view("color-EF6B6B", name)
+            root = stable_layout(snapshot(f"{name}-{drawing}"), name)
+            left, top, right, bottom = bounds(find(root, "drawing-canvas"))
+            iw, ih = right - left - 4, bottom - top - 4
+            scale = min(iw / 640, ih / 300)
+            x = left + 2 + (iw - 640 * scale) / 2 + point[0] * scale
+            y = top + 2 + (ih - 300 * scale) / 2 + point[1] * scale
+            shell("input", "tap", round(x), round(y))
+            root = snapshot(f"{name}-{drawing}-painted")
+            assert find(root, "drawing-progress").attrib.get("text", "").startswith("1 / ")
+            assert find(root, "drawing-next").attrib.get("enabled") == "false"
+            capture(f"{name}-{drawing}")
+            press_view("coloring-back", name)
+            root = snapshot(f"{name}-{drawing}-preview")
+            assert "En progreso" in find(root, f"drawing-{drawing}").attrib.get("content-desc", "")
+            press_view("browse-back", name)
+        press_view("browse-back", name)
+        assert_target(find(snapshot(f"{name}-home-again"), "start-coloring"), 48)
+
     result = {
         "size_dp": [width, height],
         "layout": "sidebar" if sidebar else "bottom",
@@ -195,6 +274,7 @@ def exercise(name, width, height, full_controls=False):
         "palette_scroll": "not needed" if sidebar else "passed",
         "canvas_bounds": bounds(canvas),
         "paint_undo_redo": "passed",
+        "navigation_session_android_back": "passed",
         "erase_reset_confirmation": "passed" if full_controls else "covered on phone",
     }
     print(f"PASS {name}: {json.dumps(result)}", flush=True)
