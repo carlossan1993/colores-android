@@ -94,7 +94,11 @@ export default function App() {
         key={drawing.id}
         drawing={drawing}
         state={sessions[drawing.id] ?? createInitialState()}
-        onAction={action => progress.dispatch(drawing.id, action)}
+        onAction={action =>
+          action.type === 'paint'
+            ? progress.paintRegion(drawing.id, action.regionId)
+            : progress.dispatch(drawing.id, action)
+        }
         selectedColor={selectedColor}
         onSelectColor={progress.selectColor}
         saveStatus={saveStatus}

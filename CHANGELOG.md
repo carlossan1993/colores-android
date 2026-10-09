@@ -6,6 +6,7 @@
 - Restauración al reabrir, miniaturas actualizadas y progreso separado por dibujo.
 - Esquema 1, validación, copia de recuperación y protección ante datos de versiones desconocidas.
 - Escrituras ordenadas fuera del hilo de UI, confirmación de disco y reintento de fallos.
+- Cambio rápido de color seguido de toque usa la última selección, incluido blanco para borrar.
 - Bloqueo de interacción durante la carga para no sobrescribir dibujos anteriores.
 - Pruebas de reapertura, reset, errores y conservación al reinstalar el mismo APK.
 - Historial undo/redo de sesión; sin imágenes ni datos remotos.

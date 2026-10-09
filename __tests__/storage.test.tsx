@@ -248,3 +248,36 @@ test('read failure blocks overwriting existing data and offers retry; save failu
     }
   }
 });
+
+test('selecting a color and painting before the next render uses the latest selection, including white erase', async () => {
+  let renderer!: ReactTestRenderer.ReactTestRenderer;
+  try {
+    await ReactTestRenderer.act(() => {
+      renderer = ReactTestRenderer.create(<App />);
+    });
+    await openHouse(renderer);
+    const staleRoof = roof(renderer);
+    await ReactTestRenderer.act(() => {
+      control(renderer, 'color-66BE96').props.onPress();
+      staleRoof.props.onPress();
+    });
+    expect(roof(renderer).props.fill).toBe('#66BE96');
+    const greenRoof = roof(renderer);
+    await ReactTestRenderer.act(() => {
+      control(renderer, 'color-FFFFFF').props.onPress();
+      greenRoof.props.onPress();
+    });
+    expect(roof(renderer).props.fill).toBe('#FFFFFF');
+    expect(
+      JSON.parse(
+        disk.writeSnapshot.mock.calls[
+          disk.writeSnapshot.mock.calls.length - 1
+        ][0],
+      ).drawings.house_001,
+    ).toEqual({});
+  } finally {
+    if (renderer) {
+      await ReactTestRenderer.act(() => renderer.unmount());
+    }
+  }
+});

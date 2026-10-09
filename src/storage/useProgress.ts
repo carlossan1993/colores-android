@@ -14,6 +14,15 @@ import {
 import type { Preferences } from './snapshot';
 
 export type SaveStatus = 'saving' | 'saved' | 'error';
+type Progress = { sessions: Sessions; preferences: Preferences };
+function updateDrawing(
+  previous: Progress,
+  drawingId: string,
+  action: ColoringAction,
+): Progress {
+  const sessions = sessionReducer(previous.sessions, { drawingId, action });
+  return sessions === previous.sessions ? previous : { ...previous, sessions };
+}
 export function useProgress() {
   const [progress, setProgress] = useState<{
     sessions: Sessions;
@@ -118,15 +127,16 @@ export function useProgress() {
     retryLoad: () => setAttempt(value => value + 1),
     retrySave,
     dispatch: (drawingId: string, action: ColoringAction) =>
-      setProgress(previous => {
-        const sessions = sessionReducer(previous.sessions, {
-          drawingId,
-          action,
-        });
-        return sessions === previous.sessions
-          ? previous
-          : { ...previous, sessions };
-      }),
+      setProgress(previous => updateDrawing(previous, drawingId, action)),
+    // Read the selected color inside the queued update, after earlier palette events.
+    paintRegion: (drawingId: string, regionId: string) =>
+      setProgress(previous =>
+        updateDrawing(previous, drawingId, {
+          type: 'paint',
+          regionId,
+          color: previous.preferences.selectedColor,
+        }),
+      ),
     selectColor: (selectedColor: string) =>
       setProgress(previous =>
         previous.preferences.selectedColor === selectedColor
