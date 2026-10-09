@@ -12,7 +12,9 @@ test('connects native SVG touches, palette, undo/redo and confirmed reset', asyn
     await ReactTestRenderer.act(() => {
       renderer = ReactTestRenderer.create(<App />);
     });
-    const regions = renderer.root.findAllByType(Path);
+    const regions = renderer.root
+      .findAllByType(Path)
+      .filter(region => region.props.testID?.startsWith('region-'));
     expect(regions).toHaveLength(8);
     const roof = regions.find(region => region.props.id === 'roof')!;
     const button = (label: string) =>

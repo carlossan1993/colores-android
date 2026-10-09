@@ -10,6 +10,8 @@ React Native + TypeScript, Android nativo, assets incluidos y progreso local. No
 | --- | --- |
 | `src/app/` | Arranque, proveedores y futura navegación |
 | `src/screens/` | Pantallas y acciones de UI |
+| `src/components/` | Paleta y controles nativos reutilizables |
+| `src/layout/` | Distribución en dp según tamaño disponible y zonas seguras |
 | `src/theme/` | Colores y estilos comunes |
 | `src/content/` | Tipos de catálogo e IDs estables |
 | `src/coloring/` | Motor SVG y estado de regiones con historial acotado |
@@ -40,7 +42,11 @@ No hay claves de firma en el repositorio. Antes de las pruebas de conservación 
 
 ## Orientación y pantallas
 
-`sensorLandscape` permite las dos posiciones horizontales. Se respetan zonas seguras y el contenedor admite ajuste y desplazamiento en ventanas pequeñas. La prueba de teléfono/tablet sigue pendiente.
+`sensorLandscape` permite las dos posiciones horizontales. `getColoringLayout` recibe las dimensiones en dp después de descontar las zonas seguras. El panel lateral aloja doce colores en tres columnas y las acciones debajo. Los botones miden 48 dp en teléfono y 64 dp cuando hay al menos 960 × 560 dp disponibles.
+
+Si el ancho disponible es inferior a 560 dp o la altura a 340 dp, la paleta pasa debajo del dibujo y admite desplazamiento horizontal; las acciones pasan a la cabecera. Por debajo de 520 dp de ancho, esa cabecera usa dos filas. La pantalla conserva el mismo reducer durante cambios de tamaño. Las etiquetas de accesibilidad describen colores, acciones y progreso; la selección se distingue con una marca además del borde.
+
+`check-android-ui.py` instala el APK de Actions en Android 15 x86_64, activa modo avión y simula seis tamaños: dos teléfonos, dos tablets y dos ventanas pequeñas. Espera a que dimensiones y zonas seguras se estabilicen. Comprueba blancos de toque, acceso a los doce colores completos (deslizando cuando corresponde) y pintura/undo/redo en todos los tamaños; en teléfono comprueba también borrado y cancelación/confirmación del reinicio. Guarda XML, capturas y resultados. La confirmación del usuario en dispositivo real sigue siendo necesaria para cerrar cada etapa.
 
 Con target 36 se declara la propiedad de compatibilidad de Android 16 para conservar orientación horizontal en pantallas grandes. Antes de elevar target a 37 debe revisarse el comportamiento adaptativo y no asumirse un bloqueo absoluto en todos los fabricantes o modos de ventana.
 
