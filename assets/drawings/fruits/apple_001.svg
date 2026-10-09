@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="fruit" d="M 320 85 C 270 30 170 90 192 178 C 205 245 263 285 320 262 C 377 285 435 245 448 178 C 470 90 370 30 320 85 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stem" d="M 309 84 L 314 28 L 334 28 L 329 84 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf" d="M 332 55 C 350 16 394 19 416 25 C 394 57 365 72 332 55 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

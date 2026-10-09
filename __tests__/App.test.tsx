@@ -2,7 +2,7 @@ import React from 'react';
 import { Alert } from 'react-native';
 import { Path } from 'react-native-svg';
 import ReactTestRenderer from 'react-test-renderer';
-import App from '../App';
+import { ColoringScreen as App } from '../src/screens/ColoringScreen';
 import { palette } from '../src/theme/palette';
 
 test('connects native SVG touches, palette, undo/redo and confirmed reset', async () => {

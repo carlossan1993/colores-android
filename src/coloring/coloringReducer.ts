@@ -97,7 +97,7 @@ export function getDrawingProgress(
   const colored = regionIds.filter(
     id => colors[id] && colors[id] !== UNPAINTED_COLOR,
   ).length;
-  const status =
+  const status: 'not-started' | 'in-progress' | 'completed' =
     colored === 0
       ? 'not-started'
       : colored === total

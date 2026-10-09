@@ -1,0 +1,45 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 270 175 C 250 195 225 225 245 265 L 395 265 C 415 225 390 195 370 175 Z"
+    },
+    {
+      "id": "tail",
+      "name": "Cola",
+      "path": "M 390 230 C 455 235 440 180 475 175 C 500 170 505 205 482 213 C 470 210 462 258 395 255 Z"
+    },
+    {
+      "id": "head",
+      "name": "Cabeza",
+      "path": "M 225 120 L 230 35 L 290 75 Q 320 60 350 75 L 410 35 L 415 120 C 435 220 205 220 225 120 Z"
+    },
+    {
+      "id": "ear_left",
+      "name": "Oreja izquierda",
+      "path": "M 243 91 L 245 57 L 278 84 Z"
+    },
+    {
+      "id": "ear_right",
+      "name": "Oreja derecha",
+      "path": "M 362 84 L 397 57 L 399 91 Z"
+    },
+    {
+      "id": "eye_left",
+      "name": "Ojo izquierdo",
+      "path": "M 266 126 C 266 100 298 100 298 126 C 298 152 266 152 266 126 Z"
+    },
+    {
+      "id": "eye_right",
+      "name": "Ojo derecho",
+      "path": "M 342 126 C 342 100 374 100 374 126 C 374 152 342 152 342 126 Z"
+    },
+    {
+      "id": "nose",
+      "name": "Nariz",
+      "path": "M 305 153 L 335 153 L 320 172 Z"
+    }
+  ]
+}

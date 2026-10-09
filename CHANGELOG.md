@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.0 — Navegación y catálogo de muestra (sin publicar)
+
+- Inicio visual, cuatro categorías y galerías con miniaturas SVG y estado de sesión.
+- Cinco dibujos originales de muestra incluidos offline.
+- Anterior/siguiente dentro de la categoría y retorno mediante UI o Atrás de Android.
+- Colores e historial independientes por dibujo al navegar; color seleccionado compartido.
+- Comprobación automática del recorrido y estado en seis tamaños Android.
+- Cierre de etapa 3 tras confirmación del usuario e integración del PR 3.
+- Sin persistencia entre sesiones (etapa 5), nuevas dependencias ni permisos.
+
 ## 0.3.0 — Pantalla adaptable (sin publicar)
 
 - Más espacio para el dibujo con colores y controles en un panel lateral.

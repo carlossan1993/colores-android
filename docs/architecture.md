@@ -65,3 +65,11 @@ La selección de color permanece en la UI. El indicador de completado cuenta ún
 - [Orientación en Android 16](https://developer.android.com/about/versions/16/behavior-changes-16).
 
 - [Eventos táctiles de react-native-svg](https://github.com/software-mansion/react-native-svg/blob/main/USAGE.md#touch-events).
+
+## Navegación y estado de sesión (etapa 4)
+
+`src/navigation/navigation.ts` define rutas tipadas y el retorno inicio/categorías/galería/coloreado. Anterior/siguiente obtiene únicamente dibujos accesibles de la categoría, sin saltar ni envolver límites. El catálogo y sus assets se incluyen estáticamente. La UI no depende de Internet ni de librerías nuevas de navegación.
+
+`src/app/App.tsx` conserva sesiones por ID de dibujo mediante `sessionReducer`; cada motor valida sus propias regiones y conserva un historial independiente de 50 cambios. El color seleccionado vive en el nivel de app. `ColoringScreen` admite estado controlado para que desmontar una pantalla no borre el progreso. Android Back vuelve primero a galería, luego a categorías, luego a inicio; en inicio permite salir normalmente.
+
+`DrawingPreview` reutiliza geometría sin eventos táctiles, con los colores de sesión en galería y ejemplos de color en categorías. Los indicadores se calculan con el mismo motor. Esto no es almacenamiento permanente; cerrar el proceso borra las sesiones hasta la etapa 5. La navegación se valida con cinco ejemplos antes de producir los 40 dibujos.

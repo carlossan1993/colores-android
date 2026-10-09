@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactNative from 'react-native';
 import { Path } from 'react-native-svg';
 import ReactTestRenderer from 'react-test-renderer';
-import App from '../App';
+import { ColoringScreen as App } from '../src/screens/ColoringScreen';
 import { getColoringLayout } from '../src/layout/coloringLayout';
 
 test.each([
