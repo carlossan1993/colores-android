@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0 — Pipeline de contenido (en revisión)
+
+- Registro único de metadata para cinco dibujos y generador de catálogo TypeScript y exports SVG.
+- Validación de IDs, regiones cerradas, categorías, acceso free/premium y archivos desincronizados.
+- Pruebas de errores de contenido y procedimiento de alta sin modificar el motor de pintura.
+- PR 5 de persistencia offline integrado tras aprobación del APK por el usuario.
+
+## 0.5.0 — Progreso offline (integrado)
+
+- Guardado de colores por región y preferencias mediante almacenamiento privado Android.
+- Restauración al reabrir sin Internet, recuperación y protección de versiones de esquema.
+- Validación en Android y prueba del usuario completadas antes de integrar PR 5.
+
 ## 0.5.0 — Persistencia offline (sin publicar)
 
 - Guardado automático de colores y selección de color en almacenamiento privado Android.
