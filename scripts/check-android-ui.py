@@ -142,7 +142,8 @@ def press_view(test_id, name, scroll=False):
         except AssertionError:
             pass
         if not scroll:
-            break
+            time.sleep(0.2)
+            continue
         size = shell("wm", "size").splitlines()[-1]
         a, b = map(int, re.findall(r"(\d+)x(\d+)", size)[0])
         w, h = max(a, b), min(a, b)
@@ -160,6 +161,7 @@ def open_house(name):
 
 def exercise(name, width, height, full_controls=False):
     shell("am", "force-stop", PACKAGE)
+    shell("pm", "clear", PACKAGE)  # Isolate matrix fixtures now that progress persists.
     # Portrait physical dimensions; the app requests sensorLandscape.
     shell("wm", "size", f"{height}x{width}")
     shell("wm", "density", 160)
@@ -281,6 +283,90 @@ def exercise(name, width, height, full_controls=False):
     return result
 
 
+def wait_saved(name):
+    for attempt in range(5):
+        root = snapshot(f"{name}-saved")
+        if find(root, "storage-status").attrib.get("text") == "Guardado":
+            return root
+        time.sleep(0.2)
+    raise AssertionError("Disk write was not acknowledged")
+
+
+def paint_point(name, px, py):
+    root = stable_layout(snapshot(name), name)
+    left, top, right, bottom = bounds(find(root, "drawing-canvas"))
+    iw, ih = right - left - 4, bottom - top - 4
+    scale = min(iw / 640, ih / 300)
+    x = left + 2 + (iw - 640 * scale) / 2 + px * scale
+    y = top + 2 + (ih - 300 * scale) / 2 + py * scale
+    shell("input", "tap", round(x), round(y))
+    return wait_saved(name)
+
+
+def restart_house(name):
+    shell("am", "force-stop", PACKAGE)
+    shell("am", "start", "-W", "-n", ACTIVITY)
+    open_house(name)
+
+
+def exercise_persistence(apk):
+    name = "persistence"
+    shell("am", "force-stop", PACKAGE)
+    shell("pm", "clear", PACKAGE)
+    shell("wm", "size", "360x640")
+    shell("wm", "density", 160)
+    shell("am", "start", "-W", "-n", ACTIVITY)
+    open_house(name)
+    press_view("color-66BE96", name)
+    paint_point(name, 270, 75)
+    press_view("color-62AFE2", name)
+    paint_point(name, 160, 250)
+    progress(2, name)
+    press_view("drawing-next", name)
+    press_view("color-EF6B6B", name)
+    paint_point(name, 320, 40)
+    progress(1, name)
+    restart_house(name)
+    root = progress(2, name)
+    assert find(root, "color-EF6B6B").attrib.get("selected") == "true"
+    assert find(root, "action-undo").attrib.get("enabled") == "false"
+    capture("persistence-house-restored")
+    press_view("drawing-next", name)
+    progress(1, name)
+    capture("persistence-castle-restored")
+
+    # Installing the same signed APK over itself must keep app-private data.
+    wait_saved(name)
+    shell("am", "force-stop", PACKAGE)
+    adb("install", "-r", apk)
+    shell("am", "start", "-W", "-n", ACTIVITY)
+    open_house(name)
+    progress(2, name)
+    capture("persistence-in-place-install")
+
+    press_view("action-reset", name)
+    tap(dialog_button(snapshot("persistence-reset"), "Borrar"))
+    wait_saved(name)
+    restart_house(name)
+    progress(0, name)
+    press_view("drawing-next", name)
+    progress(1, name)
+    capture("persistence-reset-isolated")
+    root = snapshot("persistence-white")
+    sidebar = any(n.attrib.get("resource-id", "").endswith("layout-sidebar") for n in root.iter("node"))
+    if not sidebar:
+        scroll_palette(root, name, True)
+    press_view("color-FFFFFF", name)
+    paint_point(name, 320, 40)
+    progress(0, name)
+    restart_house(name)
+    progress(0, name)
+    press_view("drawing-next", name)
+    progress(0, name)
+    capture("persistence-erased-restored")
+    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design"}
+
+
 results = {}
 try:
     adb("install", "-r", sys.argv[1])
@@ -299,6 +385,7 @@ try:
         ("narrow-window", 540, 320),
     ):
         results[name] = exercise(name, width, height, name == "phone")
+    results["persistence"] = exercise_persistence(sys.argv[1])
     (OUTPUT / "results.json").write_text(json.dumps(results, indent=2) + "\n")
 except Exception:
     capture("failure")

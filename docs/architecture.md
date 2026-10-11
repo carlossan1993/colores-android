@@ -73,3 +73,15 @@ La selección de color permanece en la UI. El indicador de completado cuenta ún
 `src/app/App.tsx` conserva sesiones por ID de dibujo mediante `sessionReducer`; cada motor valida sus propias regiones y conserva un historial independiente de 50 cambios. El color seleccionado vive en el nivel de app. `ColoringScreen` admite estado controlado para que desmontar una pantalla no borre el progreso. Android Back vuelve primero a galería, luego a categorías, luego a inicio; en inicio permite salir normalmente.
 
 `DrawingPreview` reutiliza geometría sin eventos táctiles, con los colores de sesión en galería y ejemplos de color en categorías. Los indicadores se calculan con el mismo motor. Esto no es almacenamiento permanente; cerrar el proceso borra las sesiones hasta la etapa 5. La navegación se valida con cinco ejemplos antes de producir los 40 dibujos.
+
+## Persistencia offline (etapa 5)
+
+TurboModule `NativeProgressStorage` con Codegen y `ProgressStoragePackage` registrado en `MainApplication`. SharedPreferences privadas `colores_progress`; las copias snapshot/backup se escriben juntas con `commit()` en un ejecutor de un hilo. La promesa confirma disco, no solo memoria. No agrega librerías ni permisos.
+
+`useProgress` bloquea navegación hasta restaurar, maneja preferencias y sesiones, y guarda snapshots tras cada cambio. `ProgressStore` ordena escrituras y conserva el estado pendiente tras un fallo. `snapshot.ts` define esquema 1, sanea IDs/colores y restaura colores con historial vacío. Deriva estados de la galería; no almacena imágenes ni flags de completado. Los dibujos no presentes en el catálogo se conservan; una versión de esquema distinta no se sobrescribe.
+
+La copia recupera JSON corrupto; un error de lectura mantiene el almacenamiento original y permite reintentar. Un fallo de guardado mantiene la sesión visible y avisa antes de salir. Preferencia de sonido preparada para etapa 8, sin controles ni sonidos nuevos en esta etapa.
+
+CI aísla los fixtures de tamaños borrando solo los datos del emulador, y prueba aparte cierre del proceso, restauración de dos dibujos, selección de color, reset/borrado persistentes y reinstalación in situ del mismo APK. No valida todavía actualizaciones firmadas entre versiones diferentes: requieren certificado estable en Secrets.
+
+Referencia del módulo nativo: https://reactnative.dev/docs/turbo-native-modules-introduction

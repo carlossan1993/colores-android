@@ -10,7 +10,7 @@ const reducers = new Map(
   ]),
 );
 
-// Memory only in stage 4. Durable, versioned storage belongs to stage 5.
+// Session history stays in memory; storage persists colors and preferences.
 export function sessionReducer(
   sessions: Sessions,
   action: { drawingId: string; action: ColoringAction },
