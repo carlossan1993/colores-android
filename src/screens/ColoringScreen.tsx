@@ -274,7 +274,9 @@ export function ColoringScreen({
               {
                 width: layout.panelWidth,
                 padding: layout.panelPadding,
-                gap: layout.sectionGap,
+                // On compact landscape phones, 4dp spacing keeps all four
+                // palette rows at their full 48dp touch target height.
+                gap: layout.tablet ? layout.sectionGap : 4,
               },
             ]}
           >
