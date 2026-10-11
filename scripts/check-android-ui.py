@@ -230,7 +230,8 @@ def exercise(name, width, height, full_controls=False):
     assert_target(find(root, "drawing-next"), 48)
     tap(find(root, "drawing-next"))
     root = progress(0, name)
-    assert find(root, "drawing-position").attrib.get("text") == "2 / 4"
+    place_count = len([item for item in json.loads(Path("assets/drawings/catalog.json").read_text()) if item["category"] == "places"])
+    assert find(root, "drawing-position").attrib.get("text") == f"2 / {place_count}"
     assert find(root, "drawing-next").attrib.get("enabled") == "true"
     capture(f"{name}-castle")
     tap(find(root, "drawing-previous"))
@@ -293,6 +294,30 @@ def exercise(name, width, height, full_controls=False):
             press_view("browse-back", name)
         press_view("browse-back", name)
 
+        # Stage 7 batch 2: confirm one new drawing per category on a real SVG canvas.
+        press_view("start-coloring", name)
+        for category, drawing, point in (
+            ("animals", "turtle_001", (330, 149)),
+            ("fruits", "orange_001", (315, 154)),
+            ("places", "lighthouse_001", (319, 128)),
+            ("vehicles", "train_001", (346, 202)),
+        ):
+            press_view(f"category-{category}", name, scroll=True)
+            press_view(f"drawing-{drawing}", name, scroll=True)
+            press_view("color-EF6B6B", name)
+            root = stable_layout(snapshot(f"{name}-{drawing}-opened"), name)
+            left, top, right, bottom = bounds(find(root, "drawing-canvas"))
+            iw, ih = right - left - 4, bottom - top - 4
+            scale = min(iw / 640, ih / 300)
+            x = left + 2 + (iw - 640 * scale) / 2 + point[0] * scale
+            y = top + 2 + (ih - 300 * scale) / 2 + point[1] * scale
+            shell("input", "tap", round(x), round(y))
+            root = snapshot(f"{name}-{drawing}-painted")
+            assert find(root, "drawing-progress").attrib.get("text", "").startswith("1 / ")
+            capture(f"{name}-{drawing}-new")
+            press_view("coloring-back", name)
+            press_view("browse-back", name)
+        press_view("browse-back", name)
 
     result = {
         "size_dp": [width, height],

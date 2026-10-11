@@ -22,7 +22,7 @@ test('catalog covers four categories and adjacent navigation stops at category b
   expect(adjacentDrawing('cat_001', 1)?.id).toBe('dog_001');
   for (const category of categories) {
     const drawings = catalog.filter(d => d.category === category.id);
-    expect(drawings.length).toBeGreaterThanOrEqual(3);
+    expect(drawings.length).toBeGreaterThanOrEqual(5);
     expect(adjacentDrawing(drawings[0].id, -1)).toBeUndefined();
     expect(adjacentDrawing(drawings[drawings.length - 1].id, 1)).toBeUndefined();
   }
@@ -145,7 +145,7 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
 });
 
 test('every catalog entry paints its own regions and can be completed independently', () => {
-  expect(catalog).toHaveLength(13);
+  expect(catalog).toHaveLength(21);
   for (const drawing of catalog) {
     const reduce = createColoringReducer(drawing.regionIds);
     let state = createInitialState();
