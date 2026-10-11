@@ -1,35 +1,21 @@
-import cat from '../../assets/drawings/animals/cat_001.json';
-import apple from '../../assets/drawings/fruits/apple_001.json';
-import castle from '../../assets/drawings/places/castle_001.json';
-import car from '../../assets/drawings/vehicles/car_001.json';
-import { testDrawing } from './testDrawing';
-import type { DrawingCategory, DrawingDefinition, SvgRegion } from './types';
+// Generado automáticamente por scripts/content-pipeline.cjs. No editar manualmente.
+import art0 from '../../assets/drawings/animals/cat_001.json';
+import art1 from '../../assets/drawings/fruits/apple_001.json';
+import art2 from '../../assets/drawings/places/house_001.json';
+import art3 from '../../assets/drawings/places/castle_001.json';
+import art4 from '../../assets/drawings/vehicles/car_001.json';
+import type { DrawingCategory, DrawingDefinition, DrawingMetadata, SvgRegion } from './types';
 
-function define(
-  id: string,
-  name: string,
-  category: DrawingCategory,
-  geometry: { viewBox: string; regions: readonly SvgRegion[] },
-): DrawingDefinition {
-  return {
-    id,
-    name,
-    category,
-    access: 'free',
-    productId: null,
-    asset: `${category}/${id}`,
-    regionIds: geometry.regions.map(region => region.id),
-    ...geometry,
-  };
+function define(metadata: DrawingMetadata, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {
+  return { ...metadata, ...geometry, regionIds: geometry.regions.map(region => region.id) };
 }
 
-// Small sample catalog for navigation. The 40-drawing catalog is stage 7.
 export const catalog: readonly DrawingDefinition[] = [
-  define('cat_001', 'Gatito', 'animals', cat),
-  define('apple_001', 'Manzana', 'fruits', apple),
-  testDrawing,
-  define('castle_001', 'Castillo', 'places', castle),
-  define('car_001', 'Auto', 'vehicles', car),
+  define({ id: 'cat_001', name: 'Gatito', category: 'animals', access: 'free', productId: null, asset: 'animals/cat_001' }, art0),
+  define({ id: 'apple_001', name: 'Manzana', category: 'fruits', access: 'free', productId: null, asset: 'fruits/apple_001' }, art1),
+  define({ id: 'house_001', name: 'Mi casita', category: 'places', access: 'free', productId: null, asset: 'places/house_001' }, art2),
+  define({ id: 'castle_001', name: 'Castillo', category: 'places', access: 'free', productId: null, asset: 'places/castle_001' }, art3),
+  define({ id: 'car_001', name: 'Auto', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/car_001' }, art4),
 ];
 
 export const categories: readonly {
