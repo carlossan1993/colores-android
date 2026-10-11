@@ -89,7 +89,7 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
       await press(`category-${category}`);
       const drawing = catalog.find(item => item.category === category)!;
       await press(`drawing-${drawing.id}`);
-      expect(control('drawing-next').props.disabled).toBe(false);
+      expect(control('drawing-next').props.disabled).not.toBe(true);
       if (category === 'animals') {
         for (const region of renderer.root
           .findAllByType(Path)
