@@ -103,5 +103,69 @@
     "access": "free",
     "productId": null,
     "asset": "vehicles/plane_001"
+  },
+  {
+    "id": "turtle_001",
+    "name": "Tortuguita",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/turtle_001"
+  },
+  {
+    "id": "butterfly_001",
+    "name": "Mariposa",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/butterfly_001"
+  },
+  {
+    "id": "orange_001",
+    "name": "Naranja",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/orange_001"
+  },
+  {
+    "id": "pineapple_001",
+    "name": "Piña",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/pineapple_001"
+  },
+  {
+    "id": "lighthouse_001",
+    "name": "Faro",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/lighthouse_001"
+  },
+  {
+    "id": "park_001",
+    "name": "Parque",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/park_001"
+  },
+  {
+    "id": "train_001",
+    "name": "Trencito",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/train_001"
+  },
+  {
+    "id": "tractor_001",
+    "name": "Tractor",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/tractor_001"
   }
 ]

@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "tail",
+      "name": "Colita",
+      "path": "M 206 199 L 154 174 L 176 222 Z"
+    },
+    {
+      "id": "leg_back",
+      "name": "Patita trasera",
+      "path": "M 221 209 L 265 217 L 256 272 L 207 269 Z"
+    },
+    {
+      "id": "leg_front",
+      "name": "Patita delantera",
+      "path": "M 390 209 L 439 203 L 452 270 L 405 274 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 206 191 C 246 168 412 168 458 190 L 480 227 C 420 252 264 253 210 226 Z"
+    },
+    {
+      "id": "head",
+      "name": "Cabeza",
+      "path": "M 459 178 C 470 145 508 142 535 158 C 559 176 555 209 532 226 C 509 242 480 222 458 207 Z"
+    },
+    {
+      "id": "shell",
+      "name": "Caparazón",
+      "path": "M 219 197 C 219 141 264 104 334 102 C 403 102 449 143 449 197 Z"
+    },
+    {
+      "id": "shell_left",
+      "name": "Placa izquierda",
+      "path": "M 242 184 C 251 155 267 137 291 127 L 317 167 L 302 190 Z"
+    },
+    {
+      "id": "shell_middle",
+      "name": "Placa central",
+      "path": "M 308 162 L 333 124 L 365 162 L 349 193 L 321 193 Z"
+    },
+    {
+      "id": "shell_right",
+      "name": "Placa derecha",
+      "path": "M 375 127 C 403 140 421 158 426 184 L 366 191 L 352 166 Z"
+    },
+    {
+      "id": "eye",
+      "name": "Ojito",
+      "path": "M 508 179 A 10 10 0 1 0 528 179 A 10 10 0 1 0 508 179 Z"
+    }
+  ]
+}

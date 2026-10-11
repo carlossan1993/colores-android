@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0 — Segundo lote de dibujos (en revisión)
+
+- Ocho dibujos nuevos: Tortuguita, Mariposa, Naranja, Piña, Faro, Parque, Trencito y Tractor.
+- Catálogo de 21 dibujos y 169 regiones independientes, incluidos offline, sin cambiar el motor ni la persistencia.
+- Pruebas ampliadas de navegación, geometría, colores y recorridos Android.
+- Etapa 7 permanece en desarrollo hasta completar los 40 dibujos.
+
 ## 0.7.0 — Primer lote de dibujos (en revisión)
 
 - Ocho dibujos nuevos originales: Perrito, Conejito, Banana, Fresa, Escuela, Granero, Barquito y Avión.

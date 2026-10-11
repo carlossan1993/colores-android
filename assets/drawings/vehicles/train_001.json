@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "smoke",
+      "name": "Nube de vapor",
+      "path": "M 260 62 C 236 41 259 13 283 25 C 294 7 327 8 332 31 C 361 30 371 61 348 74 L 275 74 Z"
+    },
+    {
+      "id": "chimney",
+      "name": "Chimenea",
+      "path": "M 263 84 L 302 84 L 302 147 L 263 147 Z"
+    },
+    {
+      "id": "body",
+      "name": "Motor",
+      "path": "M 169 160 L 388 160 L 425 216 L 425 250 L 169 250 Z"
+    },
+    {
+      "id": "cab",
+      "name": "Cabina",
+      "path": "M 390 119 L 481 119 L 481 250 L 390 250 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo",
+      "path": "M 381 104 L 495 104 L 495 122 L 381 122 Z"
+    },
+    {
+      "id": "window",
+      "name": "Ventana",
+      "path": "M 413 139 L 457 139 L 457 187 L 413 187 Z"
+    },
+    {
+      "id": "front",
+      "name": "Frente",
+      "path": "M 148 196 L 180 196 L 180 249 L 148 249 Z"
+    },
+    {
+      "id": "wheel_left",
+      "name": "Rueda izquierda",
+      "path": "M 214 250 A 31 31 0 1 0 276 250 A 31 31 0 1 0 214 250 Z"
+    },
+    {
+      "id": "wheel_right",
+      "name": "Rueda derecha",
+      "path": "M 401 250 A 31 31 0 1 0 463 250 A 31 31 0 1 0 401 250 Z"
+    },
+    {
+      "id": "light",
+      "name": "Faro frontal",
+      "path": "M 154 177 A 16 16 0 1 0 186 177 A 16 16 0 1 0 154 177 Z"
+    }
+  ]
+}

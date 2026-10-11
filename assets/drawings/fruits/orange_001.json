@@ -1,0 +1,35 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "fruit",
+      "name": "Fruta",
+      "path": "M 319 68 A 103 103 0 1 0 320 274 A 103 103 0 1 0 319 68 Z"
+    },
+    {
+      "id": "stem",
+      "name": "Tallo",
+      "path": "M 308 73 L 311 38 L 332 38 L 332 76 Z"
+    },
+    {
+      "id": "leaf",
+      "name": "Hoja",
+      "path": "M 327 56 C 358 24 407 27 425 40 C 406 77 372 87 327 56 Z"
+    },
+    {
+      "id": "highlight",
+      "name": "Brillo",
+      "path": "M 254 119 C 265 100 279 96 290 100 C 284 114 275 124 262 133 Z"
+    },
+    {
+      "id": "cheek_left",
+      "name": "Mejilla izquierda",
+      "path": "M 259 201 A 17 17 0 1 0 293 201 A 17 17 0 1 0 259 201 Z"
+    },
+    {
+      "id": "cheek_right",
+      "name": "Mejilla derecha",
+      "path": "M 348 201 A 17 17 0 1 0 382 201 A 17 17 0 1 0 348 201 Z"
+    }
+  ]
+}

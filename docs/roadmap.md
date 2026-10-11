@@ -11,7 +11,7 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 4. Navegación y catálogo | Inicio, categorías y galería | Completada; APK validado por el usuario y PR 4 integrado |
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
-| 7. Catálogo inicial | 40 dibujos, 10 por categoría | En desarrollo; primer lote de 8 nuevos dibujos (13 de 40) |
+| 7. Catálogo inicial | 40 dibujos, 10 por categoría | En desarrollo; segundo lote de 8 nuevos dibujos (21 de 40) |
 | 8. UX final | Sonidos, celebración y estados | Pendiente |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
@@ -51,7 +51,7 @@ La etapa 5 añade guardado local de colores y preferencias. El historial undo/re
 
 ## Próximo cambio
 
-El PR 6 quedó integrado con CI aprobada. Etapa 7: primer lote de ocho dibujos nuevos para llegar a 13/40 (3 animales, 3 frutas, 4 lugares, 3 vehículos). Revisar geometrías, miniaturas y toques en el emulador y luego en el teléfono. Continuar en lotes pequeños hasta 10 por categoría. La firma estable para conservar progreso entre versiones distintas sigue pendiente en GitHub Secrets.
+El PR 6 quedó integrado con CI aprobada. Etapa 7: segundo lote de ocho dibujos nuevos para llegar a 21/40 (5 animales, 5 frutas, 6 lugares, 5 vehículos). Revisar geometrías, miniaturas y toques en emulador y teléfono. Continuar en lotes pequeños hasta 10 por categoría. La firma estable para conservar progreso entre versiones distintas sigue pendiente en GitHub Secrets.
 
 ## Criterio de salida de la etapa 4
 
@@ -92,5 +92,13 @@ El almacenamiento solo contiene colores y preferencias; no guarda imágenes ni h
 - [x] Se han creado geometrías y SVG originales de Perrito, Conejito, Banana, Fresa, Escuela, Granero, Barquito y Avión.
 - [x] Catálogo ampliado a 13 dibujos: 3 animales, 3 frutas, 4 lugares y 3 vehículos.
 - [x] Pruebas actualizadas para la navegación con nuevos límites y para pintar todas las regiones.
-- [ ] CI comprueba catálogo, APK, miniaturas, interacción offline y 4 dibujos nuevos.
-- [ ] Confirmación visual en dispositivo antes de integrar y ampliar el siguiente lote.
+- [x] CI del PR 7 aprobó catálogo, APK, interacción offline y ejemplos nuevos.
+- [x] PR 7 integrado tras verificación CI y capturas del emulador; la prueba en dispositivo real con firma estable sigue pendiente.
+
+## Etapa 7 — segundo lote de contenido (PR 8)
+
+- [x] Ocho nuevos dibujos originales: Tortuguita, Mariposa, Naranja, Piña, Faro, Parque, Trencito y Tractor.
+- [x] Catálogo expandido a 21 dibujos con 169 regiones, todos gratuitos y offline (5/5/6/5 por categoría).
+- [x] Pruebas de límites, regiones coloreables y recorridos nuevos actualizadas.
+- [ ] Validación CI: calidad, APK, interacción y conservación offline.
+- [ ] Verificar capturas nuevas antes de integrar el PR; mantener las pruebas manuales de actualización firmada pendientes.

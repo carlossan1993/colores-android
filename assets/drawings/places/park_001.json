@@ -1,0 +1,45 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "grass",
+      "name": "Césped",
+      "path": "M 74 248 Q 180 222 278 250 Q 383 224 563 246 L 563 285 L 74 285 Z"
+    },
+    {
+      "id": "tree_trunk",
+      "name": "Tronco del árbol",
+      "path": "M 164 136 L 210 136 L 210 265 L 164 265 Z"
+    },
+    {
+      "id": "tree_crown",
+      "name": "Copa del árbol",
+      "path": "M 119 166 C 86 140 101 106 127 98 C 121 55 174 40 192 64 C 225 40 260 63 252 94 C 296 97 301 145 274 160 C 273 195 231 207 195 189 C 165 211 132 197 119 166 Z"
+    },
+    {
+      "id": "bench_back",
+      "name": "Respaldo del banco",
+      "path": "M 334 146 L 532 146 L 532 194 L 334 194 Z"
+    },
+    {
+      "id": "bench_seat",
+      "name": "Asiento del banco",
+      "path": "M 318 196 L 548 196 L 548 217 L 318 217 Z"
+    },
+    {
+      "id": "bench_leg_left",
+      "name": "Pata izquierda",
+      "path": "M 352 217 L 376 217 L 376 271 L 352 271 Z"
+    },
+    {
+      "id": "bench_leg_right",
+      "name": "Pata derecha",
+      "path": "M 489 217 L 513 217 L 513 271 L 489 271 Z"
+    },
+    {
+      "id": "sun",
+      "name": "Sol",
+      "path": "M 515 51 A 25 25 0 1 0 565 51 A 25 25 0 1 0 515 51 Z"
+    }
+  ]
+}

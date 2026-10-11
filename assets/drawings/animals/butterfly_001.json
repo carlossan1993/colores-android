@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "upper_left",
+      "name": "Ala superior izquierda",
+      "path": "M 304 145 C 250 50 174 28 148 70 C 121 126 192 187 306 175 Z"
+    },
+    {
+      "id": "lower_left",
+      "name": "Ala inferior izquierda",
+      "path": "M 300 174 C 210 171 181 203 204 251 C 242 292 292 242 310 191 Z"
+    },
+    {
+      "id": "upper_right",
+      "name": "Ala superior derecha",
+      "path": "M 336 145 C 390 50 466 28 492 70 C 519 126 448 187 334 175 Z"
+    },
+    {
+      "id": "lower_right",
+      "name": "Ala inferior derecha",
+      "path": "M 340 174 C 430 171 459 203 436 251 C 398 292 348 242 330 191 Z"
+    },
+    {
+      "id": "spot_left",
+      "name": "Mancha izquierda",
+      "path": "M 211 94 A 23 23 0 1 0 257 94 A 23 23 0 1 0 211 94 Z"
+    },
+    {
+      "id": "spot_right",
+      "name": "Mancha derecha",
+      "path": "M 383 94 A 23 23 0 1 0 429 94 A 23 23 0 1 0 383 94 Z"
+    },
+    {
+      "id": "antenna_left",
+      "name": "Antena izquierda",
+      "path": "M 315 106 Q 300 62 274 48 L 283 39 Q 313 53 324 100 Z"
+    },
+    {
+      "id": "antenna_right",
+      "name": "Antena derecha",
+      "path": "M 325 100 Q 337 53 366 39 L 376 48 Q 347 66 334 106 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpito",
+      "path": "M 309 135 C 309 124 331 124 331 135 L 337 224 Q 320 254 303 224 Z"
+    },
+    {
+      "id": "head",
+      "name": "Cabeza",
+      "path": "M 301 122 A 19 19 0 1 0 339 122 A 19 19 0 1 0 301 122 Z"
+    }
+  ]
+}

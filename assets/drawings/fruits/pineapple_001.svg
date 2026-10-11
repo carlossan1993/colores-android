@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="body" d="M 240 112 C 256 86 383 84 400 112 C 425 161 388 264 321 279 C 253 262 217 162 240 112 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf_left" d="M 315 113 C 278 85 257 54 260 22 C 298 36 320 60 332 107 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf_right" d="M 325 113 C 365 83 391 54 385 26 C 349 38 324 59 311 106 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf_middle" d="M 309 114 C 299 74 309 26 323 11 C 345 36 348 76 331 113 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="patch_left" d="M 246 149 L 288 120 L 319 151 L 284 190 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="patch_right" d="M 351 122 L 394 150 L 356 192 L 321 154 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="patch_center" d="M 287 193 L 321 157 L 353 194 L 322 235 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="patch_bottom" d="M 290 240 L 321 209 L 354 242 L 322 272 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>
