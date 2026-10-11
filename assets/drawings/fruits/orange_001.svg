@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="fruit" d="M 319 68 A 103 103 0 1 0 320 274 A 103 103 0 1 0 319 68 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stem" d="M 308 73 L 311 38 L 332 38 L 332 76 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf" d="M 327 56 C 358 24 407 27 425 40 C 406 77 372 87 327 56 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="highlight" d="M 254 119 C 265 100 279 96 290 100 C 284 114 275 124 262 133 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="cheek_left" d="M 259 201 A 17 17 0 1 0 293 201 A 17 17 0 1 0 259 201 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="cheek_right" d="M 348 201 A 17 17 0 1 0 382 201 A 17 17 0 1 0 348 201 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

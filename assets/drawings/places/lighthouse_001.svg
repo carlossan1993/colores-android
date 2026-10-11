@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="ground" d="M 86 264 C 149 240 189 246 246 263 C 331 276 405 234 492 257 C 522 265 552 266 581 255 L 581 286 L 86 286 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tower" d="M 278 102 L 365 102 L 387 268 L 254 268 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stripe_one" d="M 272 150 L 373 150 L 380 182 L 265 182 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stripe_two" d="M 261 208 L 384 208 L 388 240 L 257 240 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="lamp" d="M 292 64 L 349 64 L 349 103 L 292 103 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="roof" d="M 274 64 L 322 26 L 367 64 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="light" d="M 308 78 A 13 13 0 1 0 334 78 A 13 13 0 1 0 308 78 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="door" d="M 299 223 Q 322 203 345 223 L 345 267 L 299 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="sun" d="M 479 62 A 34 34 0 1 0 547 62 A 34 34 0 1 0 479 62 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "hood",
+      "name": "Capó",
+      "path": "M 159 160 L 327 160 L 350 235 L 159 235 Z"
+    },
+    {
+      "id": "cab",
+      "name": "Cabina",
+      "path": "M 337 102 L 444 102 L 478 235 L 337 235 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo",
+      "path": "M 322 94 L 459 94 L 459 112 L 322 112 Z"
+    },
+    {
+      "id": "window",
+      "name": "Ventana",
+      "path": "M 358 123 L 424 123 L 447 174 L 358 174 Z"
+    },
+    {
+      "id": "exhaust",
+      "name": "Escape",
+      "path": "M 202 105 L 221 105 L 221 159 L 202 159 Z"
+    },
+    {
+      "id": "grille",
+      "name": "Parrilla",
+      "path": "M 163 187 L 189 187 L 189 221 L 163 221 Z"
+    },
+    {
+      "id": "wheel_front",
+      "name": "Rueda delantera",
+      "path": "M 187 237 A 33 33 0 1 0 253 237 A 33 33 0 1 0 187 237 Z"
+    },
+    {
+      "id": "wheel_back",
+      "name": "Rueda trasera",
+      "path": "M 375 227 A 51 51 0 1 0 477 227 A 51 51 0 1 0 375 227 Z"
+    },
+    {
+      "id": "hub_front",
+      "name": "Centro delantero",
+      "path": "M 207 237 A 13 13 0 1 0 233 237 A 13 13 0 1 0 207 237 Z"
+    },
+    {
+      "id": "hub_back",
+      "name": "Centro trasero",
+      "path": "M 410 227 A 16 16 0 1 0 442 227 A 16 16 0 1 0 410 227 Z"
+    }
+  ]
+}

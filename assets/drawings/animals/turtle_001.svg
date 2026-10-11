@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="tail" d="M 206 199 L 154 174 L 176 222 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leg_back" d="M 221 209 L 265 217 L 256 272 L 207 269 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leg_front" d="M 390 209 L 439 203 L 452 270 L 405 274 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 206 191 C 246 168 412 168 458 190 L 480 227 C 420 252 264 253 210 226 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="head" d="M 459 178 C 470 145 508 142 535 158 C 559 176 555 209 532 226 C 509 242 480 222 458 207 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="shell" d="M 219 197 C 219 141 264 104 334 102 C 403 102 449 143 449 197 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="shell_left" d="M 242 184 C 251 155 267 137 291 127 L 317 167 L 302 190 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="shell_middle" d="M 308 162 L 333 124 L 365 162 L 349 193 L 321 193 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="shell_right" d="M 375 127 C 403 140 421 158 426 184 L 366 191 L 352 166 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye" d="M 508 179 A 10 10 0 1 0 528 179 A 10 10 0 1 0 508 179 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="smoke" d="M 260 62 C 236 41 259 13 283 25 C 294 7 327 8 332 31 C 361 30 371 61 348 74 L 275 74 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="chimney" d="M 263 84 L 302 84 L 302 147 L 263 147 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 169 160 L 388 160 L 425 216 L 425 250 L 169 250 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="cab" d="M 390 119 L 481 119 L 481 250 L 390 250 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="roof" d="M 381 104 L 495 104 L 495 122 L 381 122 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window" d="M 413 139 L 457 139 L 457 187 L 413 187 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="front" d="M 148 196 L 180 196 L 180 249 L 148 249 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_left" d="M 214 250 A 31 31 0 1 0 276 250 A 31 31 0 1 0 214 250 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_right" d="M 401 250 A 31 31 0 1 0 463 250 A 31 31 0 1 0 401 250 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="light" d="M 154 177 A 16 16 0 1 0 186 177 A 16 16 0 1 0 154 177 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>
