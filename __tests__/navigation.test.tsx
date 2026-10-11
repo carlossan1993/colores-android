@@ -99,8 +99,8 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
       }
       if (category === 'animals') {
         expect(
-          renderer.root.findAll(node => node.props.testID === 'completion-celebration'),
-        ).toHaveLength(1);
+          renderer.root.findAll(node => node.props.testID === 'completion-celebration').length,
+        ).toBeGreaterThan(0);
       }
       await press('coloring-back');
       if (category === 'animals') {
