@@ -2,11 +2,11 @@
 
 Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
 
-## Estado actual: etapa 5 integrada, etapa 6 en revisión
+## Estado actual: etapas 0–6 integradas, etapa 7 en desarrollo
 
 La app Android offline permite recorrer inicio, cuatro categorías y galerías, colorear cinco dibujos de muestra, deshacer/rehacer y reiniciar con confirmación. Los colores se guardan y restauran en el dispositivo junto con la selección de paleta, sin cuentas, permisos nuevos ni Internet.
 
-La etapa 6 incorpora un manifiesto de dibujos en assets/drawings/catalog.json y un generador de catálogo TypeScript/SVG. Así, añadir nuevos dibujos no requiere modificar el motor o la navegación; los datos y geometrías se validan automáticamente antes de compilar. La meta de 40 dibujos permanece para la etapa 7.
+La etapa 6 incorporó un manifiesto de dibujos en assets/drawings/catalog.json y un generador de catálogo TypeScript/SVG. Así, añadir nuevos dibujos no requiere modificar el motor o la navegación; los datos y geometrías se validan automáticamente antes de compilar. La etapa 7 incorpora su primer lote de ocho dibujos nuevos: perro, conejo, banana, fresa, escuela, granero, barco y avión. El catálogo total pasa a 13 de 40 dibujos.
 
 Para agregar contenido: crear JSON de geometría, registrar metadata y ejecutar npm run content:generate. npm run verify y GitHub Actions comprueban que todo esté sincronizado. Consulta docs/content-standard.md.
 

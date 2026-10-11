@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="ear_left" d="M 248 108 C 230 66 232 17 265 16 C 291 17 290 71 283 118 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_right" d="M 330 113 C 320 67 337 16 366 20 C 392 23 380 79 361 126 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_inner_left" d="M 259 93 C 251 57 255 37 265 33 C 279 34 274 67 272 101 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_inner_right" d="M 345 103 C 338 68 348 40 362 37 C 373 44 357 76 355 108 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 253 196 C 229 220 232 268 271 281 L 393 281 C 426 263 414 212 374 192 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="foot_left" d="M 252 260 Q 227 276 243 287 L 318 287 Q 331 275 301 258 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="foot_right" d="M 360 258 Q 329 279 350 288 L 420 288 Q 437 275 397 257 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="head" d="M 240 166 C 228 117 254 97 319 97 C 380 96 408 128 397 182 C 387 225 348 243 313 239 C 273 236 242 212 240 166 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye_left" d="M 278 169 A 11 11 0 1 0 300 169 A 11 11 0 1 0 278 169 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye_right" d="M 343 169 A 11 11 0 1 0 365 169 A 11 11 0 1 0 343 169 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="nose" d="M 308 191 L 332 191 L 320 205 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="belly" d="M 287 246 Q 320 229 355 246 L 362 274 L 281 274 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,45 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "wall",
+      "name": "Pared del granero",
+      "path": "M 187 109 L 458 109 L 458 277 L 187 277 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo del granero",
+      "path": "M 164 111 L 245 42 L 399 42 L 480 111 Z"
+    },
+    {
+      "id": "door_left",
+      "name": "Portón izquierdo",
+      "path": "M 249 172 L 322 172 L 322 277 L 249 277 Z"
+    },
+    {
+      "id": "door_right",
+      "name": "Portón derecho",
+      "path": "M 322 172 L 395 172 L 395 277 L 322 277 Z"
+    },
+    {
+      "id": "hayloft",
+      "name": "Ventana del pajar",
+      "path": "M 290 111 L 354 111 L 354 159 L 290 159 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventana izquierda",
+      "path": "M 200 170 L 236 170 L 236 215 L 200 215 Z"
+    },
+    {
+      "id": "window_right",
+      "name": "Ventana derecha",
+      "path": "M 411 170 L 447 170 L 447 215 L 411 215 Z"
+    },
+    {
+      "id": "sun",
+      "name": "Sol",
+      "path": "M 530 69 A 28 28 0 1 0 586 69 A 28 28 0 1 0 530 69 Z"
+    }
+  ]
+}

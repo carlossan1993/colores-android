@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="hull" d="M 128 220 L 517 220 L 453 277 L 192 277 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="mast" d="M 317 50 L 328 50 L 328 220 L 317 220 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="sail_left" d="M 310 62 L 310 205 L 177 205 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="sail_right" d="M 338 75 L 463 206 L 338 206 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="flag" d="M 328 45 L 406 56 L 328 84 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_left" d="M 230 237 A 13 13 0 1 0 256 237 A 13 13 0 1 0 230 237 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_right" d="M 388 237 A 13 13 0 1 0 414 237 A 13 13 0 1 0 388 237 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="fruit" d="M 207 103 C 225 66 286 78 319 98 C 356 76 410 69 432 109 C 443 171 379 264 319 285 C 257 268 192 170 207 103 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf_left" d="M 318 97 C 291 67 256 56 234 68 C 251 96 277 118 315 128 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf_middle" d="M 313 113 C 289 74 301 42 321 33 C 345 56 345 86 333 117 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf_right" d="M 330 98 C 355 69 389 61 406 72 C 395 103 367 120 326 128 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stem" d="M 309 45 L 310 17 L 330 17 L 331 45 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="seed_left" d="M 261 166 Q 271 154 282 166 Q 274 184 261 166 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="seed_right" d="M 353 171 Q 365 159 376 172 Q 366 189 353 171 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="seed_bottom" d="M 312 227 Q 322 215 334 227 Q 323 246 312 227 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

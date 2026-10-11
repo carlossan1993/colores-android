@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="banana" d="M 167 92 C 210 200 327 265 475 128 C 457 208 399 270 309 277 C 226 277 161 215 167 92 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="curve" d="M 194 151 C 261 237 354 252 438 189 C 388 262 268 275 194 151 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stem" d="M 157 72 L 187 74 L 200 115 L 169 109 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tip" d="M 458 127 L 486 110 L 498 129 L 476 149 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

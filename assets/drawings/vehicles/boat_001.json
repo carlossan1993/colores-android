@@ -1,0 +1,40 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "hull",
+      "name": "Casco del barco",
+      "path": "M 128 220 L 517 220 L 453 277 L 192 277 Z"
+    },
+    {
+      "id": "mast",
+      "name": "Mástil",
+      "path": "M 317 50 L 328 50 L 328 220 L 317 220 Z"
+    },
+    {
+      "id": "sail_left",
+      "name": "Vela izquierda",
+      "path": "M 310 62 L 310 205 L 177 205 Z"
+    },
+    {
+      "id": "sail_right",
+      "name": "Vela derecha",
+      "path": "M 338 75 L 463 206 L 338 206 Z"
+    },
+    {
+      "id": "flag",
+      "name": "Bandera",
+      "path": "M 328 45 L 406 56 L 328 84 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventanita izquierda",
+      "path": "M 230 237 A 13 13 0 1 0 256 237 A 13 13 0 1 0 230 237 Z"
+    },
+    {
+      "id": "window_right",
+      "name": "Ventanita derecha",
+      "path": "M 388 237 A 13 13 0 1 0 414 237 A 13 13 0 1 0 388 237 Z"
+    }
+  ]
+}

@@ -10,8 +10,8 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Completada; APK validado por el usuario y PR 3 integrado |
 | 4. Navegación y catálogo | Inicio, categorías y galería | Completada; APK validado por el usuario y PR 4 integrado |
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
-| 6. Pipeline de contenido | Validación de metadata y SVG | En desarrollo: manifiesto, catálogo generado y pruebas; pendiente de CI |
-| 7. Catálogo inicial | 40 dibujos, 10 por categoría | Pendiente |
+| 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
+| 7. Catálogo inicial | 40 dibujos, 10 por categoría | En desarrollo; primer lote de 8 nuevos dibujos (13 de 40) |
 | 8. UX final | Sonidos, celebración y estados | Pendiente |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
@@ -51,7 +51,7 @@ La etapa 5 añade guardado local de colores y preferencias. El historial undo/re
 
 ## Próximo cambio
 
-Integrado el PR 5 con todas las comprobaciones de Android aprobadas. El usuario confirmó el funcionamiento de la última versión y autorizó continuar. Preparar etapa 6: registro de contenido, generador de catálogo/exports SVG, validación automática de assets y pruebas. Antes de probar actualizaciones entre versiones, configurar firma estable en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.
+El PR 6 quedó integrado con CI aprobada. Etapa 7: primer lote de ocho dibujos nuevos para llegar a 13/40 (3 animales, 3 frutas, 4 lugares, 3 vehículos). Revisar geometrías, miniaturas y toques en el emulador y luego en el teléfono. Continuar en lotes pequeños hasta 10 por categoría. La firma estable para conservar progreso entre versiones distintas sigue pendiente en GitHub Secrets.
 
 ## Criterio de salida de la etapa 4
 
@@ -84,5 +84,13 @@ El almacenamiento solo contiene colores y preferencias; no guarda imágenes ni h
 - [x] Generador estático de catálogo TypeScript y exports SVG desde JSON, sin cambios al motor.
 - [x] Validaciones de IDs duplicados, regiones, geometría, archivos huérfanos y discrepancias.
 - [x] Pruebas de errores de contenido y documentación de alta mediante PR.
-- [ ] GitHub Actions aprueba pruebas y compila un APK con el pipeline.
-- [ ] Integración del PR tras revisión; etapa 7 será creación de contenido.
+- [x] GitHub Actions aprueba pruebas y compila un APK con el pipeline.
+- [x] Integración del PR 6 tras revisión; etapa 7 es creación de contenido.
+
+## Etapa 7 — primer lote de contenido
+
+- [x] Se han creado geometrías y SVG originales de Perrito, Conejito, Banana, Fresa, Escuela, Granero, Barquito y Avión.
+- [x] Catálogo ampliado a 13 dibujos: 3 animales, 3 frutas, 4 lugares y 3 vehículos.
+- [x] Pruebas actualizadas para la navegación con nuevos límites y para pintar todas las regiones.
+- [ ] CI comprueba catálogo, APK, miniaturas, interacción offline y 4 dibujos nuevos.
+- [ ] Confirmación visual en dispositivo antes de integrar y ampliar el siguiente lote.
