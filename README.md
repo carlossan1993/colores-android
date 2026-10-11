@@ -2,13 +2,13 @@
 
 Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
 
-## Entregable actual: etapa 5 — guardado y restauración offline
+## Estado actual: etapa 5 integrada, etapa 6 en revisión
 
-Etapas 0–4 confirmadas en el teléfono e integradas. Inicio, cuatro categorías y cinco dibujos de muestra: Gatito, Manzana, Mi casita, Castillo y Auto. El catálogo de 40 dibujos corresponde a la etapa 7.
+La app Android offline permite recorrer inicio, cuatro categorías y galerías, colorear cinco dibujos de muestra, deshacer/rehacer y reiniciar con confirmación. Los colores se guardan y restauran en el dispositivo junto con la selección de paleta, sin cuentas, permisos nuevos ni Internet.
 
-Los colores y el color seleccionado se guardan automáticamente en el teléfono. Al volver a abrir, las galerías y dibujos restauran el progreso sin Internet. El indicador **Guardado** confirma la escritura en disco; si falla, aparece Reintentar y se conservan los colores en pantalla. La app espera la restauración antes de permitir pintar. Se guardan regiones y preferencias, no imágenes ni historial de deshacer/rehacer: ese historial empieza vacío al reabrir.
+La etapa 6 incorpora un manifiesto de dibujos en assets/drawings/catalog.json y un generador de catálogo TypeScript/SVG. Así, añadir nuevos dibujos no requiere modificar el motor o la navegación; los datos y geometrías se validan automáticamente antes de compilar. La meta de 40 dibujos permanece para la etapa 7.
 
-Formato versionado con validación y copia de recuperación. No se agregaron permisos, dependencias, servidores o SDKs. Desinstalar o borrar los datos elimina el progreso; las futuras actualizaciones deberán conservar paquete y firma. La firma de prueba entre versiones sigue siendo temporal hasta configurar Secrets.
+Para agregar contenido: crear JSON de geometría, registrar metadata y ejecutar npm run content:generate. npm run verify y GitHub Actions comprueban que todo esté sincronizado. Consulta docs/content-standard.md.
 
 **[Cómo descargar e instalar el APK](docs/instalar-apk.md)**
 
