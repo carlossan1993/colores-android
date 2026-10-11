@@ -11,8 +11,8 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 4. Navegación y catálogo | Inicio, categorías y galería | Completada; APK validado por el usuario y PR 4 integrado |
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
-| 7. Catálogo inicial | 40 dibujos, 10 por categoría | En revisión; lote final de 11 nuevos dibujos (40 de 40), pendiente CI y validación visual |
-| 8. UX final | Sonidos, celebración y estados | Pendiente |
+| 7. Catálogo inicial | 40 dibujos, 10 por categoría | Contenido completado; PR 10 integrado con CI y capturas aprobadas; queda validación integral en dispositivo físico |
+| 8. UX final | Sonidos, celebración y estados | En desarrollo: primer PR de felicitación visual al completar |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
 | 11. Testing Play | Prueba exigida por la cuenta de publicación | Pendiente |
@@ -116,7 +116,18 @@ El almacenamiento solo contiene colores y preferencias; no guarda imágenes ni h
 - [x] Se agregaron 11 dibujos infantiles originales: Elefantito, Pececito, Buhito, Uvas, Cerezas, Limón, Estación de bomberos, Tiendita, Bicicleta, Camioncito y Helicóptero.
 - [x] Catálogo total: 40 ilustraciones, diez por categoría, con 361 regiones coloreables offline.
 - [x] Integración de metadata y pruebas de catálogo, pintura, navegación y emulador, sin permisos ni dependencias adicionales.
-- [ ] CI final con APK Android y pruebas de todas las pantallas y persistencia.
-- [ ] Revisión visual de las nuevas capturas y confirmación en dispositivo antes de dar por terminada la etapa 7.
+- [x] CI del PR 10 aprobó APK Android, 30 pruebas Jest, validación de 40 dibujos y pruebas offline en seis tamaños.
+- [x] Capturas de Elefantito, Cerezas, Tiendita y Helicóptero revisadas e integración del PR 10.
+- [ ] Confirmación de la experiencia completa en dispositivo físico; la firma estable de actualizaciones sigue pendiente.
 
 La firma estable para actualizar entre versiones sin pérdida de datos continúa pendiente para etapa 9/10.
+
+## Etapa 8 — primer cambio: celebración al completar (PR 11)
+
+- [x] Detectar transición real desde dibujo incompleto a terminado.
+- [x] Mostrar felicitación visual breve, sin bloquear la pintura ni navegar a otra pantalla.
+- [x] No volver a celebrarlo al abrir un dibujo ya terminado y restaurado.
+- [x] Añadir pruebas para transiciones y UI de celebración.
+- [ ] CI de TypeScript, Jest, APK y emulador aprobada.
+- [ ] Comprobar aspecto en capturas antes de integrar.
+- [ ] Continuar con sonido opcional, control de silencio y ajustes/legal.

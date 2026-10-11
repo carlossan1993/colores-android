@@ -97,6 +97,11 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
           await ReactTestRenderer.act(() => region.props.onPress());
         }
       }
+      if (category === 'animals') {
+        expect(
+          renderer.root.findAll(node => node.props.testID === 'completion-celebration'),
+        ).toHaveLength(1);
+      }
       await press('coloring-back');
       if (category === 'animals') {
         expect(control('drawing-cat_001').props.accessibilityLabel).toContain(
@@ -113,6 +118,9 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
       'En progreso',
     );
     await press('drawing-house_001');
+    expect(
+      renderer.root.findAll(node => node.props.testID === 'completion-celebration'),
+    ).toHaveLength(0);
     expect(roof().props.fill).toBe('#EF6B6B');
     await press('color-66BE96');
     await press('drawing-next');
