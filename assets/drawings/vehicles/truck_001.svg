@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="cargo" d="M 126 94 L 379 94 L 379 220 L 126 220 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="cargo_stripe" d="M 144 167 L 362 167 L 362 189 L 144 189 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="cab" d="M 387 131 L 470 131 L 517 177 L 517 229 L 387 229 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="roof" d="M 393 117 L 461 117 L 475 137 L 390 137 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window" d="M 404 146 L 457 146 L 491 178 L 404 178 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="bumper" d="M 108 219 L 529 219 L 529 240 L 108 240 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_left" d="M 186 241 A 37 37 0 1 0 260 241 A 37 37 0 1 0 186 241 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_right" d="M 404 241 A 37 37 0 1 0 478 241 A 37 37 0 1 0 404 241 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="hub_left" d="M 208 241 A 15 15 0 1 0 238 241 A 15 15 0 1 0 208 241 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="hub_right" d="M 426 241 A 15 15 0 1 0 456 241 A 15 15 0 1 0 426 241 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="lamp" d="M 503 194 L 525 194 L 525 212 L 503 212 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

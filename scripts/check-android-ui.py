@@ -345,6 +345,32 @@ def exercise(name, width, height, full_controls=False):
             press_view("browse-back", name)
         press_view("browse-back", name)
 
+
+        # Stage 7 final batch: actual offline SVG paint in one new drawing per category.
+        press_view("start-coloring", name)
+        for category, drawing, point in (
+            ("animals", "elephant_001", (364, 185)),
+            ("fruits", "cherries_001", (266, 178)),
+            ("places", "shop_001", (278, 249)),
+            ("vehicles", "helicopter_001", (358, 200)),
+        ):
+            press_view(f"category-{category}", name, scroll=True)
+            press_view(f"drawing-{drawing}", name, scroll=True)
+            press_view("color-EF6B6B", name)
+            root = stable_layout(snapshot(f"{name}-{drawing}-opened"), name)
+            left, top, right, bottom = bounds(find(root, "drawing-canvas"))
+            iw, ih = right - left - 4, bottom - top - 4
+            scale = min(iw / 640, ih / 300)
+            x = left + 2 + (iw - 640 * scale) / 2 + point[0] * scale
+            y = top + 2 + (ih - 300 * scale) / 2 + point[1] * scale
+            shell("input", "tap", round(x), round(y))
+            root = snapshot(f"{name}-{drawing}-painted")
+            assert find(root, "drawing-progress").attrib.get("text", "").startswith("1 / ")
+            capture(f"{name}-{drawing}-new")
+            press_view("coloring-back", name)
+            press_view("browse-back", name)
+        press_view("browse-back", name)
+
     result = {
         "size_dp": [width, height],
         "layout": "sidebar" if sidebar else "bottom",

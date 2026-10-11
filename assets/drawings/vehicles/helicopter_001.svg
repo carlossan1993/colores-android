@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="tail" d="M 412 161 L 539 125 L 538 144 L 415 193 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tail_fin" d="M 527 104 L 550 104 L 549 159 L 531 159 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tail_rotor" d="M 528 111 L 545 86 L 556 93 L 543 124 L 567 139 L 560 152 L 534 133 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 202 159 C 231 112 331 103 401 142 C 439 163 439 207 413 224 L 237 224 C 209 214 193 186 202 159 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="cockpit" d="M 211 158 C 236 132 286 125 308 138 L 308 202 L 220 201 C 203 191 201 174 211 158 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window" d="M 321 143 L 376 143 Q 407 158 407 184 L 321 184 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="rotor_post" d="M 316 104 L 326 104 L 326 129 L 316 129 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="rotor_left" d="M 154 91 L 316 91 L 316 104 L 154 104 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="rotor_right" d="M 326 91 L 488 91 L 488 104 L 326 104 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="skid_left" d="M 232 226 L 249 226 L 270 267 L 255 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="skid_right" d="M 386 226 L 401 226 L 393 267 L 378 267 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="skid_base" d="M 229 263 L 418 263 L 418 278 L 229 278 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="wall" d="M 153 107 L 489 107 L 489 268 L 153 268 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="roof" d="M 128 99 L 322 47 L 514 99 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="awning_red_one" d="M 161 112 L 224 112 L 211 158 L 165 158 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="awning_white" d="M 225 112 L 292 112 L 292 158 L 211 158 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="awning_red_two" d="M 293 112 L 360 112 L 375 158 L 293 158 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="awning_end" d="M 361 112 L 482 112 L 485 158 L 375 158 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="door" d="M 372 171 L 443 171 L 443 268 L 372 268 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window" d="M 184 172 L 341 172 L 341 236 L 184 236 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_item_left" d="M 210 197 L 242 197 L 242 233 L 210 233 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_item_right" d="M 279 195 L 310 195 L 310 233 L 279 233 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="step" d="M 355 268 L 462 268 L 479 288 L 339 288 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

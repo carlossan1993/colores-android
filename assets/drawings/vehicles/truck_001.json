@@ -1,0 +1,60 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "cargo",
+      "name": "Caja de carga",
+      "path": "M 126 94 L 379 94 L 379 220 L 126 220 Z"
+    },
+    {
+      "id": "cargo_stripe",
+      "name": "Franja de carga",
+      "path": "M 144 167 L 362 167 L 362 189 L 144 189 Z"
+    },
+    {
+      "id": "cab",
+      "name": "Cabina",
+      "path": "M 387 131 L 470 131 L 517 177 L 517 229 L 387 229 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo de cabina",
+      "path": "M 393 117 L 461 117 L 475 137 L 390 137 Z"
+    },
+    {
+      "id": "window",
+      "name": "Ventana de cabina",
+      "path": "M 404 146 L 457 146 L 491 178 L 404 178 Z"
+    },
+    {
+      "id": "bumper",
+      "name": "Parachoques",
+      "path": "M 108 219 L 529 219 L 529 240 L 108 240 Z"
+    },
+    {
+      "id": "wheel_left",
+      "name": "Rueda izquierda",
+      "path": "M 186 241 A 37 37 0 1 0 260 241 A 37 37 0 1 0 186 241 Z"
+    },
+    {
+      "id": "wheel_right",
+      "name": "Rueda derecha",
+      "path": "M 404 241 A 37 37 0 1 0 478 241 A 37 37 0 1 0 404 241 Z"
+    },
+    {
+      "id": "hub_left",
+      "name": "Centro izquierdo",
+      "path": "M 208 241 A 15 15 0 1 0 238 241 A 15 15 0 1 0 208 241 Z"
+    },
+    {
+      "id": "hub_right",
+      "name": "Centro derecho",
+      "path": "M 426 241 A 15 15 0 1 0 456 241 A 15 15 0 1 0 426 241 Z"
+    },
+    {
+      "id": "lamp",
+      "name": "Luz delantera",
+      "path": "M 503 194 L 525 194 L 525 212 L 503 212 Z"
+    }
+  ]
+}

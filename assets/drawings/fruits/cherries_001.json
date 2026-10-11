@@ -1,0 +1,40 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "stem_left",
+      "name": "Tallo izquierdo",
+      "path": "M 294 102 Q 306 59 332 41 L 340 49 Q 320 83 311 125 Z"
+    },
+    {
+      "id": "stem_right",
+      "name": "Tallo derecho",
+      "path": "M 336 43 Q 377 84 387 140 L 371 148 Q 370 92 328 52 Z"
+    },
+    {
+      "id": "leaf",
+      "name": "Hoja",
+      "path": "M 334 58 C 356 17 404 18 422 34 C 406 74 370 86 334 58 Z"
+    },
+    {
+      "id": "cherry_left",
+      "name": "Cereza izquierda",
+      "path": "M 212 179 A 62 62 0 1 0 336 179 A 62 62 0 1 0 212 179 Z"
+    },
+    {
+      "id": "cherry_right",
+      "name": "Cereza derecha",
+      "path": "M 323 193 A 62 62 0 1 0 447 193 A 62 62 0 1 0 323 193 Z"
+    },
+    {
+      "id": "shine_left",
+      "name": "Brillo izquierdo",
+      "path": "M 241 156 A 15 15 0 1 0 271 156 A 15 15 0 1 0 241 156 Z"
+    },
+    {
+      "id": "shine_right",
+      "name": "Brillo derecho",
+      "path": "M 353 171 A 15 15 0 1 0 383 171 A 15 15 0 1 0 353 171 Z"
+    }
+  ]
+}

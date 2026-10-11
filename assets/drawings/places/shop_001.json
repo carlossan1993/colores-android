@@ -1,0 +1,60 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "wall",
+      "name": "Fachada",
+      "path": "M 153 107 L 489 107 L 489 268 L 153 268 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo",
+      "path": "M 128 99 L 322 47 L 514 99 Z"
+    },
+    {
+      "id": "awning_red_one",
+      "name": "Toldo izquierdo",
+      "path": "M 161 112 L 224 112 L 211 158 L 165 158 Z"
+    },
+    {
+      "id": "awning_white",
+      "name": "Toldo del centro",
+      "path": "M 225 112 L 292 112 L 292 158 L 211 158 Z"
+    },
+    {
+      "id": "awning_red_two",
+      "name": "Toldo derecho",
+      "path": "M 293 112 L 360 112 L 375 158 L 293 158 Z"
+    },
+    {
+      "id": "awning_end",
+      "name": "Toldo lateral",
+      "path": "M 361 112 L 482 112 L 485 158 L 375 158 Z"
+    },
+    {
+      "id": "door",
+      "name": "Puerta",
+      "path": "M 372 171 L 443 171 L 443 268 L 372 268 Z"
+    },
+    {
+      "id": "window",
+      "name": "Escaparate",
+      "path": "M 184 172 L 341 172 L 341 236 L 184 236 Z"
+    },
+    {
+      "id": "window_item_left",
+      "name": "Producto izquierdo",
+      "path": "M 210 197 L 242 197 L 242 233 L 210 233 Z"
+    },
+    {
+      "id": "window_item_right",
+      "name": "Producto derecho",
+      "path": "M 279 195 L 310 195 L 310 233 L 279 233 Z"
+    },
+    {
+      "id": "step",
+      "name": "Escalón",
+      "path": "M 355 268 L 462 268 L 479 288 L 339 288 Z"
+    }
+  ]
+}

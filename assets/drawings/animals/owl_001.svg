@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="foot_left" d="M 277 251 L 309 251 L 310 278 L 276 278 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="foot_right" d="M 342 251 L 374 251 L 376 278 L 342 278 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 242 102 Q 273 72 320 83 Q 365 72 399 102 L 417 208 Q 412 271 320 271 Q 225 268 223 208 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_left" d="M 247 119 L 236 48 L 301 91 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_right" d="M 339 91 L 403 48 L 392 119 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wing_left" d="M 238 166 Q 202 190 236 239 L 269 246 L 266 179 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wing_right" d="M 403 166 Q 438 190 405 240 L 374 245 L 375 180 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="belly" d="M 281 189 Q 320 166 359 189 L 370 246 Q 320 263 272 246 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye_left" d="M 252 147 A 29 29 0 1 0 310 147 A 29 29 0 1 0 252 147 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye_right" d="M 330 147 A 29 29 0 1 0 388 147 A 29 29 0 1 0 330 147 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="pupil_left" d="M 273 147 A 11 11 0 1 0 295 147 A 11 11 0 1 0 273 147 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="pupil_right" d="M 345 147 A 11 11 0 1 0 367 147 A 11 11 0 1 0 345 147 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="beak" d="M 307 172 L 333 172 L 320 195 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>
