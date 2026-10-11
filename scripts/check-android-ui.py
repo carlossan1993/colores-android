@@ -130,8 +130,28 @@ def assert_target(node, size):
 
 
 def press_view(test_id, name, scroll=False):
-    for attempt in range(6):
+    for attempt in range(8):
         root = snapshot(name)
+        # A cold Android emulator may display a system Pixel Launcher ANR over
+        # our app. Dismiss only that exact system dialog; never mask an app ANR.
+        if test_id == "start-coloring":
+            launcher_anr = any(
+                node.attrib.get("text", "") == "Pixel Launcher isn't responding"
+                for node in root.iter("node")
+            )
+            if launcher_anr:
+                capture(f"{name}-launcher-anr-recovered")
+                print(f"Recovering emulator Pixel Launcher ANR in {name}", flush=True)
+                for node in root.iter("node"):
+                    if node.attrib.get("resource-id") == "android:id/aerr_close":
+                        tap(node)
+                        break
+                else:
+                    raise AssertionError("Pixel Launcher ANR cannot be dismissed")
+                time.sleep(1)
+                shell("am", "start", "-W", "-n", ACTIVITY)
+                time.sleep(0.5)
+                continue
         try:
             node = find(root, test_id)
             left, top, right, bottom = bounds(node)
