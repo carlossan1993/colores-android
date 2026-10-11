@@ -56,7 +56,7 @@ La UI abre directamente un dibujo original. `house_001.json` contiene la geometr
 
 El reducer puro guarda únicamente ID/color por región. Mantiene 50 instantáneas de undo/redo, ignora operaciones sin cambio e impide pintar regiones desconocidas. El reset es una acción reversible y la UI solicita confirmación. El blanco elimina el color asignado. Los contornos se dibujan con constantes y no forman parte del estado mutable.
 
-La selección de color permanece en la UI. El indicador de completado cuenta únicamente las ocho regiones declaradas. Todavía no hay persistencia, catálogo ni celebración animada; esas etapas siguen en el roadmap.
+La selección de color permanece en la UI. El indicador de completado cuenta únicamente las ocho regiones declaradas. La persistencia offline y el catálogo de muestra ya están implementados. La celebración animada queda para la etapa 8.
 
 ## Referencias técnicas
 
@@ -85,3 +85,7 @@ La copia recupera JSON corrupto; un error de lectura mantiene el almacenamiento 
 CI aísla los fixtures de tamaños borrando solo los datos del emulador, y prueba aparte cierre del proceso, restauración de dos dibujos, selección de color, reset/borrado persistentes y reinstalación in situ del mismo APK. No valida todavía actualizaciones firmadas entre versiones diferentes: requieren certificado estable en Secrets.
 
 Referencia del módulo nativo: https://reactnative.dev/docs/turbo-native-modules-introduction
+
+## Pipeline de contenido (etapa 6)
+
+assets/drawings/catalog.json es la fuente de metadata y orden del catálogo. scripts/content-pipeline.cjs valida regiones JSON, exportaciones SVG y genera src/content/catalog.ts con imports estáticos compatibles con Metro/React Native. El motor de coloreado sigue siendo genérico; los IDs de dibujo y región deben permanecer estables para conservar progreso offline. CI rechaza cambios sin ejecutar la generación y verifica los errores de contenido con node:test. No hay backend, permisos ni dependencias nuevas.

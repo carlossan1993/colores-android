@@ -9,8 +9,8 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 2. Motor SVG | Un dibujo, toque por región, paleta, undo/redo y reset | Completada; PR 2 integrado tras APK verificado y confirmación del usuario |
 | 3. Pantalla de coloreado | UX horizontal en teléfono y tablet | Completada; APK validado por el usuario y PR 3 integrado |
 | 4. Navegación y catálogo | Inicio, categorías y galería | Completada; APK validado por el usuario y PR 4 integrado |
-| 5. Persistencia offline | Guardado y restauración local versionados | Implementada; pendiente de verificar APK y prueba real |
-| 6. Pipeline de contenido | Validación de metadata y SVG | Pendiente |
+| 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
+| 6. Pipeline de contenido | Validación de metadata y SVG | En desarrollo: manifiesto, catálogo generado y pruebas; pendiente de CI |
 | 7. Catálogo inicial | 40 dibujos, 10 por categoría | Pendiente |
 | 8. UX final | Sonidos, celebración y estados | Pendiente |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
@@ -51,7 +51,7 @@ La etapa 5 añade guardado local de colores y preferencias. El historial undo/re
 
 ## Próximo cambio
 
-Validar la etapa 5 en el dispositivo: pintar dos dibujos, cerrar el proceso y reabrir en modo avión; colores, miniaturas y selección de color deben restaurarse. Después etapa 6: pipeline de contenido. Antes de probar persistencia entre versiones, configurar una firma estable de pruebas en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.
+Integrado el PR 5 con todas las comprobaciones de Android aprobadas. El usuario confirmó el funcionamiento de la última versión y autorizó continuar. Preparar etapa 6: registro de contenido, generador de catálogo/exports SVG, validación automática de assets y pruebas. Antes de probar actualizaciones entre versiones, configurar firma estable en GitHub Secrets. Antes de publicar: nombre comercial, paquete definitivo, edades, cuenta de Play y requisitos vigentes.
 
 ## Criterio de salida de la etapa 4
 
@@ -73,7 +73,16 @@ Sin nuevas dependencias, permisos, conexión o SDK. El contenido incluido es gra
 - [x] Restauración previa a interacción; sin sobrescritura con estados vacíos durante la carga.
 - [x] Escrituras ordenadas con confirmación de disco y reintento tras fallo.
 - [x] Pruebas de round-trip, aislamiento, reapertura, reset persistido y errores.
-- [ ] APK compilado y guardado/restauración ejercitados offline en Android.
-- [ ] Usuario confirma progreso conservado al cerrar/reabrir en su teléfono.
+- [x] APK compilado y guardado/restauración ejercitados offline en Android.
+- [x] Usuario confirma funcionamiento de la última versión y autoriza avanzar.
 
 El almacenamiento solo contiene colores y preferencias; no guarda imágenes ni historial undo/redo. La prueba de CI reinstala el mismo APK sobre sí mismo; la actualización entre versiones distintas queda pendiente de configurar una firma estable en Secrets.
+
+## Criterio de salida de la etapa 6
+
+- [x] Metadata central con cinco dibujos de muestra, cuatro categorías y acceso free/premium preparado.
+- [x] Generador estático de catálogo TypeScript y exports SVG desde JSON, sin cambios al motor.
+- [x] Validaciones de IDs duplicados, regiones, geometría, archivos huérfanos y discrepancias.
+- [x] Pruebas de errores de contenido y documentación de alta mediante PR.
+- [ ] GitHub Actions aprueba pruebas y compila un APK con el pipeline.
+- [ ] Integración del PR tras revisión; etapa 7 será creación de contenido.
