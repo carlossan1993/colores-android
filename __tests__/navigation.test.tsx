@@ -6,6 +6,7 @@ import App from '../App';
 import { catalog, categories } from '../src/content/catalog';
 import { adjacentDrawing, backRoute } from '../src/navigation/navigation';
 import { sessionReducer } from '../src/coloring/sessionReducer';
+import { createColoringReducer, createInitialState, getDrawingProgress } from '../src/coloring/coloringReducer';
 
 test('catalog covers four categories and adjacent navigation stops at category boundaries', () => {
   expect(categories).toHaveLength(4);
@@ -17,8 +18,14 @@ test('catalog covers four categories and adjacent navigation stops at category b
   }
   expect(adjacentDrawing('house_001', 1)?.id).toBe('castle_001');
   expect(adjacentDrawing('house_001', -1)).toBeUndefined();
-  expect(adjacentDrawing('castle_001', 1)).toBeUndefined();
-  expect(adjacentDrawing('cat_001', 1)).toBeUndefined();
+  expect(adjacentDrawing('castle_001', 1)?.id).toBe('school_001');
+  expect(adjacentDrawing('cat_001', 1)?.id).toBe('dog_001');
+  for (const category of categories) {
+    const drawings = catalog.filter(d => d.category === category.id);
+    expect(drawings.length).toBeGreaterThanOrEqual(3);
+    expect(adjacentDrawing(drawings[0].id, -1)).toBeUndefined();
+    expect(adjacentDrawing(drawings[drawings.length - 1].id, 1)).toBeUndefined();
+  }
   expect(backRoute({ screen: 'coloring', drawingId: 'house_001' })).toEqual({
     screen: 'gallery',
     category: 'places',
@@ -82,7 +89,7 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
       await press(`category-${category}`);
       const drawing = catalog.find(item => item.category === category)!;
       await press(`drawing-${drawing.id}`);
-      expect(control('drawing-next').props.disabled).toBe(true);
+      expect(control('drawing-next').props.disabled).toBe(false);
       if (category === 'animals') {
         for (const region of renderer.root
           .findAllByType(Path)
@@ -134,5 +141,20 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
       await ReactTestRenderer.act(() => renderer.unmount());
     }
     back.mockRestore();
+  }
+});
+
+test('every catalog entry paints its own regions and can be completed independently', () => {
+  expect(catalog).toHaveLength(13);
+  for (const drawing of catalog) {
+    const reduce = createColoringReducer(drawing.regionIds);
+    let state = createInitialState();
+    for (const region of drawing.regions) {
+      state = reduce(state, { type: 'paint', regionId: region.id, color: '#EF6B6B' });
+    }
+    expect(getDrawingProgress(state.colors, drawing.regionIds).status).toBe('completed');
+    expect(Object.keys(state.colors)).toHaveLength(drawing.regionIds.length);
+    const undo = reduce(state, { type: 'undo' });
+    expect(getDrawingProgress(undo.colors, drawing.regionIds).status).toBe('in-progress');
   }
 });

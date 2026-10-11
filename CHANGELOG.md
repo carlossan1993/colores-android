@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0 — Primer lote de dibujos (en revisión)
+
+- Ocho dibujos nuevos originales: Perrito, Conejito, Banana, Fresa, Escuela, Granero, Barquito y Avión.
+- Catálogo ampliado a 13 dibujos y 98 regiones coloreables, dividido entre cuatro categorías.
+- Navegación y emulador ajustados para galerías más largas, sin cambios en el motor o la persistencia.
+- PR 6 de pipeline aprobado por TypeScript, tests, APK y prueba de UI Android e integrado.
+
 ## 0.6.0 — Pipeline de contenido (en revisión)
 
 - Registro único de metadata para cinco dibujos y generador de catálogo TypeScript y exports SVG.

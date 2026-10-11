@@ -39,5 +39,69 @@
     "access": "free",
     "productId": null,
     "asset": "vehicles/car_001"
+  },
+  {
+    "id": "dog_001",
+    "name": "Perrito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/dog_001"
+  },
+  {
+    "id": "rabbit_001",
+    "name": "Conejito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/rabbit_001"
+  },
+  {
+    "id": "banana_001",
+    "name": "Banana",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/banana_001"
+  },
+  {
+    "id": "strawberry_001",
+    "name": "Fresa",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/strawberry_001"
+  },
+  {
+    "id": "school_001",
+    "name": "Escuela",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/school_001"
+  },
+  {
+    "id": "barn_001",
+    "name": "Granero",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/barn_001"
+  },
+  {
+    "id": "boat_001",
+    "name": "Barquito",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/boat_001"
+  },
+  {
+    "id": "plane_001",
+    "name": "Avión",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/plane_001"
   }
 ]

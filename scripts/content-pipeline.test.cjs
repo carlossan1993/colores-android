@@ -25,15 +25,15 @@ function updateJson(file, change) {
   fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n');
 }
 
-test('five valid drawings stay in sync with generated catalog and SVGs', t => {
+test('all 13 valid drawings stay in sync with generated catalog and SVGs', t => {
   const root = fixture(t);
-  assert.deepEqual(run(root), { drawings: 5, regions: 33 });
+  assert.deepEqual(run(root), { drawings: 13, regions: 98 });
   const file = path.join(root, 'src/content/catalog.ts');
   run(root, true);
   assert.equal(fs.readFileSync(file, 'utf8'),
     generateCatalog(JSON.parse(fs.readFileSync(
       path.join(root, 'assets/drawings/catalog.json'), 'utf8'))));
-  assert.deepEqual(run(root), { drawings: 5, regions: 33 });
+  assert.deepEqual(run(root), { drawings: 13, regions: 98 });
 });
 
 test('duplicate IDs are rejected before generating catalog', t => {
