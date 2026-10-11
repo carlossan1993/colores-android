@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 — Tercer lote de dibujos (en revisión)
+
+- Ocho nuevos dibujos originales: Zorrito, Leoncito, Pera, Sandía, Biblioteca, Hospital, Autobús y Cohete.
+- Catálogo ampliado a 29 dibujos y 249 regiones cerradas, todos gratuitos y offline.
+- Pruebas de contenido, navegación y coloreado real ampliadas a un nuevo dibujo por categoría.
+- PR 8 integrado tras validación de código, compilación, emulador y capturas.
+
+
 ## 0.8.0 — Segundo lote de dibujos (en revisión)
 
 - Ocho dibujos nuevos: Tortuguita, Mariposa, Naranja, Piña, Faro, Parque, Trencito y Tractor.

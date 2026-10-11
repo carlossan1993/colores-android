@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="tail" d="M 398 213 C 468 213 476 160 492 158 L 508 174 C 487 232 453 250 398 238 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="tail_tip" d="M 484 155 C 488 130 516 129 528 151 C 546 165 530 190 509 190 C 491 187 479 174 484 155 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 241 192 C 274 161 392 161 421 194 L 427 270 L 235 270 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="paw_left" d="M 257 229 L 300 229 L 300 283 L 257 283 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="paw_right" d="M 356 229 L 399 229 L 399 283 L 356 283 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_left" d="M 230 107 A 28 28 0 1 0 286 107 A 28 28 0 1 0 230 107 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="ear_right" d="M 356 107 A 28 28 0 1 0 412 107 A 28 28 0 1 0 356 107 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="mane" d="M 320 34 C 355 14 375 42 391 46 C 437 40 436 72 439 98 C 479 125 453 154 453 170 C 461 201 430 217 411 231 C 389 255 357 241 322 250 C 290 242 255 259 231 231 C 197 211 211 187 195 167 C 189 139 196 118 216 105 C 218 77 231 52 259 54 C 274 30 299 30 320 34 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="face" d="M 253 123 C 257 87 289 73 321 75 C 355 73 389 90 394 123 C 399 170 361 210 324 213 C 279 213 247 170 253 123 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye_left" d="M 284 126 A 11 11 0 1 0 306 126 A 11 11 0 1 0 284 126 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye_right" d="M 346 126 A 11 11 0 1 0 368 126 A 11 11 0 1 0 346 126 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="muzzle" d="M 286 163 Q 321 142 358 163 Q 363 199 322 199 Q 279 196 286 163 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="nose" d="M 308 159 L 336 159 L 322 176 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

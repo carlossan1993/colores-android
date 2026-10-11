@@ -6,7 +6,7 @@ Aplicación Android infantil para colorear regiones SVG con un toque. React Nati
 
 La app Android offline permite recorrer inicio, cuatro categorías y galerías, colorear los dibujos del catálogo, deshacer/rehacer y reiniciar con confirmación. Los colores se guardan y restauran en el dispositivo junto con la selección de paleta, sin cuentas, permisos nuevos ni Internet.
 
-La etapa 6 incorporó un manifiesto de dibujos en assets/drawings/catalog.json y un generador de catálogo TypeScript/SVG. Así, añadir nuevos dibujos no requiere modificar el motor o la navegación; los datos y geometrías se validan automáticamente antes de compilar. La etapa 7 incorpora su segundo lote de ocho dibujos nuevos: tortuga, mariposa, naranja, piña, faro, parque, tren y tractor. El catálogo alcanza 21 de 40 dibujos.
+La etapa 6 incorporó un manifiesto de dibujos en assets/drawings/catalog.json y un generador de catálogo TypeScript/SVG. Así, añadir nuevos dibujos no requiere modificar el motor o la navegación; los datos y geometrías se validan automáticamente antes de compilar. La etapa 7 prepara su tercer lote de ocho dibujos nuevos: zorrito, leoncito, pera, sandía, biblioteca, hospital, autobús y cohete. El catálogo alcanzará 29 de 40 dibujos cuando se integre el PR.
 
 Para agregar contenido: crear JSON de geometría, registrar metadata y ejecutar npm run content:generate. npm run verify y GitHub Actions comprueban que todo esté sincronizado. Consulta docs/content-standard.md.
 

@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "wall",
+      "name": "Fachada",
+      "path": "M 143 116 L 499 116 L 499 270 L 143 270 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo",
+      "path": "M 120 116 L 321 48 L 521 116 Z"
+    },
+    {
+      "id": "sign",
+      "name": "Letrero",
+      "path": "M 272 124 L 374 124 L 374 154 L 272 154 Z"
+    },
+    {
+      "id": "door",
+      "name": "Entrada",
+      "path": "M 289 203 L 355 203 L 355 270 L 289 270 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventana izquierda",
+      "path": "M 166 164 L 266 164 L 266 237 L 166 237 Z"
+    },
+    {
+      "id": "window_right",
+      "name": "Ventana derecha",
+      "path": "M 378 164 L 478 164 L 478 237 L 378 237 Z"
+    },
+    {
+      "id": "book_left",
+      "name": "Libro izquierdo",
+      "path": "M 189 181 L 212 181 L 212 226 L 189 226 Z"
+    },
+    {
+      "id": "book_mid",
+      "name": "Libro central",
+      "path": "M 217 181 L 240 181 L 240 226 L 217 226 Z"
+    },
+    {
+      "id": "book_right",
+      "name": "Libro derecho",
+      "path": "M 404 181 L 439 181 L 439 226 L 404 226 Z"
+    },
+    {
+      "id": "step",
+      "name": "Escalón",
+      "path": "M 268 270 L 376 270 L 393 289 L 251 289 Z"
+    }
+  ]
+}

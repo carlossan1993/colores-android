@@ -1,0 +1,60 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "body",
+      "name": "Carrocería",
+      "path": "M 115 103 C 115 78 131 74 161 74 L 492 74 Q 527 74 527 111 L 527 232 L 115 232 Z"
+    },
+    {
+      "id": "roof_light",
+      "name": "Letrero frontal",
+      "path": "M 382 86 L 494 86 L 494 111 L 382 111 Z"
+    },
+    {
+      "id": "window_front",
+      "name": "Ventana frontal",
+      "path": "M 391 121 L 501 121 L 501 174 L 391 174 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventana izquierda",
+      "path": "M 145 121 L 223 121 L 223 174 L 145 174 Z"
+    },
+    {
+      "id": "window_middle",
+      "name": "Ventana central",
+      "path": "M 236 121 L 313 121 L 313 174 L 236 174 Z"
+    },
+    {
+      "id": "door",
+      "name": "Puerta",
+      "path": "M 325 121 L 379 121 L 379 232 L 325 232 Z"
+    },
+    {
+      "id": "door_window",
+      "name": "Cristal de la puerta",
+      "path": "M 332 128 L 372 128 L 372 173 L 332 173 Z"
+    },
+    {
+      "id": "bumper",
+      "name": "Parachoques",
+      "path": "M 119 216 L 522 216 L 522 235 L 119 235 Z"
+    },
+    {
+      "id": "wheel_left",
+      "name": "Rueda izquierda",
+      "path": "M 172 236 A 34 34 0 1 0 240 236 A 34 34 0 1 0 172 236 Z"
+    },
+    {
+      "id": "wheel_right",
+      "name": "Rueda derecha",
+      "path": "M 414 236 A 34 34 0 1 0 482 236 A 34 34 0 1 0 414 236 Z"
+    },
+    {
+      "id": "headlight",
+      "name": "Faro",
+      "path": "M 498 184 L 520 184 L 520 204 L 498 204 Z"
+    }
+  ]
+}

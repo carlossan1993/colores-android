@@ -1,0 +1,35 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "rind",
+      "name": "Cáscara",
+      "path": "M 168 103 Q 321 282 474 103 L 490 116 Q 328 309 150 118 Z"
+    },
+    {
+      "id": "flesh",
+      "name": "Pulpa",
+      "path": "M 171 101 L 471 101 Q 324 279 171 101 Z"
+    },
+    {
+      "id": "seed_left",
+      "name": "Semilla izquierda",
+      "path": "M 250 151 Q 260 130 272 154 Q 267 171 250 151 Z"
+    },
+    {
+      "id": "seed_mid",
+      "name": "Semilla central",
+      "path": "M 311 172 Q 323 152 335 173 Q 327 194 311 172 Z"
+    },
+    {
+      "id": "seed_right",
+      "name": "Semilla derecha",
+      "path": "M 378 151 Q 387 132 398 152 Q 394 171 378 151 Z"
+    },
+    {
+      "id": "seed_bottom",
+      "name": "Semilla inferior",
+      "path": "M 315 225 Q 323 212 332 225 Q 324 241 315 225 Z"
+    }
+  ]
+}

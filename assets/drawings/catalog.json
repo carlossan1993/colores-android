@@ -167,5 +167,69 @@
     "access": "free",
     "productId": null,
     "asset": "vehicles/tractor_001"
+  },
+  {
+    "id": "fox_001",
+    "name": "Zorrito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/fox_001"
+  },
+  {
+    "id": "lion_001",
+    "name": "Leoncito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/lion_001"
+  },
+  {
+    "id": "pear_001",
+    "name": "Pera",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/pear_001"
+  },
+  {
+    "id": "watermelon_001",
+    "name": "Sandía",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/watermelon_001"
+  },
+  {
+    "id": "library_001",
+    "name": "Biblioteca",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/library_001"
+  },
+  {
+    "id": "hospital_001",
+    "name": "Hospital",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/hospital_001"
+  },
+  {
+    "id": "bus_001",
+    "name": "Autobús",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/bus_001"
+  },
+  {
+    "id": "rocket_001",
+    "name": "Cohete",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/rocket_001"
   }
 ]

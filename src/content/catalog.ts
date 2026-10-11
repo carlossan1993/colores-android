@@ -20,6 +20,14 @@ import art17 from '../../assets/drawings/places/lighthouse_001.json';
 import art18 from '../../assets/drawings/places/park_001.json';
 import art19 from '../../assets/drawings/vehicles/train_001.json';
 import art20 from '../../assets/drawings/vehicles/tractor_001.json';
+import art21 from '../../assets/drawings/animals/fox_001.json';
+import art22 from '../../assets/drawings/animals/lion_001.json';
+import art23 from '../../assets/drawings/fruits/pear_001.json';
+import art24 from '../../assets/drawings/fruits/watermelon_001.json';
+import art25 from '../../assets/drawings/places/library_001.json';
+import art26 from '../../assets/drawings/places/hospital_001.json';
+import art27 from '../../assets/drawings/vehicles/bus_001.json';
+import art28 from '../../assets/drawings/vehicles/rocket_001.json';
 import type { DrawingAccess, DrawingCategory, DrawingDefinition, SvgRegion } from './types';
 
 function define(metadata: DrawingAccess & Pick<DrawingDefinition, 'id' | 'name' | 'category' | 'asset'>, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {
@@ -48,6 +56,14 @@ export const catalog: readonly DrawingDefinition[] = [
   define({ id: 'park_001', name: 'Parque', category: 'places', access: 'free', productId: null, asset: 'places/park_001' }, art18),
   define({ id: 'train_001', name: 'Trencito', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/train_001' }, art19),
   define({ id: 'tractor_001', name: 'Tractor', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/tractor_001' }, art20),
+  define({ id: 'fox_001', name: 'Zorrito', category: 'animals', access: 'free', productId: null, asset: 'animals/fox_001' }, art21),
+  define({ id: 'lion_001', name: 'Leoncito', category: 'animals', access: 'free', productId: null, asset: 'animals/lion_001' }, art22),
+  define({ id: 'pear_001', name: 'Pera', category: 'fruits', access: 'free', productId: null, asset: 'fruits/pear_001' }, art23),
+  define({ id: 'watermelon_001', name: 'Sandía', category: 'fruits', access: 'free', productId: null, asset: 'fruits/watermelon_001' }, art24),
+  define({ id: 'library_001', name: 'Biblioteca', category: 'places', access: 'free', productId: null, asset: 'places/library_001' }, art25),
+  define({ id: 'hospital_001', name: 'Hospital', category: 'places', access: 'free', productId: null, asset: 'places/hospital_001' }, art26),
+  define({ id: 'bus_001', name: 'Autobús', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/bus_001' }, art27),
+  define({ id: 'rocket_001', name: 'Cohete', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/rocket_001' }, art28),
 ];
 
 export const categories: readonly {

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="body" d="M 115 103 C 115 78 131 74 161 74 L 492 74 Q 527 74 527 111 L 527 232 L 115 232 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="roof_light" d="M 382 86 L 494 86 L 494 111 L 382 111 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_front" d="M 391 121 L 501 121 L 501 174 L 391 174 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_left" d="M 145 121 L 223 121 L 223 174 L 145 174 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window_middle" d="M 236 121 L 313 121 L 313 174 L 236 174 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="door" d="M 325 121 L 379 121 L 379 232 L 325 232 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="door_window" d="M 332 128 L 372 128 L 372 173 L 332 173 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="bumper" d="M 119 216 L 522 216 L 522 235 L 119 235 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_left" d="M 172 236 A 34 34 0 1 0 240 236 A 34 34 0 1 0 172 236 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="wheel_right" d="M 414 236 A 34 34 0 1 0 482 236 A 34 34 0 1 0 414 236 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="headlight" d="M 498 184 L 520 184 L 520 204 L 498 204 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

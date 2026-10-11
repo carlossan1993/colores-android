@@ -1,0 +1,60 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "wall",
+      "name": "Edificio",
+      "path": "M 145 100 L 497 100 L 497 273 L 145 273 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Tejado",
+      "path": "M 129 88 L 514 88 L 514 111 L 129 111 Z"
+    },
+    {
+      "id": "sign",
+      "name": "Letrero",
+      "path": "M 276 114 L 364 114 L 364 159 L 276 159 Z"
+    },
+    {
+      "id": "cross",
+      "name": "Cruz",
+      "path": "M 310 120 L 331 120 L 331 130 L 344 130 L 344 144 L 331 144 L 331 154 L 310 154 L 310 144 L 297 144 L 297 130 L 310 130 Z"
+    },
+    {
+      "id": "window_left_top",
+      "name": "Ventana izquierda superior",
+      "path": "M 178 130 L 244 130 L 244 178 L 178 178 Z"
+    },
+    {
+      "id": "window_right_top",
+      "name": "Ventana derecha superior",
+      "path": "M 400 130 L 466 130 L 466 178 L 400 178 Z"
+    },
+    {
+      "id": "window_left_bottom",
+      "name": "Ventana izquierda inferior",
+      "path": "M 178 203 L 244 203 L 244 251 L 178 251 Z"
+    },
+    {
+      "id": "window_right_bottom",
+      "name": "Ventana derecha inferior",
+      "path": "M 400 203 L 466 203 L 466 251 L 400 251 Z"
+    },
+    {
+      "id": "door",
+      "name": "Entrada",
+      "path": "M 277 188 L 367 188 L 367 273 L 277 273 Z"
+    },
+    {
+      "id": "door_glass_left",
+      "name": "Cristal izquierdo",
+      "path": "M 285 197 L 316 197 L 316 259 L 285 259 Z"
+    },
+    {
+      "id": "door_glass_right",
+      "name": "Cristal derecho",
+      "path": "M 328 197 L 359 197 L 359 259 L 328 259 Z"
+    }
+  ]
+}
