@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.0 — Celebración visual (en revisión)
+
+- Felicitación breve y no bloqueante al completar un dibujo con todas las regiones coloreadas.
+- No se activa al abrir contenido completado anteriormente; se conserva el estado offline.
+- Prueba de transición y de integración de UI; sin dependencias, anuncios o permisos nuevos.
+- El catálogo inicial de 40 dibujos fue integrado con el PR 10 tras pasar CI y revisar capturas.
+
+
 ## 0.10.0 — Catálogo inicial de 40 dibujos (en revisión)
 
 - 11 nuevas ilustraciones originales completan 10 dibujos por categoría: animales, frutas, lugares y vehículos.

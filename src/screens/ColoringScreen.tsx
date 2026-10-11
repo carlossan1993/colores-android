@@ -1,4 +1,4 @@
-import React, { useMemo, useReducer, useState } from 'react';
+import React, { useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import {
   Alert,
   StyleSheet,
@@ -24,6 +24,8 @@ import type {
 import type { DrawingDefinition } from '../content/types';
 import { NavigationButton } from '../components/NavigationButton';
 import { ColorPalette } from '../components/ColorPalette';
+import { CompletionCelebration } from '../components/CompletionCelebration';
+import { shouldCelebrateCompletion } from '../coloring/completionTransition';
 import { ColoringTools } from '../components/ColoringTools';
 import { testDrawing } from '../content/testDrawing';
 import { getColoringLayout } from '../layout/coloringLayout';
@@ -79,6 +81,23 @@ export function ColoringScreen({
     window.height - insets.top - insets.bottom,
   );
   const progress = getDrawingProgress(state.colors, drawing.regionIds);
+
+  // The initial status is not a transition: restored complete drawings stay quiet.
+  const [celebrationTrigger, setCelebrationTrigger] = useState(0);
+  const previousCompletion = useRef({
+    drawingId: drawing.id,
+    completed: progress.status === 'completed',
+  });
+  useEffect(() => {
+    const current = {
+      drawingId: drawing.id,
+      completed: progress.status === 'completed',
+    };
+    if (shouldCelebrateCompletion(previousCompletion.current, current)) {
+      setCelebrationTrigger(value => value + 1);
+    }
+    previousCompletion.current = current;
+  }, [drawing.id, progress.status]);
 
   const confirmReset = () => {
     Alert.alert(
@@ -226,6 +245,9 @@ export function ColoringScreen({
                 dispatch({ type: 'paint', regionId, color: selectedColor })
               }
             />
+            {progress.status === 'completed' ? (
+              <CompletionCelebration trigger={celebrationTrigger} />
+            ) : null}
           </View>
           {!layout.bottomPalette ? drawingNavigation : null}
         </View>
