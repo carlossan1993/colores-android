@@ -12,7 +12,7 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
 | 7. Catálogo inicial | 40 dibujos, 10 por categoría | Contenido completado; PR 10 integrado con CI y capturas aprobadas; queda validación integral en dispositivo físico |
-| 8. UX final | Sonidos, celebración y estados | En desarrollo: primer PR de felicitación visual al completar |
+| 8. UX final | Sonidos, celebración y estados | En desarrollo: celebración integrada; sonido opcional y silencio en revisión |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
 | 11. Testing Play | Prueba exigida por la cuenta de publicación | Pendiente |
@@ -128,6 +128,15 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [x] Mostrar felicitación visual breve, sin bloquear la pintura ni navegar a otra pantalla.
 - [x] No volver a celebrarlo al abrir un dibujo ya terminado y restaurado.
 - [x] Añadir pruebas para transiciones y UI de celebración.
-- [ ] CI de TypeScript, Jest, APK y emulador aprobada.
-- [ ] Comprobar aspecto en capturas antes de integrar.
+- [x] CI del PR 11 aprobó código, APK y seis tamaños Android; se recuperó un fallo de Pixel Launcher del emulador.
+- [x] Captura de felicitación revisada y PR 11 integrado.
 - [ ] Continuar con sonido opcional, control de silencio y ajustes/legal.
+
+## Etapa 8 — segundo cambio: sonido opcional y silencio (PR 12)
+
+- [x] Reutilizar la preferencia persistente `soundEnabled` del esquema v1, sin migración de datos.
+- [x] Incorporar un botón grande para encender/apagar el sonido desde el coloreado.
+- [x] Añadir un tono suave y breve del sistema Android al completar un dibujo, sin Internet, permisos ni dependencias externas.
+- [x] Pruebas de audio silenciado y restauración de preferencias en Android.
+- [ ] CI completa, capturas del botón en modo silencio y prueba física de audio.
+- [ ] Pantalla de ajustes/legal y revisión de UX final.

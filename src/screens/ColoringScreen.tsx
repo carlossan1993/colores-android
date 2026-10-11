@@ -25,6 +25,8 @@ import type { DrawingDefinition } from '../content/types';
 import { NavigationButton } from '../components/NavigationButton';
 import { ColorPalette } from '../components/ColorPalette';
 import { CompletionCelebration } from '../components/CompletionCelebration';
+import { SoundToggle } from '../components/SoundToggle';
+import { playCompletionSound } from '../audio/completionSound';
 import { shouldCelebrateCompletion } from '../coloring/completionTransition';
 import { ColoringTools } from '../components/ColoringTools';
 import { testDrawing } from '../content/testDrawing';
@@ -40,6 +42,8 @@ type Props = {
   state?: ColoringState;
   onAction?: (action: ColoringAction) => void;
   selectedColor?: string;
+  soundEnabled?: boolean;
+  onToggleSound?: () => void;
   onSelectColor?: (color: string) => void;
   onBack?: () => void;
   onPrevious?: () => void;
@@ -53,6 +57,8 @@ export function ColoringScreen({
   state: suppliedState,
   onAction,
   selectedColor: suppliedColor,
+  soundEnabled: suppliedSoundEnabled,
+  onToggleSound,
   onSelectColor,
   onBack,
   onPrevious,
@@ -74,6 +80,9 @@ export function ColoringScreen({
   const [localColor, setLocalColor] = useState<string>(palette[0].color);
   const selectedColor = suppliedColor ?? localColor;
   const setSelectedColor = onSelectColor ?? setLocalColor;
+  const [localSoundEnabled, setLocalSoundEnabled] = useState(true);
+  const soundEnabled = suppliedSoundEnabled ?? localSoundEnabled;
+  const toggleSound = onToggleSound ?? (() => setLocalSoundEnabled(value => !value));
   const window = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const layout = getColoringLayout(
@@ -95,9 +104,10 @@ export function ColoringScreen({
     };
     if (shouldCelebrateCompletion(previousCompletion.current, current)) {
       setCelebrationTrigger(value => value + 1);
+      playCompletionSound(soundEnabled);
     }
     previousCompletion.current = current;
-  }, [drawing.id, progress.status]);
+  }, [drawing.id, progress.status, soundEnabled]);
 
   const confirmReset = () => {
     Alert.alert(
@@ -118,6 +128,7 @@ export function ColoringScreen({
     return null;
   }
 
+  const audioToggle = <SoundToggle enabled={soundEnabled} onToggle={toggleSound} />;
   const tools = (
     <ColoringTools
       layout={layout}
@@ -229,6 +240,7 @@ export function ColoringScreen({
             {layout.bottomPalette ? (
               <View style={styles.compactTools}>
                 {tools}
+                {audioToggle}
                 {drawingNavigation}
               </View>
             ) : null}
@@ -279,6 +291,7 @@ export function ColoringScreen({
             </View>
             {colors}
             {tools}
+            {audioToggle}
           </View>
         )}
       </View>

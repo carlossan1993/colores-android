@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.12.0 — Sonido opcional y control de silencio (en revisión)
+
+- Tono nativo breve al completar por primera vez un dibujo, sujeto al volumen multimedia del teléfono.
+- Botón de 48 dp para silenciar/reactivar el sonido, persistente entre sesiones.
+- Se reutiliza la preferencia soundEnabled existente sin cambiar el esquema de datos; no se agregan permisos, descargas o bibliotecas.
+- Pruebas nuevas de audio y preferencias, además de la matriz Android offline.
+- PR 11 integrado con celebración visual tras corregir un bloqueo propio del emulador Pixel Launcher.
+
+
 ## 0.11.0 — Celebración visual (en revisión)
 
 - Felicitación breve y no bloqueante al completar un dibujo con todas las regiones coloreadas.

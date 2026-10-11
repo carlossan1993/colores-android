@@ -190,6 +190,17 @@ def exercise(name, width, height, full_controls=False):
     capture(f"{name}-home")
     open_house(name)
     root = stable_layout(progress(0, name), name)
+    sound_node = find(root, "sound-toggle")
+    assert_target(sound_node, 48)
+    assert sound_node.attrib.get("checked") == "true"
+    if full_controls:
+        tap(sound_node)
+        root = snapshot(f"{name}-sound-muted")
+        assert find(root, "sound-toggle").attrib.get("checked") == "false"
+        capture(f"{name}-sound-muted")
+        tap(find(root, "sound-toggle"))
+        root = snapshot(f"{name}-sound-unmuted")
+        assert find(root, "sound-toggle").attrib.get("checked") == "true"
     canvas = find(root, "drawing-canvas")
     left, top, right, bottom = bounds(canvas)
     assert right - left > 150 and bottom - top > 80, canvas.attrib
@@ -458,6 +469,11 @@ def exercise_persistence(apk):
     shell("wm", "density", 160)
     shell("am", "start", "-W", "-n", ACTIVITY)
     open_house(name)
+    root = snapshot("persistence-sound-before")
+    assert find(root, "sound-toggle").attrib.get("checked") == "true"
+    tap(find(root, "sound-toggle"))
+    assert find(snapshot("persistence-sound-muted"), "sound-toggle").attrib.get("checked") == "false"
+    wait_saved(name)
     press_view("color-66BE96", name)
     paint_point(name, 270, 75)
     press_view("color-62AFE2", name)
@@ -469,6 +485,7 @@ def exercise_persistence(apk):
     progress(1, name)
     restart_house(name)
     root = progress(2, name)
+    assert find(root, "sound-toggle").attrib.get("checked") == "false"
     assert find(root, "color-EF6B6B").attrib.get("selected") == "true"
     assert find(root, "action-undo").attrib.get("enabled") == "false"
     capture("persistence-house-restored")
@@ -482,7 +499,8 @@ def exercise_persistence(apk):
     adb("install", "-r", apk)
     shell("am", "start", "-W", "-n", ACTIVITY)
     open_house(name)
-    progress(2, name)
+    root = progress(2, name)
+    assert find(root, "sound-toggle").attrib.get("checked") == "false"
     capture("persistence-in-place-install")
 
     press_view("action-reset", name)
@@ -505,7 +523,7 @@ def exercise_persistence(apk):
     press_view("drawing-next", name)
     progress(0, name)
     capture("persistence-erased-restored")
-    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design"}
+    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "mute_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design"}
 
 
 results = {}

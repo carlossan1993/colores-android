@@ -137,6 +137,15 @@ export function useProgress() {
           color: previous.preferences.selectedColor,
         }),
       ),
+    setSoundEnabled: (soundEnabled: boolean) =>
+      setProgress(previous =>
+        previous.preferences.soundEnabled === soundEnabled
+          ? previous
+          : {
+              ...previous,
+              preferences: { ...previous.preferences, soundEnabled },
+            },
+      ),
     selectColor: (selectedColor: string) =>
       setProgress(previous =>
         previous.preferences.selectedColor === selectedColor

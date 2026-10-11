@@ -62,3 +62,7 @@ V1 sin cuentas, backend, publicidad, analítica ni compras. Todo el contenido ne
 ### Etapa 8 (en revisión)
 
 Se introduce una felicitación visual breve al terminar un dibujo por primera vez durante el coloreado. No bloquea toques y no se repite al abrir un dibujo ya completado. El sonido y su control de silencio se abordarán por separado.
+
+### Sonido de celebración (PR 12, en revisión)
+
+Al terminar un dibujo, COLORES puede reproducir un tono breve mediante el sistema Android. El botón de silencio permite desactivar el sonido en todo momento; su estado se guarda localmente junto con el color elegido, incluso tras reiniciar. No requiere Internet, permisos adicionales ni dependencias de audio externas.
