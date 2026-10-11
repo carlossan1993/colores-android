@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="flame_outer" d="M 285 229 Q 259 264 285 294 L 322 270 L 354 294 Q 384 260 355 229 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="flame_inner" d="M 306 232 Q 299 256 321 281 Q 345 254 336 232 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="fin_left" d="M 294 197 L 252 253 L 304 239 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="fin_right" d="M 345 197 L 388 253 L 336 239 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 288 104 Q 320 47 351 104 L 352 226 L 288 226 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="nose" d="M 288 105 Q 300 62 320 36 Q 342 64 352 105 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stripe" d="M 288 199 L 352 199 L 352 220 L 288 220 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="window" d="M 296 142 A 24 24 0 1 0 344 142 A 24 24 0 1 0 296 142 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="star_left" d="M 174 91 L 183 108 L 201 110 L 188 123 L 191 143 L 174 133 L 157 143 L 160 123 L 147 110 L 165 108 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="star_right" d="M 470 150 L 479 168 L 498 170 L 484 185 L 488 204 L 470 194 L 451 204 L 455 185 L 442 170 L 461 168 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

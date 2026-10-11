@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "flame_outer",
+      "name": "Llama exterior",
+      "path": "M 285 229 Q 259 264 285 294 L 322 270 L 354 294 Q 384 260 355 229 Z"
+    },
+    {
+      "id": "flame_inner",
+      "name": "Llama interior",
+      "path": "M 306 232 Q 299 256 321 281 Q 345 254 336 232 Z"
+    },
+    {
+      "id": "fin_left",
+      "name": "Aleta izquierda",
+      "path": "M 294 197 L 252 253 L 304 239 Z"
+    },
+    {
+      "id": "fin_right",
+      "name": "Aleta derecha",
+      "path": "M 345 197 L 388 253 L 336 239 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 288 104 Q 320 47 351 104 L 352 226 L 288 226 Z"
+    },
+    {
+      "id": "nose",
+      "name": "Punta",
+      "path": "M 288 105 Q 300 62 320 36 Q 342 64 352 105 Z"
+    },
+    {
+      "id": "stripe",
+      "name": "Franja",
+      "path": "M 288 199 L 352 199 L 352 220 L 288 220 Z"
+    },
+    {
+      "id": "window",
+      "name": "Ventana circular",
+      "path": "M 296 142 A 24 24 0 1 0 344 142 A 24 24 0 1 0 296 142 Z"
+    },
+    {
+      "id": "star_left",
+      "name": "Estrella izquierda",
+      "path": "M 174 91 L 183 108 L 201 110 L 188 123 L 191 143 L 174 133 L 157 143 L 160 123 L 147 110 L 165 108 Z"
+    },
+    {
+      "id": "star_right",
+      "name": "Estrella derecha",
+      "path": "M 470 150 L 479 168 L 498 170 L 484 185 L 488 204 L 470 194 L 451 204 L 455 185 L 442 170 L 461 168 Z"
+    }
+  ]
+}

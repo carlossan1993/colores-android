@@ -1,0 +1,70 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "tail_tip",
+      "name": "Punta de la cola",
+      "path": "M 446 186 C 504 172 518 130 501 111 C 544 127 552 197 489 221 Z"
+    },
+    {
+      "id": "tail",
+      "name": "Cola",
+      "path": "M 389 185 C 444 160 477 170 507 201 C 466 249 421 245 380 218 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 251 184 C 279 158 361 154 406 184 L 425 259 L 244 259 Z"
+    },
+    {
+      "id": "paw_left",
+      "name": "Patita izquierda",
+      "path": "M 258 232 L 298 232 L 298 274 L 258 274 Z"
+    },
+    {
+      "id": "paw_right",
+      "name": "Patita derecha",
+      "path": "M 363 232 L 403 232 L 403 274 L 363 274 Z"
+    },
+    {
+      "id": "ear_left",
+      "name": "Oreja izquierda",
+      "path": "M 220 115 L 236 43 L 290 90 Z"
+    },
+    {
+      "id": "ear_right",
+      "name": "Oreja derecha",
+      "path": "M 350 88 L 406 43 L 419 119 Z"
+    },
+    {
+      "id": "head",
+      "name": "Cabeza",
+      "path": "M 210 130 C 216 91 258 83 317 82 C 376 82 418 92 426 135 C 424 186 362 217 318 222 C 270 219 213 191 210 130 Z"
+    },
+    {
+      "id": "cheek_left",
+      "name": "Mejilla izquierda",
+      "path": "M 227 163 L 300 180 L 317 215 C 284 212 243 195 227 163 Z"
+    },
+    {
+      "id": "cheek_right",
+      "name": "Mejilla derecha",
+      "path": "M 407 163 L 336 180 L 319 215 C 351 213 389 195 407 163 Z"
+    },
+    {
+      "id": "eye_left",
+      "name": "Ojo izquierdo",
+      "path": "M 270 143 A 11 11 0 1 0 292 143 A 11 11 0 1 0 270 143 Z"
+    },
+    {
+      "id": "eye_right",
+      "name": "Ojo derecho",
+      "path": "M 348 143 A 11 11 0 1 0 370 143 A 11 11 0 1 0 348 143 Z"
+    },
+    {
+      "id": "nose",
+      "name": "Nariz",
+      "path": "M 304 184 L 334 184 L 319 201 Z"
+    }
+  ]
+}
