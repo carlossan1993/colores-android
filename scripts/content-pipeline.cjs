@@ -46,9 +46,9 @@ function generateCatalog(items) {
   const lines = [
     '// Generado automáticamente por scripts/content-pipeline.cjs. No editar manualmente.',
     ...items.map((item, i) => "import art" + i + " from '../../assets/drawings/" + item.asset + ".json';"),
-    "import type { DrawingCategory, DrawingDefinition, DrawingMetadata, SvgRegion } from './types';",
+    "import type { DrawingAccess, DrawingCategory, DrawingDefinition, SvgRegion } from './types';",
     '',
-    'function define(metadata: DrawingMetadata, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {',
+    'function define(metadata: DrawingAccess & Pick<DrawingDefinition, 'id' | 'name' | 'category' | 'asset'>, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {',
     '  return { ...metadata, ...geometry, regionIds: geometry.regions.map(region => region.id) };',
     '}',
     '',
