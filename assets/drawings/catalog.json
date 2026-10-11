@@ -231,5 +231,93 @@
     "access": "free",
     "productId": null,
     "asset": "vehicles/rocket_001"
+  },
+  {
+    "id": "elephant_001",
+    "name": "Elefantito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/elephant_001"
+  },
+  {
+    "id": "fish_001",
+    "name": "Pececito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/fish_001"
+  },
+  {
+    "id": "owl_001",
+    "name": "Buhito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/owl_001"
+  },
+  {
+    "id": "grapes_001",
+    "name": "Uvas",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/grapes_001"
+  },
+  {
+    "id": "cherries_001",
+    "name": "Cerezas",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/cherries_001"
+  },
+  {
+    "id": "lemon_001",
+    "name": "Limón",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/lemon_001"
+  },
+  {
+    "id": "firestation_001",
+    "name": "Estación de bomberos",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/firestation_001"
+  },
+  {
+    "id": "shop_001",
+    "name": "Tiendita",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/shop_001"
+  },
+  {
+    "id": "bicycle_001",
+    "name": "Bicicleta",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/bicycle_001"
+  },
+  {
+    "id": "truck_001",
+    "name": "Camioncito",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/truck_001"
+  },
+  {
+    "id": "helicopter_001",
+    "name": "Helicóptero",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/helicopter_001"
   }
 ]

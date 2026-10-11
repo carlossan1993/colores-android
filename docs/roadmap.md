@@ -11,7 +11,7 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 4. Navegación y catálogo | Inicio, categorías y galería | Completada; APK validado por el usuario y PR 4 integrado |
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
-| 7. Catálogo inicial | 40 dibujos, 10 por categoría | En desarrollo; tercer lote de 8 nuevos dibujos (29 de 40) |
+| 7. Catálogo inicial | 40 dibujos, 10 por categoría | En revisión; lote final de 11 nuevos dibujos (40 de 40), pendiente CI y validación visual |
 | 8. UX final | Sonidos, celebración y estados | Pendiente |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
@@ -51,7 +51,7 @@ La etapa 5 añade guardado local de colores y preferencias. El historial undo/re
 
 ## Próximo cambio
 
-El PR 6 quedó integrado con CI aprobada. Etapa 7: tercer lote de ocho dibujos nuevos para llegar a 29/40 (7 animales, 7 frutas, 8 lugares, 7 vehículos). Revisar geometrías, miniaturas y toques en emulador y teléfono. Restan 11 para 10 por categoría. La firma estable para conservar progreso entre versiones distintas sigue pendiente en GitHub Secrets.
+El PR 6 quedó integrado con CI aprobada. Etapa 7: el PR 9 ya está integrado. El cuarto lote añade 11 dibujos, llegando a 40/40 (10 por cada categoría). Revisar los SVG, las capturas Android y la accesibilidad táctil antes de cerrar la etapa. La firma estable para conservar progreso entre versiones distintas sigue pendiente en GitHub Secrets.
 
 ## Criterio de salida de la etapa 4
 
@@ -108,5 +108,15 @@ El almacenamiento solo contiene colores y preferencias; no guarda imágenes ni h
 - [x] Ocho dibujos nuevos originales: Zorrito, Leoncito, Pera, Sandía, Biblioteca, Hospital, Autobús y Cohete.
 - [x] Catálogo ampliado a 29 dibujos y 249 regiones; todos offline y gratuitos (7 animales, 7 frutas, 8 lugares, 7 vehículos).
 - [x] Actualizadas pruebas del catálogo y recorridos Android en 4 nuevos dibujos.
-- [ ] Validar calidad, compilación, emulador y persistencia antes de integrar el PR.
+- [x] CI del PR 9 aprobada, capturas revisadas y merge efectuado.
 - [ ] Continuar el catálogo hasta 40 dibujos y verificar tamaños de regiones táctiles.
+
+## Etapa 7 — cuarto lote y catálogo objetivo (PR 10)
+
+- [x] Se agregaron 11 dibujos infantiles originales: Elefantito, Pececito, Buhito, Uvas, Cerezas, Limón, Estación de bomberos, Tiendita, Bicicleta, Camioncito y Helicóptero.
+- [x] Catálogo total: 40 ilustraciones, diez por categoría, con 361 regiones coloreables offline.
+- [x] Integración de metadata y pruebas de catálogo, pintura, navegación y emulador, sin permisos ni dependencias adicionales.
+- [ ] CI final con APK Android y pruebas de todas las pantallas y persistencia.
+- [ ] Revisión visual de las nuevas capturas y confirmación en dispositivo antes de dar por terminada la etapa 7.
+
+La firma estable para actualizar entre versiones sin pérdida de datos continúa pendiente para etapa 9/10.

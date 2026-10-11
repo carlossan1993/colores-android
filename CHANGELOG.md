@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0 — Catálogo inicial de 40 dibujos (en revisión)
+
+- 11 nuevas ilustraciones originales completan 10 dibujos por categoría: animales, frutas, lugares y vehículos.
+- Total 40 dibujos y 361 regiones independientes de relleno offline, sin permisos nuevos ni cambios de persistencia.
+- Pruebas automáticas reforzadas para exactamente 10 dibujos por categoría y toques reales en cuatro dibujos nuevos.
+- La etapa 7 se cerrará solo tras validar CI, capturas y experiencia en dispositivo.
+
+
 ## 0.9.0 — Tercer lote de dibujos (en revisión)
 
 - Ocho nuevos dibujos originales: Zorrito, Leoncito, Pera, Sandía, Biblioteca, Hospital, Autobús y Cohete.

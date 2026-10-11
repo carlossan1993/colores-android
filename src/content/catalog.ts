@@ -28,6 +28,17 @@ import art25 from '../../assets/drawings/places/library_001.json';
 import art26 from '../../assets/drawings/places/hospital_001.json';
 import art27 from '../../assets/drawings/vehicles/bus_001.json';
 import art28 from '../../assets/drawings/vehicles/rocket_001.json';
+import art29 from '../../assets/drawings/animals/elephant_001.json';
+import art30 from '../../assets/drawings/animals/fish_001.json';
+import art31 from '../../assets/drawings/animals/owl_001.json';
+import art32 from '../../assets/drawings/fruits/grapes_001.json';
+import art33 from '../../assets/drawings/fruits/cherries_001.json';
+import art34 from '../../assets/drawings/fruits/lemon_001.json';
+import art35 from '../../assets/drawings/places/firestation_001.json';
+import art36 from '../../assets/drawings/places/shop_001.json';
+import art37 from '../../assets/drawings/vehicles/bicycle_001.json';
+import art38 from '../../assets/drawings/vehicles/truck_001.json';
+import art39 from '../../assets/drawings/vehicles/helicopter_001.json';
 import type { DrawingAccess, DrawingCategory, DrawingDefinition, SvgRegion } from './types';
 
 function define(metadata: DrawingAccess & Pick<DrawingDefinition, 'id' | 'name' | 'category' | 'asset'>, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {
@@ -64,6 +75,17 @@ export const catalog: readonly DrawingDefinition[] = [
   define({ id: 'hospital_001', name: 'Hospital', category: 'places', access: 'free', productId: null, asset: 'places/hospital_001' }, art26),
   define({ id: 'bus_001', name: 'Autobús', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/bus_001' }, art27),
   define({ id: 'rocket_001', name: 'Cohete', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/rocket_001' }, art28),
+  define({ id: 'elephant_001', name: 'Elefantito', category: 'animals', access: 'free', productId: null, asset: 'animals/elephant_001' }, art29),
+  define({ id: 'fish_001', name: 'Pececito', category: 'animals', access: 'free', productId: null, asset: 'animals/fish_001' }, art30),
+  define({ id: 'owl_001', name: 'Buhito', category: 'animals', access: 'free', productId: null, asset: 'animals/owl_001' }, art31),
+  define({ id: 'grapes_001', name: 'Uvas', category: 'fruits', access: 'free', productId: null, asset: 'fruits/grapes_001' }, art32),
+  define({ id: 'cherries_001', name: 'Cerezas', category: 'fruits', access: 'free', productId: null, asset: 'fruits/cherries_001' }, art33),
+  define({ id: 'lemon_001', name: 'Limón', category: 'fruits', access: 'free', productId: null, asset: 'fruits/lemon_001' }, art34),
+  define({ id: 'firestation_001', name: 'Estación de bomberos', category: 'places', access: 'free', productId: null, asset: 'places/firestation_001' }, art35),
+  define({ id: 'shop_001', name: 'Tiendita', category: 'places', access: 'free', productId: null, asset: 'places/shop_001' }, art36),
+  define({ id: 'bicycle_001', name: 'Bicicleta', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/bicycle_001' }, art37),
+  define({ id: 'truck_001', name: 'Camioncito', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/truck_001' }, art38),
+  define({ id: 'helicopter_001', name: 'Helicóptero', category: 'vehicles', access: 'free', productId: null, asset: 'vehicles/helicopter_001' }, art39),
 ];
 
 export const categories: readonly {
