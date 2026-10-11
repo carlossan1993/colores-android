@@ -1,0 +1,45 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "tail",
+      "name": "Cola",
+      "path": "M 150 164 L 102 93 L 157 93 L 223 169 Z"
+    },
+    {
+      "id": "body",
+      "name": "Fuselaje",
+      "path": "M 146 178 C 150 150 196 142 255 145 L 451 145 C 505 145 543 163 551 176 C 547 194 513 205 463 205 L 222 205 C 177 205 147 197 146 178 Z"
+    },
+    {
+      "id": "wing_back",
+      "name": "Ala trasera",
+      "path": "M 204 161 L 254 107 L 296 107 L 278 170 Z"
+    },
+    {
+      "id": "wing",
+      "name": "Ala",
+      "path": "M 315 189 L 376 266 L 435 266 L 402 190 Z"
+    },
+    {
+      "id": "cockpit",
+      "name": "Cabina",
+      "path": "M 456 151 Q 497 150 518 173 L 467 178 Z"
+    },
+    {
+      "id": "window_one",
+      "name": "Ventanita uno",
+      "path": "M 252 159 L 283 159 L 283 181 L 252 181 Z"
+    },
+    {
+      "id": "window_two",
+      "name": "Ventanita dos",
+      "path": "M 309 159 L 340 159 L 340 181 L 309 181 Z"
+    },
+    {
+      "id": "window_three",
+      "name": "Ventanita tres",
+      "path": "M 366 159 L 397 159 L 397 181 L 366 181 Z"
+    }
+  ]
+}

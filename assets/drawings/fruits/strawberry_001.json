@@ -1,0 +1,45 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "fruit",
+      "name": "Fresa",
+      "path": "M 207 103 C 225 66 286 78 319 98 C 356 76 410 69 432 109 C 443 171 379 264 319 285 C 257 268 192 170 207 103 Z"
+    },
+    {
+      "id": "leaf_left",
+      "name": "Hoja izquierda",
+      "path": "M 318 97 C 291 67 256 56 234 68 C 251 96 277 118 315 128 Z"
+    },
+    {
+      "id": "leaf_middle",
+      "name": "Hoja central",
+      "path": "M 313 113 C 289 74 301 42 321 33 C 345 56 345 86 333 117 Z"
+    },
+    {
+      "id": "leaf_right",
+      "name": "Hoja derecha",
+      "path": "M 330 98 C 355 69 389 61 406 72 C 395 103 367 120 326 128 Z"
+    },
+    {
+      "id": "stem",
+      "name": "Tallo",
+      "path": "M 309 45 L 310 17 L 330 17 L 331 45 Z"
+    },
+    {
+      "id": "seed_left",
+      "name": "Semillita izquierda",
+      "path": "M 261 166 Q 271 154 282 166 Q 274 184 261 166 Z"
+    },
+    {
+      "id": "seed_right",
+      "name": "Semillita derecha",
+      "path": "M 353 171 Q 365 159 376 172 Q 366 189 353 171 Z"
+    },
+    {
+      "id": "seed_bottom",
+      "name": "Semillita inferior",
+      "path": "M 312 227 Q 322 215 334 227 Q 323 246 312 227 Z"
+    }
+  ]
+}

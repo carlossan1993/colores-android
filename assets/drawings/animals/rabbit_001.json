@@ -1,0 +1,65 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "ear_left",
+      "name": "Oreja izquierda",
+      "path": "M 248 108 C 230 66 232 17 265 16 C 291 17 290 71 283 118 Z"
+    },
+    {
+      "id": "ear_right",
+      "name": "Oreja derecha",
+      "path": "M 330 113 C 320 67 337 16 366 20 C 392 23 380 79 361 126 Z"
+    },
+    {
+      "id": "ear_inner_left",
+      "name": "Interior de oreja izquierda",
+      "path": "M 259 93 C 251 57 255 37 265 33 C 279 34 274 67 272 101 Z"
+    },
+    {
+      "id": "ear_inner_right",
+      "name": "Interior de oreja derecha",
+      "path": "M 345 103 C 338 68 348 40 362 37 C 373 44 357 76 355 108 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 253 196 C 229 220 232 268 271 281 L 393 281 C 426 263 414 212 374 192 Z"
+    },
+    {
+      "id": "foot_left",
+      "name": "Patita izquierda",
+      "path": "M 252 260 Q 227 276 243 287 L 318 287 Q 331 275 301 258 Z"
+    },
+    {
+      "id": "foot_right",
+      "name": "Patita derecha",
+      "path": "M 360 258 Q 329 279 350 288 L 420 288 Q 437 275 397 257 Z"
+    },
+    {
+      "id": "head",
+      "name": "Cabeza",
+      "path": "M 240 166 C 228 117 254 97 319 97 C 380 96 408 128 397 182 C 387 225 348 243 313 239 C 273 236 242 212 240 166 Z"
+    },
+    {
+      "id": "eye_left",
+      "name": "Ojo izquierdo",
+      "path": "M 278 169 A 11 11 0 1 0 300 169 A 11 11 0 1 0 278 169 Z"
+    },
+    {
+      "id": "eye_right",
+      "name": "Ojo derecho",
+      "path": "M 343 169 A 11 11 0 1 0 365 169 A 11 11 0 1 0 343 169 Z"
+    },
+    {
+      "id": "nose",
+      "name": "Nariz",
+      "path": "M 308 191 L 332 191 L 320 205 Z"
+    },
+    {
+      "id": "belly",
+      "name": "Barriguita",
+      "path": "M 287 246 Q 320 229 355 246 L 362 274 L 281 274 Z"
+    }
+  ]
+}
