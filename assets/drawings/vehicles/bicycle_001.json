@@ -1,0 +1,60 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "wheel_left",
+      "name": "Rueda izquierda",
+      "path": "M 144 212 A 69 69 0 1 0 282 212 A 69 69 0 1 0 144 212 Z"
+    },
+    {
+      "id": "wheel_right",
+      "name": "Rueda derecha",
+      "path": "M 372 212 A 69 69 0 1 0 510 212 A 69 69 0 1 0 372 212 Z"
+    },
+    {
+      "id": "frame_left",
+      "name": "Marco izquierdo",
+      "path": "M 269 122 L 321 217 L 307 226 L 253 136 Z"
+    },
+    {
+      "id": "frame_right",
+      "name": "Marco derecho",
+      "path": "M 315 215 L 388 135 L 400 145 L 330 226 Z"
+    },
+    {
+      "id": "frame_bottom",
+      "name": "Tubo inferior",
+      "path": "M 210 209 L 318 209 L 318 225 L 210 225 Z"
+    },
+    {
+      "id": "frame_upper",
+      "name": "Barra superior",
+      "path": "M 264 125 L 389 126 L 388 144 L 265 142 Z"
+    },
+    {
+      "id": "fork",
+      "name": "Horquilla",
+      "path": "M 389 126 L 452 209 L 440 223 L 377 144 Z"
+    },
+    {
+      "id": "handlebar",
+      "name": "Manubrio",
+      "path": "M 382 126 L 402 101 L 431 101 L 431 116 L 409 116 L 396 139 Z"
+    },
+    {
+      "id": "seat",
+      "name": "Asiento",
+      "path": "M 231 105 L 299 105 L 297 121 L 233 121 Z"
+    },
+    {
+      "id": "seat_post",
+      "name": "Soporte del asiento",
+      "path": "M 265 117 L 276 117 L 288 162 L 278 165 Z"
+    },
+    {
+      "id": "pedal",
+      "name": "Pedal",
+      "path": "M 303 218 A 17 17 0 1 0 337 218 A 17 17 0 1 0 303 218 Z"
+    }
+  ]
+}

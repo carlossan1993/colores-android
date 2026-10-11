@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="tail" d="M 426 178 L 516 105 Q 505 170 523 236 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="fin_top" d="M 273 118 L 308 50 L 354 120 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="fin_bottom" d="M 302 221 L 338 267 L 370 218 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="body" d="M 154 170 C 220 80 379 93 454 170 C 371 265 212 261 154 170 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="face" d="M 158 170 C 194 135 228 121 257 118 L 267 226 C 217 220 184 197 158 170 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="stripe" d="M 326 115 C 337 149 338 197 326 230 L 355 224 Q 369 168 353 120 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="eye" d="M 211 165 A 11 11 0 1 0 233 165 A 11 11 0 1 0 211 165 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="mouth" d="M 166 188 Q 181 176 195 187 L 195 199 Q 180 190 166 199 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="bubble_small" d="M 110 92 A 15 15 0 1 0 140 92 A 15 15 0 1 0 110 92 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="bubble_large" d="M 73 53 A 21 21 0 1 0 115 53 A 21 21 0 1 0 73 53 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

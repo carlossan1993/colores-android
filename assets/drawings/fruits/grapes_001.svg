@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300">
+  <path id="stem" d="M 314 82 L 322 27 L 342 29 L 333 87 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="leaf" d="M 329 68 C 366 23 415 30 434 50 C 411 93 371 96 329 68 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_top" d="M 287 102 A 33 33 0 1 0 353 102 A 33 33 0 1 0 287 102 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_upper_left" d="M 250 142 A 32 32 0 1 0 314 142 A 32 32 0 1 0 250 142 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_upper_right" d="M 326 142 A 32 32 0 1 0 390 142 A 32 32 0 1 0 326 142 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_middle_left" d="M 234 181 A 32 32 0 1 0 298 181 A 32 32 0 1 0 234 181 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_middle" d="M 288 182 A 32 32 0 1 0 352 182 A 32 32 0 1 0 288 182 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_middle_right" d="M 342 181 A 32 32 0 1 0 406 181 A 32 32 0 1 0 342 181 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_lower_left" d="M 258 222 A 32 32 0 1 0 322 222 A 32 32 0 1 0 258 222 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_lower_right" d="M 318 222 A 32 32 0 1 0 382 222 A 32 32 0 1 0 318 222 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+  <path id="grape_bottom" d="M 291 256 A 29 29 0 1 0 349 256 A 29 29 0 1 0 291 256 Z" fill="#FFFFFF" stroke="#202020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,70 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "foot_left",
+      "name": "Patita izquierda",
+      "path": "M 277 251 L 309 251 L 310 278 L 276 278 Z"
+    },
+    {
+      "id": "foot_right",
+      "name": "Patita derecha",
+      "path": "M 342 251 L 374 251 L 376 278 L 342 278 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 242 102 Q 273 72 320 83 Q 365 72 399 102 L 417 208 Q 412 271 320 271 Q 225 268 223 208 Z"
+    },
+    {
+      "id": "ear_left",
+      "name": "Oreja izquierda",
+      "path": "M 247 119 L 236 48 L 301 91 Z"
+    },
+    {
+      "id": "ear_right",
+      "name": "Oreja derecha",
+      "path": "M 339 91 L 403 48 L 392 119 Z"
+    },
+    {
+      "id": "wing_left",
+      "name": "Alita izquierda",
+      "path": "M 238 166 Q 202 190 236 239 L 269 246 L 266 179 Z"
+    },
+    {
+      "id": "wing_right",
+      "name": "Alita derecha",
+      "path": "M 403 166 Q 438 190 405 240 L 374 245 L 375 180 Z"
+    },
+    {
+      "id": "belly",
+      "name": "Pancita",
+      "path": "M 281 189 Q 320 166 359 189 L 370 246 Q 320 263 272 246 Z"
+    },
+    {
+      "id": "eye_left",
+      "name": "Ojo izquierdo",
+      "path": "M 252 147 A 29 29 0 1 0 310 147 A 29 29 0 1 0 252 147 Z"
+    },
+    {
+      "id": "eye_right",
+      "name": "Ojo derecho",
+      "path": "M 330 147 A 29 29 0 1 0 388 147 A 29 29 0 1 0 330 147 Z"
+    },
+    {
+      "id": "pupil_left",
+      "name": "Pupila izquierda",
+      "path": "M 273 147 A 11 11 0 1 0 295 147 A 11 11 0 1 0 273 147 Z"
+    },
+    {
+      "id": "pupil_right",
+      "name": "Pupila derecha",
+      "path": "M 345 147 A 11 11 0 1 0 367 147 A 11 11 0 1 0 345 147 Z"
+    },
+    {
+      "id": "beak",
+      "name": "Piquito",
+      "path": "M 307 172 L 333 172 L 320 195 Z"
+    }
+  ]
+}

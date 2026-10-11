@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "wall",
+      "name": "Edificio",
+      "path": "M 149 107 L 499 107 L 499 269 L 149 269 Z"
+    },
+    {
+      "id": "roof",
+      "name": "Techo",
+      "path": "M 123 90 L 524 90 L 524 111 L 123 111 Z"
+    },
+    {
+      "id": "sign",
+      "name": "Letrero",
+      "path": "M 255 119 L 392 119 L 392 147 L 255 147 Z"
+    },
+    {
+      "id": "garage_left",
+      "name": "Portón izquierdo",
+      "path": "M 188 168 L 316 168 L 316 269 L 188 269 Z"
+    },
+    {
+      "id": "garage_right",
+      "name": "Portón derecho",
+      "path": "M 332 168 L 459 168 L 459 269 L 332 269 Z"
+    },
+    {
+      "id": "window_left",
+      "name": "Ventana izquierda",
+      "path": "M 184 123 L 234 123 L 234 153 L 184 153 Z"
+    },
+    {
+      "id": "window_right",
+      "name": "Ventana derecha",
+      "path": "M 418 123 L 468 123 L 468 153 L 418 153 Z"
+    },
+    {
+      "id": "bell",
+      "name": "Campana",
+      "path": "M 316 44 Q 325 26 334 44 L 343 64 L 307 64 Z"
+    },
+    {
+      "id": "badge",
+      "name": "Escudo",
+      "path": "M 313 123 L 334 123 L 334 135 L 323 145 L 313 135 Z"
+    },
+    {
+      "id": "path",
+      "name": "Camino",
+      "path": "M 176 269 L 471 269 L 499 288 L 146 288 Z"
+    }
+  ]
+}

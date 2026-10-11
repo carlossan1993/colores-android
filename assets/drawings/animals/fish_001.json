@@ -1,0 +1,55 @@
+{
+  "viewBox": "0 0 640 300",
+  "regions": [
+    {
+      "id": "tail",
+      "name": "Cola",
+      "path": "M 426 178 L 516 105 Q 505 170 523 236 Z"
+    },
+    {
+      "id": "fin_top",
+      "name": "Aleta superior",
+      "path": "M 273 118 L 308 50 L 354 120 Z"
+    },
+    {
+      "id": "fin_bottom",
+      "name": "Aleta inferior",
+      "path": "M 302 221 L 338 267 L 370 218 Z"
+    },
+    {
+      "id": "body",
+      "name": "Cuerpo",
+      "path": "M 154 170 C 220 80 379 93 454 170 C 371 265 212 261 154 170 Z"
+    },
+    {
+      "id": "face",
+      "name": "Carita",
+      "path": "M 158 170 C 194 135 228 121 257 118 L 267 226 C 217 220 184 197 158 170 Z"
+    },
+    {
+      "id": "stripe",
+      "name": "Rayita",
+      "path": "M 326 115 C 337 149 338 197 326 230 L 355 224 Q 369 168 353 120 Z"
+    },
+    {
+      "id": "eye",
+      "name": "Ojito",
+      "path": "M 211 165 A 11 11 0 1 0 233 165 A 11 11 0 1 0 211 165 Z"
+    },
+    {
+      "id": "mouth",
+      "name": "Boquita",
+      "path": "M 166 188 Q 181 176 195 187 L 195 199 Q 180 190 166 199 Z"
+    },
+    {
+      "id": "bubble_small",
+      "name": "Burbujita pequeña",
+      "path": "M 110 92 A 15 15 0 1 0 140 92 A 15 15 0 1 0 110 92 Z"
+    },
+    {
+      "id": "bubble_large",
+      "name": "Burbujita grande",
+      "path": "M 73 53 A 21 21 0 1 0 115 53 A 21 21 0 1 0 73 53 Z"
+    }
+  ]
+}
