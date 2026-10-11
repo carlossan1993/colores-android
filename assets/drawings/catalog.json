@@ -1,0 +1,43 @@
+[
+  {
+    "id": "cat_001",
+    "name": "Gatito",
+    "category": "animals",
+    "access": "free",
+    "productId": null,
+    "asset": "animals/cat_001"
+  },
+  {
+    "id": "apple_001",
+    "name": "Manzana",
+    "category": "fruits",
+    "access": "free",
+    "productId": null,
+    "asset": "fruits/apple_001"
+  },
+  {
+    "id": "house_001",
+    "name": "Mi casita",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/house_001",
+    "svgTitle": "Mi casita: dibujo original de prueba con ocho regiones"
+  },
+  {
+    "id": "castle_001",
+    "name": "Castillo",
+    "category": "places",
+    "access": "free",
+    "productId": null,
+    "asset": "places/castle_001"
+  },
+  {
+    "id": "car_001",
+    "name": "Auto",
+    "category": "vehicles",
+    "access": "free",
+    "productId": null,
+    "asset": "vehicles/car_001"
+  }
+]
