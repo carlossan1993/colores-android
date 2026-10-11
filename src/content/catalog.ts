@@ -4,9 +4,9 @@ import art1 from '../../assets/drawings/fruits/apple_001.json';
 import art2 from '../../assets/drawings/places/house_001.json';
 import art3 from '../../assets/drawings/places/castle_001.json';
 import art4 from '../../assets/drawings/vehicles/car_001.json';
-import type { DrawingCategory, DrawingDefinition, DrawingMetadata, SvgRegion } from './types';
+import type { DrawingAccess, DrawingCategory, DrawingDefinition, SvgRegion } from './types';
 
-function define(metadata: DrawingMetadata, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {
+function define(metadata: DrawingAccess & Pick<DrawingDefinition, 'id' | 'name' | 'category' | 'asset'>, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {
   return { ...metadata, ...geometry, regionIds: geometry.regions.map(region => region.id) };
 }
 
