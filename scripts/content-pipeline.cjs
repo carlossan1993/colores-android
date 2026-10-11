@@ -48,7 +48,7 @@ function generateCatalog(items) {
     ...items.map((item, i) => "import art" + i + " from '../../assets/drawings/" + item.asset + ".json';"),
     "import type { DrawingAccess, DrawingCategory, DrawingDefinition, SvgRegion } from './types';",
     '',
-    'function define(metadata: DrawingAccess & Pick<DrawingDefinition, 'id' | 'name' | 'category' | 'asset'>, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {',
+    "function define(metadata: DrawingAccess & Pick<DrawingDefinition, 'id' | 'name' | 'category' | 'asset'>, geometry: { viewBox: string; regions: readonly SvgRegion[] }): DrawingDefinition {",
     '  return { ...metadata, ...geometry, regionIds: geometry.regions.map(region => region.id) };',
     '}',
     '',
