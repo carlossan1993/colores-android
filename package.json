@@ -9,8 +9,10 @@
     "test": "jest --runInBand",
     "typecheck": "tsc --noEmit",
     "check:foundation": "node scripts/check-foundation.cjs",
-    "verify": "npm run typecheck && npm run lint && npm test && npm run check:foundation && npm run check:drawing",
-    "check:drawing": "node scripts/check-drawing.cjs"
+    "verify": "npm run typecheck && npm run lint && npm test && npm run test:content && npm run check:foundation && npm run check:drawing",
+    "check:drawing": "node scripts/check-drawing.cjs",
+    "content:generate": "node scripts/content-pipeline.cjs --write",
+    "test:content": "node --test scripts/content-pipeline.test.cjs"
   },
   "dependencies": {
     "react": "19.2.3",
