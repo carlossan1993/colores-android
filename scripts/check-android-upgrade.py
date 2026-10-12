@@ -1,0 +1,208 @@
+"""CI: actualiza un APK estable sin desinstalar ni perder dibujos offline."""
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+import time
+import xml.etree.ElementTree as ET
+
+from android_ui_helpers import pixel_launcher_close_button
+
+PACKAGE = "com.carlossan1993.colores.preview"
+ACTIVITY = f"{PACKAGE}/com.carlossan1993.colores.MainActivity"
+OUTPUT = Path("upgrade-artifacts")
+OUTPUT.mkdir(exist_ok=True)
+TOOLS = Path(os.environ["ANDROID_HOME"]) / "build-tools" / "36.0.0"
+
+
+def command(*args):
+    return subprocess.check_output([str(a) for a in args], text=True, timeout=65).strip()
+
+
+def adb(*args):
+    return command("adb", *args)
+
+
+def shell(*args):
+    return adb("shell", *args)
+
+
+def apk_info(path):
+    badging = command(TOOLS / "aapt2", "dump", "badging", path)
+    m = re.search(r"package:\s+name='([^']+)'\s+versionCode='(\d+)'", badging)
+    assert m is not None, f"Missing APK metadata: {path}"
+    command(TOOLS / "apksigner", "verify", "--verbose", path)
+    cert = command(TOOLS / "apksigner", "verify", "--print-certs", path)
+    s = re.search(r"Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)", cert)
+    assert s is not None, f"Missing signer: {path}"
+    return m.group(1), int(m.group(2)), s.group(1).lower()
+
+
+def snapshot(label):
+    for attempt in range(3):
+        try:
+            shell("uiautomator", "dump", "/sdcard/colores-upgrade.xml")
+            raw = subprocess.check_output(["adb", "exec-out", "cat", "/sdcard/colores-upgrade.xml"], timeout=60)
+            (OUTPUT / f"{label}.xml").write_bytes(raw)
+            return ET.fromstring(raw)
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired, ET.ParseError):
+            if attempt == 2:
+                raise
+            time.sleep(0.5)
+    raise AssertionError("UI snapshot unavailable")
+
+
+def find(root, test_id):
+    for node in root.iter("node"):
+        if node.attrib.get("resource-id", "").split("/")[-1] == test_id:
+            return node
+    raise AssertionError(f"Missing control {test_id}")
+
+
+def bounds(node):
+    return tuple(map(int, re.findall(r"\d+", node.attrib["bounds"])))
+
+
+def tap(node):
+    a, b, c, d = bounds(node)
+    shell("input", "tap", (a + c) // 2, (b + d) // 2)
+
+
+def press(test_id):
+    recovered = 0
+    for _ in range(12):
+        root = snapshot(f"press-{test_id}")
+        popup = pixel_launcher_close_button(root)
+        if popup is not None:
+            assert recovered < 2, "System launcher repeatedly not responding"
+            tap(popup)
+            recovered += 1
+            time.sleep(0.6)
+            shell("am", "start", "-W", "-n", ACTIVITY)
+            continue
+        try:
+            tap(find(root, test_id))
+            time.sleep(0.25)
+            return
+        except AssertionError:
+            time.sleep(0.3)
+    raise AssertionError(f"Cannot press {test_id}")
+
+
+def progress(expected, label):
+    for _ in range(6):
+        root = snapshot(label)
+        got = find(root, "drawing-progress").attrib.get("text")
+        if got == f"{expected} / 8":
+            return root
+        time.sleep(0.35)
+    raise AssertionError(f"{label}: expected {expected}/8, got {got!r}")
+
+
+def saved(label):
+    for _ in range(8):
+        root = snapshot(label)
+        if find(root, "storage-status").attrib.get("text") == "Guardado":
+            return
+        time.sleep(0.25)
+    raise AssertionError(f"{label}: data not saved")
+
+
+def paint(x, y, label):
+    root = snapshot(f"{label}-before")
+    a, b, c, d = bounds(find(root, "drawing-canvas"))
+    width, height = c - a - 4, d - b - 4
+    scale = min(width / 640, height / 300)
+    shell("input", "tap", round(a + 2 + (width - 640 * scale) / 2 + x * scale),
+          round(b + 2 + (height - 300 * scale) / 2 + y * scale))
+    saved(label)
+
+
+def open_house():
+    press("start-coloring")
+    press("category-places")
+    press("drawing-house_001")
+
+
+def capture(label):
+    (OUTPUT / f"{label}.png").write_bytes(
+        subprocess.check_output(["adb", "exec-out", "screencap", "-p"], timeout=60))
+
+
+def test_upgrade(old_apk, new_apk):
+    old, new = apk_info(old_apk), apk_info(new_apk)
+    assert old[0] == new[0] == PACKAGE, "Package identifiers differ"
+    assert old[2] == new[2], "Certificates differ: upgrade would erase app data"
+    assert new[1] > old[1], "versionCode did not increase"
+    print(f"Same signer, versionCode {old[1]} -> {new[1]}.", flush=True)
+
+    adb("install", old_apk)
+    shell("pm", "clear", PACKAGE)  # Isolate the freshly installed baseline only.
+    shell("settings", "put", "system", "accelerometer_rotation", 0)
+    shell("settings", "put", "system", "user_rotation", 1)
+    shell("wm", "size", "360x640")
+    shell("wm", "density", 160)
+    shell("cmd", "connectivity", "airplane-mode", "enable")
+    shell("svc", "wifi", "disable")
+    shell("svc", "data", "disable")
+    assert shell("settings", "get", "global", "airplane_mode_on") == "1"
+    shell("am", "start", "-W", "-n", ACTIVITY)
+    open_house()
+    root = progress(0, "baseline-empty")
+    assert find(root, "sound-toggle").attrib.get("checked") == "true"
+    press("sound-toggle")
+    assert find(snapshot("baseline-muted"), "sound-toggle").attrib.get("checked") == "false"
+    press("color-66BE96")
+    paint(270, 75, "baseline-house-roof")
+    press("color-62AFE2")
+    paint(160, 250, "baseline-house-wall")
+    progress(2, "baseline-house")
+    press("drawing-next")
+    press("color-EF6B6B")
+    paint(320, 40, "baseline-castle")
+    progress(1, "baseline-castle")
+    capture("before-upgrade")
+
+    shell("am", "force-stop", PACKAGE)
+    install_result = adb("install", "-r", new_apk)  # Never uninstall or clear updated data.
+    assert "Success" in install_result, f"Android refused upgrade: {install_result}"
+    print("adb install -r succeeded: no uninstall, no pm clear.", flush=True)
+    shell("am", "start", "-W", "-n", ACTIVITY)
+    open_house()
+    root = progress(2, "updated-house")
+    assert find(root, "sound-toggle").attrib.get("checked") == "false", "Mute lost on upgrade"
+    assert find(root, "color-EF6B6B").attrib.get("selected") == "true", "Palette preference lost"
+    assert find(root, "action-undo").attrib.get("enabled") == "false", "Undo should not persist"
+    capture("after-upgrade-house")
+    press("drawing-next")
+    progress(1, "updated-castle")
+    capture("after-upgrade-castle")
+    (OUTPUT / "results.json").write_text(json.dumps({
+        "old_version_code": old[1], "new_version_code": new[1],
+        "certificate_sha256": old[2], "offline_upgrade": "passed",
+        "house_paint": "2 / 8", "castle_paint": "1 / 8",
+        "muted_preserved": True, "palette_preserved": True
+    }, indent=2) + "\n")
+    print("PASS: upgrade preserves painted drawings, mute and palette offline.", flush=True)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        raise SystemExit("Usage: python3 check-android-upgrade.py old.apk new.apk")
+    try:
+        test_upgrade(sys.argv[1], sys.argv[2])
+    except Exception:
+        try:
+            capture("failure")
+            (OUTPUT / "logcat.txt").write_text(adb("logcat", "-d", "-t", "1000"))
+        except Exception:
+            pass
+        raise
+    finally:
+        try:
+            shell("wm", "size", "reset")
+            shell("wm", "density", "reset")
+        except Exception:
+            pass
