@@ -55,7 +55,7 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
           </Text>
         </View>
         <Text testID="settings-version" style={styles.version}>
-          COLORES · versión 0.13.0 (prueba)
+          COLORES · versión 0.14.0 (prueba)
         </Text>
       </ScrollView>
     </SafeAreaView>

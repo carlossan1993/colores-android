@@ -28,6 +28,8 @@ jobs:
       - run: npm run verify
       - name: Pruebas del manejador ANR del emulador
         run: python3 -m unittest discover -s scripts -p 'test_android_ui_helpers.py'
+      - name: Validar sintaxis del test de actualización offline
+        run: python3 -m py_compile scripts/check-android-upgrade.py
 
   apk:
     name: APK Android offline (ARM64 y x86_64)

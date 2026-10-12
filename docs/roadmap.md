@@ -165,7 +165,16 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 
 - [x] Preparado flujo manual y separado de Actions, usando GitHub Secrets, con certificado SHA-256 comprobado.
 - [x] Protección contra subir archivos PKCS12 y pasos para generar/resguardar la clave sin desarrollo local.
-- [ ] CI en PR y revisión del flujo antes de integrar.
-- [ ] Usuario crea y custodia una única clave estable y configura dos secretos en GitHub. Ningún secreto se envía al chat.
-- [ ] Primer APK firmado, instalación y validación física. No borrar el APK anterior sin decidir qué hacer con su progreso.
+- [x] PR 15 integrado después de aprobar las tres comprobaciones de CI.
+- [x] El usuario creó y respaldó el keystore, verificó la contraseña y registró dos secretos en GitHub; ningún secreto se compartió.
+- [x] El primer APK firmado 0.13.0 se generó y certificó (run 38292552744); el usuario confirmó que lo probó y se ve bien.
 - [ ] Segundo APK con versión superior y la misma firma; confirmar actualización y conservación de datos.
+
+## Etapa 9 — actualización real de versión (PR 16)
+
+- [x] Preparada versión 0.14.0 (versionCode 14), sin alterar el motor, identificador preview ni datos guardados.
+- [x] Preparada comparación de firmas/códigos y prueba automatizada de actualización offline desde una versión firmada 0.13.0 mediante el workflow estable.
+- [ ] Aprobar las tres comprobaciones de PR antes de integrarlo.
+- [ ] Generar 0.14.0 con la misma clave estable y ejecutar prueba de upgrade desde run 38292552744.
+- [ ] Instalar 0.14.0 **sobre** 0.13.0 en teléfono sin desinstalar y confirmar dibujos, preferencias y sonido.
+- [ ] Validar tablet y casos táctiles pendientes antes de declarar finalizada etapa 9.

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.14.0 — Validación de actualización firmada (PR 16)
+
+- `versionCode` Android 14, versión visible 0.14.0; se mantiene el identificador preview y el esquema del progreso guardado.
+- Prueba de actualización offline de un APK previamente firmado con la misma clave, con comparación de certificados y versiones antes de instalar.
+- No se modifica el motor de coloreado ni se añaden permisos o conexión de red.
+- La actualización real en teléfono, sin desinstalar, queda pendiente de confirmación del usuario.
+
+
 ## QA · Preparación de firma estable (PR 15)
 
 - Flujo manual de APK preview con certificado persistente y secretos protegidos de GitHub.
