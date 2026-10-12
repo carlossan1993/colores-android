@@ -12,8 +12,8 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
 | 7. Catálogo inicial | 40 dibujos, 10 por categoría | Contenido completado; PR 10 integrado con CI y capturas aprobadas; queda validación integral en dispositivo físico |
-| 8. UX final | Sonidos, celebración y estados | En desarrollo: celebración y silencio integrados; ajustes y aviso de privacidad en revisión |
-| 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
+| 8. UX final | Sonidos, celebración y estados | Funcionalidades integradas; pendiente validación física del audio y experiencia infantil |
+| 9. QA | Dispositivos, rendimiento, offline y actualizaciones | En desarrollo: matriz documentada y pruebas de integridad de 40 dibujos |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
 | 11. Testing Play | Prueba exigida por la cuenta de publicación | Pendiente |
 | 12. Publicación | App aprobada en Google Play | Pendiente |
@@ -149,5 +149,14 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [x] Permitir activar/desactivar sonido con la misma preferencia persistente.
 - [x] Mostrar aviso de privacidad dentro de la aplicación, accesible sin Internet, y versión visible.
 - [x] Cubrir navegación, cambios de sonido y retorno al coloreado en pruebas.
-- [ ] CI con APK y emulador, capturas en móvil y tablet, sin regresiones offline.
+- [x] CI del PR 13 aprobó código, APK y emulador offline; capturas de Ajustes y sonido revisadas, integrado a main.
 - [ ] Publicar política de privacidad completa en URL pública antes de Google Play; confirmar datos del desarrollador y contacto.
+
+## Etapa 9 — QA e integridad (PR 14)
+
+- [x] [Matriz QA con criterios de cierre y pendientes reales](qa-stage9.md).
+- [x] Pruebas de serialización de 40 dibujos completos, aislamiento tras reset, pintura repetida y rechazo de regiones/IDs desconocidos.
+- [ ] CI completa de código, APK y seis perfiles Android.
+- [ ] Pruebas manuales de teléfono y tablet, sonido real, regiones pequeñas y sesiones largas.
+- [ ] Actualizar entre APK de versiones distintas con firma estable y sin perder progreso (requiere clave segura y Secrets de GitHub).
+- [ ] Cero errores bloqueadores pendientes antes de cerrar la etapa 9.

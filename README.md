@@ -70,3 +70,7 @@ Al terminar un dibujo, COLORES puede reproducir un tono breve mediante el sistem
 ### Ajustes y privacidad (PR 13, en revisión)
 
 Desde Inicio se accede a una pantalla independiente con el control de sonido, una explicación breve sobre el tratamiento local de datos y la versión de la app. Disponible sin Internet. El aviso interno no sustituye la política de privacidad pública requerida para Google Play, que se completará en la etapa de cumplimiento.
+
+### Etapa 9 — pruebas finales (en desarrollo)
+
+Matriz de validación y bloqueo de firma estable: [docs/qa-stage9.md](docs/qa-stage9.md). Se incluyen pruebas de integridad al guardar y restaurar los 40 dibujos. La etapa no se cerrará hasta confirmar la experiencia en teléfono y tablet reales.
