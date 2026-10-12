@@ -26,6 +26,7 @@ test('catalog covers four categories and adjacent navigation stops at category b
     expect(adjacentDrawing(drawings[0].id, -1)).toBeUndefined();
     expect(adjacentDrawing(drawings[drawings.length - 1].id, 1)).toBeUndefined();
   }
+  expect(backRoute({ screen: 'settings' })).toEqual({ screen: 'home' });
   expect(backRoute({ screen: 'coloring', drawingId: 'house_001' })).toEqual({
     screen: 'gallery',
     category: 'places',
@@ -84,6 +85,18 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
       renderer.root
         .findAllByType(Path)
         .find(node => node.props.testID === 'region-roof')!;
+    await press('settings-open');
+    expect(control('sound-toggle').props.accessibilityState.checked).toBe(true);
+    await press('sound-toggle');
+    expect(control('sound-toggle').props.accessibilityState.checked).toBe(false);
+    expect(
+      renderer.root.findAll(node => node.props.testID === 'settings-privacy').length,
+    ).toBeGreaterThan(0);
+    await press('settings-back');
+    await press('settings-open');
+    expect(control('sound-toggle').props.accessibilityState.checked).toBe(false);
+    await press('sound-toggle');
+    await press('settings-back');
     await press('start-coloring');
     for (const category of ['animals', 'fruits', 'vehicles']) {
       await press(`category-${category}`);

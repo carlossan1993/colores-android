@@ -18,7 +18,7 @@ import type { DrawingCategory } from '../content/types';
 import { drawingsFor } from '../navigation/navigation';
 import { theme } from '../theme/theme';
 
-export function HomeScreen({ onStart }: { onStart: () => void }) {
+export function HomeScreen({ onStart, onSettings }: { onStart: () => void; onSettings: () => void }) {
   return (
     <SafeAreaView style={styles.screen}>
       <ScrollView contentContainerStyle={styles.home}>
@@ -41,6 +41,15 @@ export function HomeScreen({ onStart }: { onStart: () => void }) {
               <Path d="M 10 5 L 27 16 L 10 27 Z" fill="#FFFFFF" />
             </Svg>
             <Text style={styles.startText}>Empezar</Text>
+          </Pressable>
+          <Pressable
+            testID="settings-open"
+            accessibilityRole="button"
+            accessibilityLabel="Abrir ajustes y privacidad"
+            onPress={onSettings}
+            style={styles.settingsButton}
+          >
+            <Text style={styles.settingsButtonText}>Ajustes y privacidad</Text>
           </Pressable>
         </View>
       </ScrollView>
@@ -195,6 +204,16 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   startText: { fontSize: 22, fontWeight: '800', color: '#FFFFFF' },
+  settingsButton: {
+    minHeight: 48,
+    minWidth: 180,
+    paddingHorizontal: 12,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F0EBFC',
+  },
+  settingsButtonText: { fontSize: 14, fontWeight: '700', color: theme.text },
   header: {
     minHeight: 64,
     flexDirection: 'row',

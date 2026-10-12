@@ -66,3 +66,7 @@ Se introduce una felicitación visual breve al terminar un dibujo por primera ve
 ### Sonido de celebración (PR 12, en revisión)
 
 Al terminar un dibujo, COLORES puede reproducir un tono breve mediante el sistema Android. El botón de silencio permite desactivar el sonido en todo momento; su estado se guarda localmente junto con el color elegido, incluso tras reiniciar. No requiere Internet, permisos adicionales ni dependencias de audio externas.
+
+### Ajustes y privacidad (PR 13, en revisión)
+
+Desde Inicio se accede a una pantalla independiente con el control de sonido, una explicación breve sobre el tratamiento local de datos y la versión de la app. Disponible sin Internet. El aviso interno no sustituye la política de privacidad pública requerida para Google Play, que se completará en la etapa de cumplimiento.

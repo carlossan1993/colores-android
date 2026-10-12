@@ -4,6 +4,7 @@ import type { DrawingCategory } from '../content/types';
 
 export type Route =
   | { screen: 'home' }
+  | { screen: 'settings' }
   | { screen: 'categories' }
   | { screen: 'gallery'; category: DrawingCategory }
   | { screen: 'coloring'; drawingId: string };

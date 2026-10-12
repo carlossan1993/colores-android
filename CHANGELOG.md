@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.0 — Ajustes y aviso interno de privacidad (en revisión)
+
+- Pantalla nativa offline de Ajustes y privacidad desde Inicio, con regreso a través del botón y Android Back.
+- Control del sonido compartido con el coloreado y su preferencia guardada sin cambiar el esquema.
+- Aviso breve para familias sobre contenido offline, guardado local y ausencia de anuncios y compras en V1.
+- Versión de la app visible; todavía falta política completa en URL pública y la revisión legal de Google Play.
+- PR 12 integrado tras corregir espacio de paleta en horizontal y aprobar CI completa.
+
+
 ## 0.12.0 — Sonido opcional y control de silencio (en revisión)
 
 - Tono nativo breve al completar por primera vez un dibujo, sujeto al volumen multimedia del teléfono.
