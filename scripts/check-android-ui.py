@@ -12,6 +12,8 @@ import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+from android_ui_helpers import pixel_launcher_close_button
+
 PACKAGE = "com.carlossan1993.colores.preview"
 ACTIVITY = f"{PACKAGE}/com.carlossan1993.colores.MainActivity"
 OUTPUT = Path("ui-artifacts")
@@ -130,28 +132,25 @@ def assert_target(node, size):
 
 
 def press_view(test_id, name, scroll=False):
-    for attempt in range(8):
+    recoveries = 0
+    for attempt in range(10):
         root = snapshot(name)
-        # A cold Android emulator may display a system Pixel Launcher ANR over
-        # our app. Dismiss only that exact system dialog; never mask an app ANR.
-        if test_id == "start-coloring":
-            launcher_anr = any(
-                node.attrib.get("text", "") == "Pixel Launcher isn't responding"
-                for node in root.iter("node")
-            )
-            if launcher_anr:
-                capture(f"{name}-launcher-anr-recovered")
-                print(f"Recovering emulator Pixel Launcher ANR in {name}", flush=True)
-                for node in root.iter("node"):
-                    if node.attrib.get("resource-id") == "android:id/aerr_close":
-                        tap(node)
-                        break
-                else:
-                    raise AssertionError("Pixel Launcher ANR cannot be dismissed")
-                time.sleep(1)
+        # Launcher can ANR before any first action (including opening Settings).
+        # Only dismiss the exact Android system dialog, never a COLORES ANR.
+        system_close = pixel_launcher_close_button(root)
+        if system_close is not None:
+            if recoveries >= 2:
+                raise AssertionError("Pixel Launcher ANR repeated despite recovery")
+            capture(f"{name}-launcher-anr-{recoveries + 1}")
+            print(f"Recovering Pixel Launcher system ANR before {test_id} in {name}", flush=True)
+            tap(system_close)
+            recoveries += 1
+            time.sleep(0.7)
+            if test_id in ("settings-open", "start-coloring"):
+                # Home is the expected screen in both cases; ensure activity resumed.
                 shell("am", "start", "-W", "-n", ACTIVITY)
-                time.sleep(0.5)
-                continue
+                time.sleep(0.4)
+            continue
         try:
             node = find(root, test_id)
             left, top, right, bottom = bounds(node)

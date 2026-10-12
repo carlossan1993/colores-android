@@ -1,5 +1,14 @@
 # Changelog
 
+## QA · Preparación de firma estable (PR 15)
+
+- Flujo manual de APK preview con certificado persistente y secretos protegidos de GitHub.
+- Comprobación del certificado SHA-256 de cada APK frente al almacén PKCS12 configurado.
+- El pipeline normal de CI permanece igual con firma temporal; no se incorporan claves ni contraseñas al repositorio.
+- Guía de custodia del almacén y advertencias sobre incompatibilidad de firmas con APK ya instalados.
+- No cambia la versión ni el funcionamiento de la app; se requiere configuración manual segura para probar el flujo firmado.
+
+
 ## 0.13.0 — Ajustes y aviso interno de privacidad (en revisión)
 
 - Pantalla nativa offline de Ajustes y privacidad desde Inicio, con regreso a través del botón y Android Back.

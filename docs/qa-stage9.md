@@ -31,10 +31,16 @@ La V1 de COLORES es una app **nativa Android horizontal y offline**, con 40 dibu
 
 Los APK preview de GitHub Actions usan actualmente la firma de depuración del entorno de compilación. No se puede asumir que dos ejecuciones distintas utilicen el mismo certificado. **No desinstalar un APK con progreso guardado únicamente para probar otra versión.**
 
-Para comprobar la actualización real sin pérdida de progreso hay que configurar una clave estable y respaldada, cargada mediante GitHub Secrets. Eso requiere una decisión explícita sobre la clave de prueba/release y un procedimiento seguro de custodia; no se debe subir ningún keystore ni contraseña al repositorio público.
+El PR 15 prepara un flujo manual de GitHub Actions con firma estable y verificación del certificado. **Aún no se ha configurado la clave:** se necesita generar y respaldar el almacén PKCS12 y registrar los dos secretos en GitHub. Seguir [firma-estable-preview.md](firma-estable-preview.md). Nunca subir ningún keystore ni contraseña al repositorio público. Con la clave nueva, un APK antiguo de firma temporal podría no ser actualizable sin desinstalar y perder progreso.
 
 La firma de prueba no sustituye la clave de carga del AAB que se utilizará para Google Play con Play App Signing.
 
 ## Criterio de cierre
 
 No dar por aprobada la etapa 9 hasta obtener evidencia manual de al menos un teléfono real y una tablet, verificar audio, revisar las zonas pequeñas, ejecutar actualización entre versiones distintas con firma estable y confirmar que no existen fallos bloqueadores. Registrar cualquier fallo con versión, dispositivo, reproducción y corrección en un PR aislado.
+
+## Incidencia del emulador durante el PR 15
+
+La ejecución #42 aprobó código y APK, pero el emulador mostró la ventana nativa `Pixel Launcher isn't responding` antes del botón Ajustes, interrumpió la navegación y terminó agotando el límite de tiempo del job durante el cierre. La app COLORES estaba visible detrás del aviso; no se confirmó un cierre de la app.
+
+La prueba de interfaz ahora identifica y descarta únicamente esa ventana de Android **antes de cualquier control**, con un máximo de dos recuperaciones por acción, sin ocultar mensajes de error propios de COLORES. Las nuevas pruebas unitarias del helper distinguen ANR del launcher, ANR de la aplicación y pantallas normales.

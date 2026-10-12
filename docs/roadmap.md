@@ -156,7 +156,16 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 
 - [x] [Matriz QA con criterios de cierre y pendientes reales](qa-stage9.md).
 - [x] Pruebas de serialización de 40 dibujos completos, aislamiento tras reset, pintura repetida y rechazo de regiones/IDs desconocidos.
-- [ ] CI completa de código, APK y seis perfiles Android.
+- [x] PR 14 integrado tras aprobar 36 pruebas Jest, 6 de contenido, APK y seis perfiles Android.
 - [ ] Pruebas manuales de teléfono y tablet, sonido real, regiones pequeñas y sesiones largas.
 - [ ] Actualizar entre APK de versiones distintas con firma estable y sin perder progreso (requiere clave segura y Secrets de GitHub).
 - [ ] Cero errores bloqueadores pendientes antes de cerrar la etapa 9.
+
+## Etapa 9 — firma estable de pruebas (PR 15)
+
+- [x] Preparado flujo manual y separado de Actions, usando GitHub Secrets, con certificado SHA-256 comprobado.
+- [x] Protección contra subir archivos PKCS12 y pasos para generar/resguardar la clave sin desarrollo local.
+- [ ] CI en PR y revisión del flujo antes de integrar.
+- [ ] Usuario crea y custodia una única clave estable y configura dos secretos en GitHub. Ningún secreto se envía al chat.
+- [ ] Primer APK firmado, instalación y validación física. No borrar el APK anterior sin decidir qué hacer con su progreso.
+- [ ] Segundo APK con versión superior y la misma firma; confirmar actualización y conservación de datos.

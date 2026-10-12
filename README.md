@@ -74,3 +74,7 @@ Desde Inicio se accede a una pantalla independiente con el control de sonido, un
 ### Etapa 9 — pruebas finales (en desarrollo)
 
 Matriz de validación y bloqueo de firma estable: [docs/qa-stage9.md](docs/qa-stage9.md). Se incluyen pruebas de integridad al guardar y restaurar los 40 dibujos. La etapa no se cerrará hasta confirmar la experiencia en teléfono y tablet reales.
+
+### Firma estable de APK de prueba (PR 15, en preparación)
+
+[Guía de firma estable](docs/firma-estable-preview.md). Una nueva ejecución manual de Actions permitirá firmar APK de preview con una clave privada custodiada únicamente en GitHub Secrets, tras configurarla el propietario. Los PR seguirán utilizando APK con certificado temporal. **No desinstalar la versión actual sin confirmar el destino del progreso guardado.**
