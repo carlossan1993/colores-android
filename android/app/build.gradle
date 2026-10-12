@@ -8,7 +8,32 @@ react {
     autolinkLibrariesWithApp()
 }
 
+// Only the explicitly requested manual CI build can use the stable preview key.
+// Normal PR builds continue using an ephemeral debug certificate.
+def stablePreviewKeystore = System.getenv("COLORES_STABLE_PREVIEW_KEYSTORE")
+def stablePreviewPassword = System.getenv("COLORES_STABLE_PREVIEW_PASSWORD")
+def stablePreviewReady = stablePreviewKeystore != null &&
+    !stablePreviewKeystore.isEmpty() &&
+    stablePreviewPassword != null &&
+    !stablePreviewPassword.isEmpty()
+
+if (System.getenv("COLORES_REQUIRE_STABLE_PREVIEW") == "true" && !stablePreviewReady) {
+    throw new GradleException("La firma estable solicitada no está configurada")
+}
+
 android {
+    signingConfigs {
+        if (stablePreviewReady) {
+            create("stablePreview") {
+                storeFile = file(stablePreviewKeystore)
+                storePassword = stablePreviewPassword
+                keyAlias = "colorespreview"
+                keyPassword = stablePreviewPassword
+                storeType = "PKCS12"
+            }
+        }
+    }
+
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
@@ -37,7 +62,7 @@ android {
             matchingFallbacks = ["release"]
             applicationIdSuffix ".preview"
             versionNameSuffix "-preview"
-            signingConfig signingConfigs.debug
+            signingConfig stablePreviewReady ? signingConfigs.getByName("stablePreview") : signingConfigs.debug
             debuggable false
             resValue "string", "app_name", "Colores · Prueba"
         }

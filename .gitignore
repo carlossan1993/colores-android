@@ -7,6 +7,9 @@ android/local.properties
 coverage/
 artifacts/
 *.keystore
+*.p12
+*.pfx
+.local-secrets/
 *.jks
 *.apk
 *.aab
