@@ -2,7 +2,7 @@
 
 Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
 
-## Estado actual: catálogo de 40 dibujos integrado; etapa 8 en desarrollo
+## Estado actual: etapa 9 — pruebas de actualización firmada 0.14.0
 
 La app Android offline permite recorrer inicio, cuatro categorías y galerías, colorear los dibujos del catálogo, deshacer/rehacer y reiniciar con confirmación. Los colores se guardan y restauran en el dispositivo junto con la selección de paleta, sin cuentas, permisos nuevos ni Internet.
 
@@ -75,6 +75,10 @@ Desde Inicio se accede a una pantalla independiente con el control de sonido, un
 
 Matriz de validación y bloqueo de firma estable: [docs/qa-stage9.md](docs/qa-stage9.md). Se incluyen pruebas de integridad al guardar y restaurar los 40 dibujos. La etapa no se cerrará hasta confirmar la experiencia en teléfono y tablet reales.
 
-### Firma estable de APK de prueba (PR 15, en preparación)
+### Firma estable de APK de prueba (PR 15 integrado)
 
-[Guía de firma estable](docs/firma-estable-preview.md). Una nueva ejecución manual de Actions permitirá firmar APK de preview con una clave privada custodiada únicamente en GitHub Secrets, tras configurarla el propietario. Los PR seguirán utilizando APK con certificado temporal. **No desinstalar la versión actual sin confirmar el destino del progreso guardado.**
+[Guía de firma estable](docs/firma-estable-preview.md). La compilación manual de Actions firma APK de preview con una clave privada custodiada en GitHub Secrets. La firma estable 0.13.0 fue verificada en GitHub y el usuario comprobó el primer APK en el dispositivo. Los PR seguirán utilizando APK con certificado temporal. **No desinstalar la versión actual sin confirmar el destino del progreso guardado.**
+
+### Etapa 9 — verificar actualización a 0.14.0
+
+Se incrementa `versionCode` de 13 a 14 (versión mostrada 0.14.0), conservando el paquete preview y el esquema de guardado. Después de integrar el PR 16, volver a lanzar el workflow **Android · APK de prueba con firma estable** con `baseline_run_id=38292552744`; la prueba adicional instalará 0.13.0, pintará sin Internet y actualizará a 0.14.0 verificando progreso y sonido. [Instrucciones](docs/qa-stage9.md). El APK generado en los PR ordinarios tiene otra firma y no debe usarse para actualizar el teléfono.
