@@ -22,6 +22,7 @@ import {
 import type { Route } from '../navigation/navigation';
 import { BrowseScreen, HomeScreen } from '../screens/BrowseScreens';
 import { ColoringScreen } from '../screens/ColoringScreen';
+import { SettingsScreen } from '../screens/SettingsScreen';
 
 const access = new FreeEntitlementManager();
 export default function App() {
@@ -83,7 +84,20 @@ export default function App() {
 
   let screen: React.ReactNode;
   if (route.screen === 'home') {
-    screen = <HomeScreen onStart={() => setRoute({ screen: 'categories' })} />;
+    screen = (
+      <HomeScreen
+        onStart={() => setRoute({ screen: 'categories' })}
+        onSettings={() => setRoute({ screen: 'settings' })}
+      />
+    );
+  } else if (route.screen === 'settings') {
+    screen = (
+      <SettingsScreen
+        soundEnabled={preferences.soundEnabled}
+        onToggleSound={() => progress.setSoundEnabled(!preferences.soundEnabled)}
+        onBack={goBack}
+      />
+    );
   } else if (route.screen === 'coloring') {
     const drawing = catalog.find(item => item.id === route.drawingId)!;
     const drawings = drawingsFor(drawing.category);

@@ -188,6 +188,23 @@ def exercise(name, width, height, full_controls=False):
     shell("am", "start", "-W", "-n", ACTIVITY)
     time.sleep(1)
     capture(f"{name}-home")
+    if full_controls:
+        # Settings must remain usable offline, accessible, and reversible.
+        press_view("settings-open", name)
+        settings = snapshot(f"{name}-settings")
+        assert find(settings, "settings-privacy") is not None
+        assert find(settings, "sound-toggle").attrib.get("checked") == "true"
+        capture(f"{name}-settings")
+        press_view("sound-toggle", name)
+        settings = snapshot(f"{name}-settings-muted")
+        assert find(settings, "sound-toggle").attrib.get("checked") == "false"
+        capture(f"{name}-settings-muted")
+        press_view("settings-back", name)
+        press_view("settings-open", name)
+        settings = snapshot(f"{name}-settings-reopened")
+        assert find(settings, "sound-toggle").attrib.get("checked") == "false"
+        press_view("sound-toggle", name)
+        press_view("settings-back", name)
     open_house(name)
     root = stable_layout(progress(0, name), name)
     sound_node = find(root, "sound-toggle")

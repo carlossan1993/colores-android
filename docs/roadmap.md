@@ -12,7 +12,7 @@ Línea base: [guía maestra aprobada](project-guide.md). Las etapas no se cierra
 | 5. Persistencia offline | Guardado y restauración local versionados | Completada; PR 5 integrado después de confirmar funcionamiento |
 | 6. Pipeline de contenido | Validación de metadata y SVG | Completada; PR 6 integrado y las tres pruebas de CI aprobadas |
 | 7. Catálogo inicial | 40 dibujos, 10 por categoría | Contenido completado; PR 10 integrado con CI y capturas aprobadas; queda validación integral en dispositivo físico |
-| 8. UX final | Sonidos, celebración y estados | En desarrollo: celebración integrada; sonido opcional y silencio en revisión |
+| 8. UX final | Sonidos, celebración y estados | En desarrollo: celebración y silencio integrados; ajustes y aviso de privacidad en revisión |
 | 9. QA | Dispositivos, rendimiento, offline y actualizaciones | Pendiente |
 | 10. Compliance Play | Privacidad, declaraciones y AAB firmado | Pendiente |
 | 11. Testing Play | Prueba exigida por la cuenta de publicación | Pendiente |
@@ -138,5 +138,16 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [x] Incorporar un botón grande para encender/apagar el sonido desde el coloreado.
 - [x] Añadir un tono suave y breve del sistema Android al completar un dibujo, sin Internet, permisos ni dependencias externas.
 - [x] Pruebas de audio silenciado y restauración de preferencias en Android.
-- [ ] CI completa, capturas del botón en modo silencio y prueba física de audio.
+- [x] CI del PR 12 aprobó código, APK y emulador tras corregir el recorte de paleta de 44 dp.
+- [x] Capturas y restauración de silencio revisadas; PR 12 integrado.
+- [ ] Comprobar sonido físicamente en dispositivo antes de cerrar etapa.
 - [ ] Pantalla de ajustes/legal y revisión de UX final.
+
+## Etapa 8 — tercer cambio: ajustes y privacidad (PR 13)
+
+- [x] Añadir acceso a Ajustes y privacidad desde Inicio, sin cambiar la ruta de coloreado.
+- [x] Permitir activar/desactivar sonido con la misma preferencia persistente.
+- [x] Mostrar aviso de privacidad dentro de la aplicación, accesible sin Internet, y versión visible.
+- [x] Cubrir navegación, cambios de sonido y retorno al coloreado en pruebas.
+- [ ] CI con APK y emulador, capturas en móvil y tablet, sin regresiones offline.
+- [ ] Publicar política de privacidad completa en URL pública antes de Google Play; confirmar datos del desarrollador y contacto.
