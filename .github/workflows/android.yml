@@ -26,6 +26,8 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run verify
+      - name: Pruebas del manejador ANR del emulador
+        run: python3 -m unittest discover -s scripts -p 'test_android_ui_helpers.py'
 
   apk:
     name: APK Android offline (ARM64 y x86_64)
