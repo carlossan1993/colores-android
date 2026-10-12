@@ -2,6 +2,7 @@ package com.carlossan1993.colores
 
 import android.app.Application
 import com.carlossan1993.colores.storage.ProgressStoragePackage
+import com.carlossan1993.colores.storage.CompletionSoundPackage
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
@@ -16,6 +17,7 @@ class MainApplication : Application(), ReactApplication {
       packageList =
         PackageList(this).packages.apply {
           add(ProgressStoragePackage())
+          add(CompletionSoundPackage())
         },
     )
   }

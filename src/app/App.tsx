@@ -101,6 +101,8 @@ export default function App() {
         }
         selectedColor={selectedColor}
         onSelectColor={progress.selectColor}
+        soundEnabled={preferences.soundEnabled}
+        onToggleSound={() => progress.setSoundEnabled(!preferences.soundEnabled)}
         saveStatus={saveStatus}
         onBack={goBack}
         onPrevious={previous ? () => openDrawing(previous.id) : undefined}
