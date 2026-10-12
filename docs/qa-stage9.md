@@ -31,7 +31,7 @@ La V1 de COLORES es una app **nativa Android horizontal y offline**, con 40 dibu
 
 Los APK preview de GitHub Actions usan actualmente la firma de depuración del entorno de compilación. No se puede asumir que dos ejecuciones distintas utilicen el mismo certificado. **No desinstalar un APK con progreso guardado únicamente para probar otra versión.**
 
-Para comprobar la actualización real sin pérdida de progreso hay que configurar una clave estable y respaldada, cargada mediante GitHub Secrets. Eso requiere una decisión explícita sobre la clave de prueba/release y un procedimiento seguro de custodia; no se debe subir ningún keystore ni contraseña al repositorio público.
+El PR 15 prepara un flujo manual de GitHub Actions con firma estable y verificación del certificado. **Aún no se ha configurado la clave:** se necesita generar y respaldar el almacén PKCS12 y registrar los dos secretos en GitHub. Seguir [firma-estable-preview.md](firma-estable-preview.md). Nunca subir ningún keystore ni contraseña al repositorio público. Con la clave nueva, un APK antiguo de firma temporal podría no ser actualizable sin desinstalar y perder progreso.
 
 La firma de prueba no sustituye la clave de carga del AAB que se utilizará para Google Play con Play App Signing.
 
