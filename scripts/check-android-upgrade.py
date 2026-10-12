@@ -70,10 +70,23 @@ def tap(node):
     shell("input", "tap", (a + c) // 2, (b + d) // 2)
 
 
-def press(test_id):
+def has(root, test_id):
+    return any(
+        node.attrib.get("resource-id", "").split("/")[-1] == test_id
+        for node in root.iter("node")
+    )
+
+
+def press(test_id, next_test_id=None, scroll=False):
+    """Tap a UI control; on navigation require the destination to be visible.
+
+    A cold emulator sometimes accepts an accessibility tap but never fires
+    the first React Native navigation event. Recheck the destination and
+    retry on the *same* screen instead of assuming the tap worked.
+    """
     recovered = 0
-    for _ in range(12):
-        root = snapshot(f"press-{test_id}")
+    for attempt in range(12):
+        root = snapshot(f"press-{test_id}-{attempt}")
         popup = pixel_launcher_close_button(root)
         if popup is not None:
             assert recovered < 2, "System launcher repeatedly not responding"
@@ -82,13 +95,27 @@ def press(test_id):
             time.sleep(0.6)
             shell("am", "start", "-W", "-n", ACTIVITY)
             continue
-        try:
-            tap(find(root, test_id))
-            time.sleep(0.25)
+        if next_test_id is not None and has(root, next_test_id):
             return
-        except AssertionError:
-            time.sleep(0.3)
-    raise AssertionError(f"Cannot press {test_id}")
+        if has(root, test_id):
+            tap(find(root, test_id))
+            time.sleep(0.65 if next_test_id is not None else 0.25)
+            if next_test_id is None:
+                return
+            if has(snapshot(f"after-{test_id}-{attempt}"), next_test_id):
+                return
+            print(f"Navigation {test_id} did not reach {next_test_id}; retry {attempt + 1}", flush=True)
+            continue
+        if scroll and (has(root, "screen-categories") or has(root, "screen-gallery")):
+            size = shell("wm", "size").splitlines()[-1]
+            a, b = map(int, re.findall(r"(\d+)x(\d+)", size)[0])
+            w, h = max(a, b), min(a, b)
+            shell("input", "swipe", w // 2, h * 4 // 5, w // 2, h // 3, 400)
+        else:
+            time.sleep(0.35)
+    raise AssertionError(
+        f"Navigation/control {test_id} did not reach {next_test_id or 'tap'}"
+    )
 
 
 def progress(expected, label):
@@ -121,9 +148,9 @@ def paint(x, y, label):
 
 
 def open_house():
-    press("start-coloring")
-    press("category-places")
-    press("drawing-house_001")
+    press("start-coloring", next_test_id="screen-categories")
+    press("category-places", next_test_id="screen-gallery", scroll=True)
+    press("drawing-house_001", next_test_id="drawing-progress", scroll=True)
 
 
 def capture(label):
