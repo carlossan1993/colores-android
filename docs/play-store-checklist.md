@@ -2,7 +2,8 @@
 
 Este archivo es un registro de pendientes, no una declaración de cumplimiento. Los requisitos externos se verificarán nuevamente en la etapa 10.
 
-- [ ] Definir nombre, paquete definitivo y edades del público objetivo.
+- [ ] Confirmar **Colorimbo** como nombre definitivo tras selección visual y comprobación de disponibilidad; falta definir identificador de producción y edades objetivo.
+- [x] Correo de contacto aprobado: **colorimbo.app@gmail.com** (pendiente de confirmar cuenta creada y recepción de mensajes).
 - [ ] Verificar cuenta de Play Console y los requisitos vigentes de pruebas y registro.
 - [ ] Completar comportamiento V1 y catálogo validado.
 - [ ] Probar teléfonos/tablets, offline, cierre forzado, actualizaciones y accesibilidad.
