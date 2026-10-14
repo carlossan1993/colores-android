@@ -54,3 +54,7 @@ La versión candidata 0.14.0 incrementa `versionCode` de 13 a 14 sin cambiar ni 
 ## Diagnóstico de primer intento de upgrade estable (ejecución 38315004375)
 
 La compilación firmada de 0.14.0 se aprobó y la prueba verificó **mismo certificado SHA-256 e incremento versionCode 13 → 14**. La automatización falló **antes de actualizar**: tras el primer toque de inicio, el emulador permaneció en Home y no encontró `category-places`. La captura confirma la app abierta; no hubo evidencia de un fallo de instalación ni de pérdida de datos. El PR 17 corrige solo la robustez de navegación de `scripts/check-android-upgrade.py`, exigiendo que aparezca la pantalla de destino y reintentando el toque tras un arranque frío. Aún no se ha validado la conservación entre versiones.
+
+## Incidencia reportada por usuario tras instalar 0.14.0
+
+El usuario indicó «No vi que se hayan conservado los previamente coloreados». La prueba en emulador (run 38454998122) sí conservó dos dibujos y preferencias tras `adb install -r`, pero eso no acredita qué ocurrió con las instalaciones previas del teléfono. Causa sin identificar. **Mantener etapa 9 abierta**, no recomendar desinstalación y realizar diagnóstico no destructivo. Seguimiento: [issue #18](https://github.com/carlossan1993/colores-android/issues/18). El inicio del trabajo independiente de AAB de etapa 10 no resuelve esta incidencia.

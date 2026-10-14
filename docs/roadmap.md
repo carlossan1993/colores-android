@@ -178,3 +178,9 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [ ] Generar 0.14.0 con la misma clave estable y ejecutar prueba de upgrade desde run 38292552744.
 - [ ] Instalar 0.14.0 **sobre** 0.13.0 en teléfono sin desinstalar y confirmar dibujos, preferencias y sonido.
 - [ ] Validar tablet y casos táctiles pendientes antes de declarar finalizada etapa 9.
+
+## Etapa 10 — primer trabajo independiente (PR 19)
+
+- [ ] Validar automáticamente que Android genere un AAB release **sin firma**, sin exponer credenciales ni publicarlo como artefacto.
+- [ ] Preparar privacidad pública, elección del público objetivo y clave de carga separada para el AAB final.
+- [ ] **No declarar lista para Play** hasta resolver QA [#18](https://github.com/carlossan1993/colores-android/issues/18) y los controles de Familias.
