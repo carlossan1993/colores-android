@@ -1,8 +1,8 @@
-# Colores · Android
+# Colorimbo · Android
 
-Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Nombre provisional.
+Aplicación Android infantil para colorear regiones SVG con un toque. React Native + TypeScript, actividad principal offline y desarrollo desde GitHub. Marca Colorimbo · «Toca y colorea». Correo de soporte: colorimbo.app@gmail.com.
 
-## Estado actual: etapa 9 — pruebas de actualización firmada 0.14.0
+## Estado actual: etapa 10 — identidad Colorimbo y preparación de Google Play (0.15.0)
 
 La app Android offline permite recorrer inicio, cuatro categorías y galerías, colorear los dibujos del catálogo, deshacer/rehacer y reiniciar con confirmación. Los colores se guardan y restauran en el dispositivo junto con la selección de paleta, sin cuentas, permisos nuevos ni Internet.
 

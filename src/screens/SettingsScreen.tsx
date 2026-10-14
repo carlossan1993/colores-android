@@ -41,7 +41,7 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
         <View testID="settings-privacy" style={styles.section}>
           <Text style={styles.heading}>Privacidad para familias</Text>
           <Text style={styles.paragraph}>
-            COLORES funciona sin conexión a Internet. No requiere crear una
+            Colorimbo funciona sin conexión a Internet. No requiere crear una
             cuenta ni proporcionar nombre, correo o ubicación.
           </Text>
           <Text style={styles.paragraph}>
@@ -53,9 +53,12 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
             No incluye anuncios, compras ni suscripciones. Si se desinstala
             la aplicación o se borran sus datos, el progreso puede perderse.
           </Text>
+          <Text style={styles.paragraph}>
+            Contacto para familias: colorimbo.app@gmail.com
+          </Text>
         </View>
         <Text testID="settings-version" style={styles.version}>
-          COLORES · versión 0.14.0 (prueba)
+          Colorimbo · versión 0.15.0 (prueba)
         </Text>
       </ScrollView>
     </SafeAreaView>

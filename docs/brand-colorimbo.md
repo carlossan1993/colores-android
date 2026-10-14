@@ -1,15 +1,15 @@
 # COLORIMBO — propuesta de identidad visual (etapa 10)
 
-Estado: **nombre candidato principal**, pendiente de aprobar la identidad gráfica final. No cambiar todavía el nombre de la app, icono, identificador Android o firma mientras se elige dirección.
+Estado: **nombre, lema y dirección gráfica A aprobados**. Desarrollo de assets vectoriales y rebranding en PR 21; mantener identificador Android y firma sin cambios.
 
 ## Decisiones confirmadas por el responsable del proyecto
 
-- Nombre candidato elegido para continuar: **Colorimbo**.
+- Nombre definitivo aprobado: **Colorimbo**.
 - Correo de contacto oficial aprobado para el proyecto: **colorimbo.app@gmail.com**.
-- Se debe **comprobar por el responsable que el buzón está creado y recibe mensajes**, antes de publicarlo en la ficha de Play Console o en una política de privacidad.
+- El responsable confirmó que el buzón **está creado y operativo**.
 - La cuenta de Play Console ya existe y se utilizará la misma cuenta de desarrollador que la de los otros proyectos. No se debe publicar su correo de acceso en el repositorio.
 - Producto V1: app Android infantil horizontal de colorear por toque, offline, sin cuentas, anuncios ni compras; catálogo inicial de 40 dibujos.
-- Frase descriptiva candidata (pendiente de aprobar): **Toca y colorea**.
+- Lema definitivo aprobado: **Toca y colorea**.
 
 ## Tres conceptos a comparar
 
@@ -45,12 +45,12 @@ Estado: **nombre candidato principal**, pendiente de aprobar la identidad gráfi
 4. Identidad reutilizable en Play Store, splash y materiales sin distraer el área de coloreado.
 5. Crear recursos finales originales, exportables en PNG y, cuando corresponda, vectoriales editables. Un mockup renderizado **no reemplaza** los assets de producción.
 
-## No modificar todavía
+## Restricciones para preservar datos
 
 - `applicationId` actual ni `applicationIdSuffix` preview: podría romper continuidad de datos y actualizaciones locales.
 - Claves de firma de prueba o de publicación.
-- Nombre visible provisional «COLORES» en Android o pantallas.
-- Política de privacidad publicada: esperar dirección de identidad elegida y confirmar funcionamiento del correo.
+- El nombre visible ya puede pasar a «Colorimbo», siempre conservando las rutas, datos y el paquete Android.
+- La política de privacidad pública requiere URL verificable antes de Play Console.
 
 ## Siguientes acciones
 
