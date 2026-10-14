@@ -158,7 +158,7 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [x] Pruebas de serialización de 40 dibujos completos, aislamiento tras reset, pintura repetida y rechazo de regiones/IDs desconocidos.
 - [x] PR 14 integrado tras aprobar 36 pruebas Jest, 6 de contenido, APK y seis perfiles Android.
 - [ ] Pruebas manuales de teléfono y tablet, sonido real, regiones pequeñas y sesiones largas.
-- [ ] Actualizar entre APK de versiones distintas con firma estable y sin perder progreso (requiere clave segura y Secrets de GitHub).
+- [x] Actualización 0.13.0 → 0.14.0 con misma firma, progreso y preferencias conservados: [CI 38454998122](https://github.com/carlossan1993/colores-android/actions/runs/38454998122) y confirmación posterior del usuario.
 - [ ] Cero errores bloqueadores pendientes antes de cerrar la etapa 9.
 
 ## Etapa 9 — firma estable de pruebas (PR 15)
@@ -168,13 +168,20 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [x] PR 15 integrado después de aprobar las tres comprobaciones de CI.
 - [x] El usuario creó y respaldó el keystore, verificó la contraseña y registró dos secretos en GitHub; ningún secreto se compartió.
 - [x] El primer APK firmado 0.13.0 se generó y certificó (run 38292552744); el usuario confirmó que lo probó y se ve bien.
-- [ ] Segundo APK con versión superior y la misma firma; confirmar actualización y conservación de datos.
+- [x] Segundo APK 0.14.0 firmado con la misma clave; actualización y conservación de colores comprobadas en CI y confirmadas por el usuario.
 
 ## Etapa 9 — actualización real de versión (PR 16)
 
 - [x] Preparada versión 0.14.0 (versionCode 14), sin alterar el motor, identificador preview ni datos guardados.
 - [x] Preparada comparación de firmas/códigos y prueba automatizada de actualización offline desde una versión firmada 0.13.0 mediante el workflow estable.
-- [ ] Aprobar las tres comprobaciones de PR antes de integrarlo.
-- [ ] Generar 0.14.0 con la misma clave estable y ejecutar prueba de upgrade desde run 38292552744.
-- [ ] Instalar 0.14.0 **sobre** 0.13.0 en teléfono sin desinstalar y confirmar dibujos, preferencias y sonido.
+- [x] PR 16 integrado después de aprobar TypeScript, APK y seis perfiles de emulador.
+- [x] APK firmado 0.14.0 y actualización offline desde run 38292552744, ejecución [38454998122](https://github.com/carlossan1993/colores-android/actions/runs/38454998122) aprobada.
+- [x] Usuario rectificó el reporte inicial y confirmó que los dibujos previamente coloreados **sí se conservaron** al instalar 0.14.0 en teléfono. Otras pruebas físicas de sonido y tablet continúan pendientes.
 - [ ] Validar tablet y casos táctiles pendientes antes de declarar finalizada etapa 9.
+
+## Etapa 10 — primer trabajo independiente (PR 19)
+
+- [ ] Validar automáticamente que Android genere un AAB release **sin firma**, sin exponer credenciales ni publicarlo como artefacto.
+- [ ] Preparar privacidad pública, elección del público objetivo y clave de carga separada para el AAB final.
+- [x] Reporte [#18](https://github.com/carlossan1993/colores-android/issues/18) descartado y cerrado tras confirmar el usuario que los dibujos sí se conservaron.
+- [ ] No declarar lista para Play hasta terminar las pruebas físicas restantes, las políticas de Familias y el AAB firmado.
