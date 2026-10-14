@@ -18,7 +18,7 @@ assert.equal(app.name, 'Colorimbo');
 assert.match(read('index.js'), /AppRegistry.registerComponent/);
 assert.match(
   read('android/app/src/main/java/com/carlossan1993/colores/MainActivity.kt'),
-  /getMainComponentName\(\): String = "Colores"/,
+  /getMainComponentName\(\): String = "Colorimbo"/,
 );
 assert.match(
   read('android/gradle/wrapper/gradle-wrapper.properties'),
