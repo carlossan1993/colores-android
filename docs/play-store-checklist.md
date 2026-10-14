@@ -26,6 +26,6 @@ V1 no incluye compras ni anuncios. Google Play Billing, restauración y control 
 - [ ] El AAB de preflight **no se publica ni se sube a Google Play**. Play App Signing, clave de carga y AAB firmado son trabajos posteriores.
 - [ ] Evaluar 16 KB, declaración de datos, política Familias y privacidad pública antes del envío.
 
-Incidencia pendiente de QA: [#18](https://github.com/carlossan1993/colores-android/issues/18) — el usuario no vio colores anteriores conservados tras actualizar en su teléfono. El emulador aprobó la actualización, pero no sustituye la investigación ni la prueba física; etapa 9 permanece abierta.
+Actualización entre versiones verificada en CI y confirmada en teléfono por el usuario: los dibujos se conservaron. El reporte [#18](https://github.com/carlossan1993/colores-android/issues/18) fue descartado y cerrado. Etapa 9 sigue abierta solo por las demás verificaciones físicas de la matriz (tablet, audio, accesibilidad y pruebas extensas).
 
 Documentación oficial: [Requisitos de API](https://support.google.com/googleplay/android-developer/answer/11926878?hl=es-419) y [Política de Familias](https://support.google.com/googleplay/android-developer/answer/9893335?hl=es-us).

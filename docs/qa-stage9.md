@@ -23,11 +23,11 @@ La V1 de COLORES es una app **nativa Android horizontal y offline**, con 40 dibu
 | Sonido opcional | El sonido breve suena al completar; silencio impide el sonido; preferencia persiste | Estado automatizado; audio físico pendiente |
 | Interfaz y tamaño | Colores, botones, textos y privacidad accesibles en horizontal | Automatizado en seis perfiles; validar dispositivo |
 | Reinstalación del mismo APK | Reinstalar sobre sí mismo sin pérdida de datos | Automatizado |
-| Actualización entre dos versiones diferentes | Misma firma de instalación, versionCode creciente y progreso intacto | Primera versión estable 0.13.0 preparada; PR 16 prueba upgrade 0.14.0 en CI y teléfono |
+| Actualización entre dos versiones diferentes | Misma firma de instalación, versionCode creciente y progreso intacto | **Aprobada**: run 38454998122 (emulador) y confirmación del usuario de que los dibujos sí se conservaron |
 | Rendimiento y cierre inesperado | Sin pantallas congeladas, bloqueos ni cierres durante uso continuado | Pendiente pruebas físicas |
 | Accesibilidad infantil | 48 dp mínimo en controles, texto legible e interfaz coherente | Controles verificados en emulador; validar uso real |
 
-## Bloqueador: actualización entre versiones
+## Firma estable y actualización entre versiones — verificado
 
 Los APK preview de GitHub Actions usan actualmente la firma de depuración del entorno de compilación. No se puede asumir que dos ejecuciones distintas utilicen el mismo certificado. **No desinstalar un APK con progreso guardado únicamente para probar otra versión.**
 
@@ -53,8 +53,10 @@ La versión candidata 0.14.0 incrementa `versionCode` de 13 a 14 sin cambiar ni 
 
 ## Diagnóstico de primer intento de upgrade estable (ejecución 38315004375)
 
-La compilación firmada de 0.14.0 se aprobó y la prueba verificó **mismo certificado SHA-256 e incremento versionCode 13 → 14**. La automatización falló **antes de actualizar**: tras el primer toque de inicio, el emulador permaneció en Home y no encontró `category-places`. La captura confirma la app abierta; no hubo evidencia de un fallo de instalación ni de pérdida de datos. El PR 17 corrige solo la robustez de navegación de `scripts/check-android-upgrade.py`, exigiendo que aparezca la pantalla de destino y reintentando el toque tras un arranque frío. Aún no se ha validado la conservación entre versiones.
+La compilación firmada de 0.14.0 se aprobó y la prueba verificó **mismo certificado SHA-256 e incremento versionCode 13 → 14**. La automatización falló **antes de actualizar**: tras el primer toque de inicio, el emulador permaneció en Home y no encontró `category-places`. La captura confirma la app abierta; no hubo evidencia de un fallo de instalación ni de pérdida de datos. El PR 17 corrige solo la robustez de navegación de `scripts/check-android-upgrade.py`, exigiendo que aparezca la pantalla de destino y reintentando el toque tras un arranque frío. La ejecución corregida 38454998122 confirmó luego la conservación del progreso y las preferencias tras actualizar a 0.14.0.
 
-## Incidencia reportada por usuario tras instalar 0.14.0
+## Actualización 0.14.0 — confirmación final del usuario
 
-El usuario indicó «No vi que se hayan conservado los previamente coloreados». La prueba en emulador (run 38454998122) sí conservó dos dibujos y preferencias tras `adb install -r`, pero eso no acredita qué ocurrió con las instalaciones previas del teléfono. Causa sin identificar. **Mantener etapa 9 abierta**, no recomendar desinstalación y realizar diagnóstico no destructivo. Seguimiento: [issue #18](https://github.com/carlossan1993/colores-android/issues/18). El inicio del trabajo independiente de AAB de etapa 10 no resuelve esta incidencia.
+La prueba automatizada [38454998122](https://github.com/carlossan1993/colores-android/actions/runs/38454998122) comprobó mismo certificado, versión 13 → 14 y persistencia offline de dibujos y preferencias. El usuario rectificó su observación inicial y **confirmó que los dibujos previamente coloreados sí se conservaron en su teléfono**. El reporte [#18](https://github.com/carlossan1993/colores-android/issues/18) quedó cerrado por no corresponder a una falla. La actualización sin pérdida de colores ya no es un bloqueo.
+
+Mantener pendientes exclusivamente las pruebas físicas restantes de la matriz: tablet, sonido, zonas pequeñas, interacción prolongada y accesibilidad. No declarar toda la etapa 9 cerrada mientras esos criterios falten.
