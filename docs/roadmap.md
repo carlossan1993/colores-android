@@ -185,3 +185,11 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [ ] Preparar privacidad pública, elección del público objetivo y clave de carga separada para el AAB final.
 - [x] Reporte [#18](https://github.com/carlossan1993/colores-android/issues/18) descartado y cerrado tras confirmar el usuario que los dibujos sí se conservaron.
 - [ ] No declarar lista para Play hasta terminar las pruebas físicas restantes, las políticas de Familias y el AAB firmado.
+
+## Etapa 10 — identidad candidata y contacto (PR 20)
+
+- [x] Nombre candidato para avanzar: **Colorimbo**.
+- [x] Correo de contacto aprobado: **colorimbo.app@gmail.com**, sin presuponer aún la creación/recepción de correo.
+- [ ] Elegir entre [tres direcciones de identidad visual](brand-colorimbo.md) y aprobar el icono/logotipo final.
+- [ ] Confirmar nombre definitivo y reemplazar rótulos «COLORES» en un PR separado y con validación Android.
+- [ ] Validar el correo operativo y publicar política de privacidad antes de Play Console.
