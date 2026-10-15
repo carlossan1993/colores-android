@@ -49,7 +49,7 @@ Ayuda y privacidad: colorimbo.app@gmail.com.
 - **Anuncios:** no en V1.
 - **Compras dentro de la aplicación:** no en V1.
 - **Conexión:** la experiencia principal funciona offline.
-- **Público objetivo:** **PENDIENTE**: el responsable debe seleccionar los grupos de edades reales (no declarar mayores únicamente para eludir Families).
+- **Edad mínima de diseño aprobada:** desde 3 años. **Grupos propuestos para Play Console:** «Hasta 5 años» y «De 6 a 8 años», sujetos a confirmar el límite superior y la adecuación a ambos grupos; ver [público objetivo](play-target-audience.md). Selección en Play Console **pendiente**. El segmento «Hasta 5 años» también abarca edades inferiores a 3, aunque el producto se recomiende desde los 3.
 - **Política de privacidad:** `docs/privacy/index.html` preparada para GitHub Pages; la URL debe estar publicada, HTTPS y verificada antes de introducirla en Play Console.
 - **Icono Play:** exportar 512×512 px desde `assets/brand/colorimbo-play-icon.svg`, comprobar nitidez y tamaño final.
 - **Gráfico destacado:** pendiente crear y validar 1024×500 px.
