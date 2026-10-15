@@ -134,18 +134,18 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
     expect(
       renderer.root.findAll(node => node.props.testID === 'completion-celebration'),
     ).toHaveLength(0);
-    expect(roof().props.fill).toBe('#EF6B6B');
+    expect(roof().props.fill).toBe('#F54536');
     await press('color-66BE96');
     await press('drawing-next');
     expect(roof().props.fill).toBe('#FFFFFF');
     await ReactTestRenderer.act(() => roof().props.onPress());
     expect(roof().props.fill).toBe('#66BE96');
     await press('drawing-previous');
-    expect(roof().props.fill).toBe('#EF6B6B');
+    expect(roof().props.fill).toBe('#F54536');
     await press('action-undo');
     expect(roof().props.fill).toBe('#FFFFFF');
     await press('action-redo');
-    expect(roof().props.fill).toBe('#EF6B6B');
+    expect(roof().props.fill).toBe('#F54536');
     let handled: boolean | null | undefined;
     await ReactTestRenderer.act(() => {
       handled = handlers[handlers.length - 1]();
