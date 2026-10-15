@@ -1,9 +1,10 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationButton } from '../components/NavigationButton';
 import { SoundToggle } from '../components/SoundToggle';
 import { theme } from '../theme/theme';
+import { privacyPolicySections, privacyPolicyUpdated } from '../content/privacyPolicy';
 
 type Props = {
   soundEnabled: boolean;
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
+  const [policyExpanded, setPolicyExpanded] = React.useState(false);
+
   return (
     <SafeAreaView testID="screen-settings" style={styles.screen}>
       <View style={styles.header}>
@@ -56,6 +59,31 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
           <Text style={styles.paragraph}>
             Contacto para familias: colorimbo.app@gmail.com
           </Text>
+          <Pressable
+            testID="settings-policy-toggle"
+            accessibilityRole="button"
+            accessibilityLabel={policyExpanded ? 'Ocultar política de privacidad completa' : 'Leer política de privacidad completa'}
+            accessibilityState={{ expanded: policyExpanded }}
+            onPress={() => setPolicyExpanded(previous => !previous)}
+            style={styles.policyButton}>
+            <Text style={styles.policyButtonText}>
+              {policyExpanded ? 'Ocultar política completa' : 'Leer política de privacidad completa'}
+            </Text>
+          </Pressable>
+          {policyExpanded ? (
+            <View testID="settings-policy-full" style={styles.policyFull}>
+              <Text style={styles.policyTitle}>Política de privacidad de Colorimbo</Text>
+              <Text style={styles.paragraph}>Última actualización: {privacyPolicyUpdated}</Text>
+              {privacyPolicySections.map(section => (
+                <View key={section.title} style={styles.policySection}>
+                  <Text style={styles.policyHeading}>{section.title}</Text>
+                  {section.paragraphs.map((paragraph, index) => (
+                    <Text key={index} style={styles.paragraph}>{paragraph}</Text>
+                  ))}
+                </View>
+              ))}
+            </View>
+          ) : null}
         </View>
         <Text testID="settings-version" style={styles.version}>
           Colorimbo · versión 0.15.0 (prueba)
@@ -98,5 +126,11 @@ const styles = StyleSheet.create({
   rowTitle: { fontSize: 16, fontWeight: '700', color: theme.text },
   description: { fontSize: 14, color: theme.muted },
   paragraph: { fontSize: 14, lineHeight: 21, color: theme.text },
+  policyButton: { minHeight: 48, padding: 12, borderRadius: 12, backgroundColor: theme.background, justifyContent: 'center', alignItems: 'center', borderWidth: 2, borderColor: theme.border },
+  policyButtonText: { fontSize: 15, fontWeight: '700', color: theme.text, textAlign: 'center' },
+  policyFull: { gap: 12, paddingTop: 8 },
+  policyTitle: { fontSize: 19, fontWeight: '800', color: theme.text },
+  policySection: { gap: 6 },
+  policyHeading: { fontSize: 16, fontWeight: '700', color: theme.text },
   version: { fontSize: 13, color: theme.muted, textAlign: 'center' },
 });
