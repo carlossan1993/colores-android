@@ -2,6 +2,15 @@
 
 Esta carpeta contiene `docs/privacy/index.html`, una página estática **sin cookies propias, scripts, rastreadores, anuncios ni formularios**. El nombre, lema y correo han sido aprobados.
 
+## Estado de publicación
+
+**15 de octubre de 2026:** el responsable confirmó que GitHub Pages quedó habilitado
+desde la rama `main`, carpeta `/docs`, con HTTPS y que la URL de privacidad
+funciona: https://carlossan1993.github.io/colores-android/privacy/
+
+Esta confirmación corresponde a la página pública; se debe revisar otra vez
+al preparar el AAB y antes de enviar declaraciones a Google Play.
+
 ## Habilitar GitHub Pages (una sola vez)
 
 1. Abrir [Settings → Pages](https://github.com/carlossan1993/colores-android/settings/pages) del repositorio.
