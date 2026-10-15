@@ -200,7 +200,7 @@ def test_upgrade(old_apk, new_apk):
     open_house()
     root = progress(2, "updated-house")
     assert find(root, "sound-toggle").attrib.get("checked") == "false", "Mute lost on upgrade"
-    assert find(root, "color-EF6B6B").attrib.get("selected") == "true", "Palette preference lost"
+    assert find(root, "color-F54536").attrib.get("selected") == "true", "Legacy red selection was not migrated"
     assert find(root, "action-undo").attrib.get("enabled") == "false", "Undo should not persist"
     capture("after-upgrade-house")
     press("drawing-next")
