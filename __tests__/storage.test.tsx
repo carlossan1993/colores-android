@@ -67,7 +67,7 @@ test('missing data starts blank; malformed structures fail; unknown schema is pr
         { selectedColor: 'bad', soundEnabled: false },
       ),
     ).preferences.selectedColor,
-  ).toBe('#EF6B6B');
+  ).toBe('#F54536');
 });
 
 test('corrupt primary recovers backup; future versions and disk read failures do not become empty progress', async () => {
@@ -164,7 +164,7 @@ test('App restart restores separate drawings, selected color and persisted reset
       renderer = ReactTestRenderer.create(<App />);
     });
     await openHouse(renderer);
-    expect(roof(renderer).props.fill).toBe('#EF6B6B');
+    expect(roof(renderer).props.fill).toBe('#F54536');
     expect(control(renderer, 'action-undo').props.disabled).toBe(true);
     expect(
       control(renderer, 'color-66BE96').props.accessibilityState.selected,
@@ -231,7 +231,7 @@ test('read failure blocks overwriting existing data and offers retry; save failu
     await openHouse(renderer);
     disk.writeSnapshot.mockRejectedValueOnce(new Error('full disk'));
     await ReactTestRenderer.act(() => roof(renderer).props.onPress());
-    expect(roof(renderer).props.fill).toBe('#EF6B6B');
+    expect(roof(renderer).props.fill).toBe('#F54536');
     expect(control(renderer, 'retry-save')).toBeDefined();
     await press(renderer, 'retry-save');
     expect(control(renderer, 'retry-save')).toBeUndefined();
@@ -241,7 +241,7 @@ test('read failure blocks overwriting existing data and offers retry; save failu
           disk.writeSnapshot.mock.calls.length - 1
         ][0],
       ).drawings.house_001.roof,
-    ).toBe('#EF6B6B');
+    ).toBe('#F54536');
   } finally {
     if (renderer) {
       await ReactTestRenderer.act(() => renderer.unmount());
