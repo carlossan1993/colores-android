@@ -17,7 +17,7 @@ REQUIRED_64BIT_ABIS = ("arm64-v8a", "x86_64")
 
 
 def check_elf_16kb(name: str, content: bytes) -> int:
-    if len(content) < 64 or content[:4] != b"\\x7fELF":
+    if len(content) < 64 or content[:4] != b"\x7fELF":
         raise SystemExit(f"ELF nativo inválido: {name}")
     if content[4] != 2 or content[5] not in (1, 2):
         raise SystemExit(f"ELF 64-bit inválido/no compatible: {name}")
@@ -111,8 +111,8 @@ def check_aab(path: Path) -> None:
                 "OK: App Bundle estructural sin firma, NO apto todavía para Play Console.\n"
                 f"Archivo: {path.name}; bytes: {path.stat().st_size}; "
                 f"DEX: {len(dex)}; ABIs: {', '.join(arch)}.\n"
-                "Incluye BundleConfig, manifiesto, JavaScript y bibliotecas nativas.\\n"
-                f"ELF 16 KB: {elf_libraries} bibliotecas 64-bit; {elf_segments} segmentos LOAD OK.\\n"
+                "Incluye BundleConfig, manifiesto, JavaScript y bibliotecas nativas.\n"
+                f"ELF 16 KB: {elf_libraries} bibliotecas 64-bit; {elf_segments} segmentos LOAD OK.\n"
                 "PENDIENTE: confirmar alineación ZIP del AAB con bundletool y probar 16 KB real."
             )
     except BadZipFile as error:
