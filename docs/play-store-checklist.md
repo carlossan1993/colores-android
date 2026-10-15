@@ -8,7 +8,8 @@ Este archivo es un registro de pendientes, no una declaración de cumplimiento. 
 - [ ] Completar comportamiento V1 y catálogo validado.
 - [ ] Probar teléfonos/tablets, offline, cierre forzado, actualizaciones y accesibilidad.
 - [ ] Revisar permisos y SDKs del binario final.
-- [ ] Publicar política de privacidad e incluir acceso desde la app.
+- [x] Incorporar lectura offline de la política de privacidad completa desde Ajustes (sin enlaces externos ni permisos nuevos).
+- [ ] Habilitar GitHub Pages (`main` / `/docs`) y verificar URL HTTPS pública de la política; luego incluirla en Play Console.
 - [ ] Completar Data Safety, público infantil/Families y clasificación IARC coherentes con la app.
 - [x] Fuente: targetSdk 36 (requisito de nueva app desde 31-08-2026). Falta verificar compatibilidad de bibliotecas y paquete final.
 - [ ] Revisar target SDK, compatibilidad de librerías nativas (incluido soporte 16 KB) y formato exigidos por Play.
@@ -30,3 +31,9 @@ V1 no incluye compras ni anuncios. Google Play Billing, restauración y control 
 Actualización entre versiones verificada en CI y confirmada en teléfono por el usuario: los dibujos se conservaron. El reporte [#18](https://github.com/carlossan1993/colores-android/issues/18) fue descartado y cerrado. Etapa 9 sigue abierta solo por las demás verificaciones físicas de la matriz (tablet, audio, accesibilidad y pruebas extensas).
 
 Documentación oficial: [Requisitos de API](https://support.google.com/googleplay/android-developer/answer/11926878?hl=es-419) y [Política de Familias](https://support.google.com/googleplay/android-developer/answer/9893335?hl=es-us).
+
+## Etapa 10 — privacidad dentro de la aplicación (PR 23)
+
+- [x] Preparar texto completo de la política para consulta offline en Ajustes y prueba automatizada del control.
+- [ ] Confirmar URL pública y contenido sincronizado con `docs/privacy-policy.md` y `docs/privacy/index.html` antes de publicar.
+- [ ] Auditar manifiesto combinado del AAB final y completar declaraciones Data Safety/Families para la edad elegida.
