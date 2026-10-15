@@ -69,7 +69,7 @@ test('resizing between phone, tablet and small window preserves color and undo',
     ]) {
       dimensions.mockReturnValue({ width, height, scale: 1, fontScale: 1 });
       await ReactTestRenderer.act(() => renderer.update(<App />));
-      expect(roof().props.fill).toBe('#EF6B6B');
+      expect(roof().props.fill).toBe('#F54536');
       const swatches = renderer.root.findAll(
         node =>
           node.props.testID?.startsWith('color-') &&
