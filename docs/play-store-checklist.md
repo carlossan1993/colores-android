@@ -2,7 +2,9 @@
 
 Este archivo es un registro de pendientes, no una declaración de cumplimiento. Los requisitos externos se verificarán nuevamente en la etapa 10.
 
-- [x] Colorimbo confirmado como nombre de marca; lema «Toca y colorea» y dirección A aprobados. Falta comprobar marca a nivel jurídico y definir paquete de producción y edades objetivo.
+- [x] Colorimbo confirmado como marca, lema «Toca y colorea» y dirección A aprobados. Falta comprobación marcaria y definir identificador de producción.
+- [x] Edad mínima de diseño: **3 años en adelante**; grupos propuestos para Play: **Hasta 5 años** y **6 a 8 años**. Ver [público objetivo](play-target-audience.md).
+- [ ] Confirmar límite superior y adecuación para ambos grupos y registrar grupos definitivos en Play Console.
 - [x] Correo de contacto **colorimbo.app@gmail.com** aprobado, creado y operativo según confirmación del responsable.
 - [ ] Verificar cuenta de Play Console y los requisitos vigentes de pruebas y registro.
 - [ ] Completar comportamiento V1 y catálogo validado.
@@ -23,8 +25,8 @@ V1 no incluye compras ni anuncios. Google Play Billing, restauración y control 
 
 ## Etapa 10 — AAB de preflight sin firma
 
-- [ ] PR 19 debe aprobar workflow de `:app:bundleRelease` sin firma de publicación ni secretos.
-- [ ] Verificar BundleConfig, manifiesto, DEX, JavaScript offline y bibliotecas ARM64/x86_64 dentro del AAB.
+- [x] PR 19 integrado: workflow de `:app:bundleRelease` sin firma ni secretos de publicación; AAB preliminar aprobado en GitHub Actions.
+- [x] Verificación preliminar de BundleConfig, manifiesto, DEX, JavaScript offline y bibliotecas ARM64/x86_64 en el AAB.
 - [ ] El AAB de preflight **no se publica ni se sube a Google Play**. Play App Signing, clave de carga y AAB firmado son trabajos posteriores.
 - [ ] Evaluar 16 KB, declaración de datos, política Familias y privacidad pública antes del envío.
 
@@ -37,3 +39,9 @@ Documentación oficial: [Requisitos de API](https://support.google.com/googlepla
 - [x] Preparar texto completo de la política para consulta offline en Ajustes y prueba automatizada del control.
 - [ ] Confirmar URL pública y contenido sincronizado con `docs/privacy-policy.md` y `docs/privacy/index.html` antes de publicar.
 - [ ] Auditar manifiesto combinado del AAB final y completar declaraciones Data Safety/Families para la edad elegida.
+
+## Etapa 10 — auditoría nativa de páginas de 16 KB (PR 24)
+
+- [ ] Validar automáticamente segmentos ELF PT_LOAD con alineación de 16 KB para bibliotecas arm64-v8a y x86_64 del AAB; revisar resultados de CI.
+- [ ] Comprobar por separado alineación ZIP del AAB y los APK derivados mediante bundletool/zipalign, y probar ejecución real o emulada con páginas de 16 KB.
+- [ ] No declarar que cumple Google Play únicamente porque el AAB se construya; auditar el AAB final firmado y SDKs.
