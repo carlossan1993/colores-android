@@ -1,9 +1,9 @@
 export const palette = [
-  { name: 'rojo', color: '#EF6B6B' },
+  { name: 'rojo', color: '#F54536' },
   { name: 'naranja', color: '#F6A647' },
-  { name: 'amarillo', color: '#F4D35E' },
+  { name: 'amarillo', color: '#FAF332' },
   { name: 'verde', color: '#66BE96' },
-  { name: 'azul', color: '#62AFE2' },
+  { name: 'azul', color: '#0A35F5' },
   { name: 'violeta', color: '#A384D9' },
   { name: 'rosa', color: '#F291BC' },
   { name: 'marrón', color: '#A87754' },
