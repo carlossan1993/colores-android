@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.15.0 — Identidad Colorimbo (PR 21)
+
+- Nombre visible Colorimbo, lema «Toca y colorea» e identidad visual aprobada.
+- Nuevo isotipo vectorial multicolor para el lanzador y fuentes de marca SVG.
+- Correo de contacto para familias: colorimbo.app@gmail.com (confirmado operativo).
+- VersionCode 15; **se mantiene el mismo applicationId, el esquema de datos y la firma estable de prueba** para preservar dibujos al actualizar.
+- Sin permisos adicionales, SDKs de seguimiento, anuncios ni conexiones a servidores.
+
+
+
 ## 0.14.0 — Validación de actualización firmada (PR 16)
 
 - `versionCode` Android 14, versión visible 0.14.0; se mantiene el identificador preview y el esquema del progreso guardado.

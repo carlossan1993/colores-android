@@ -193,3 +193,11 @@ La firma estable para actualizar entre versiones sin pérdida de datos continúa
 - [ ] Elegir entre [tres direcciones de identidad visual](brand-colorimbo.md) y aprobar el icono/logotipo final.
 - [ ] Confirmar nombre definitivo y reemplazar rótulos «COLORES» en un PR separado y con validación Android.
 - [ ] Validar el correo operativo y publicar política de privacidad antes de Play Console.
+
+## Etapa 10 — rebranding confirmado (PR 21)
+
+- [x] Usuario aprobó Colorimbo como marca definitiva, identidad A y lema «Toca y colorea».
+- [x] Confirmó que colorimbo.app@gmail.com ya está creado y operativo.
+- [ ] CI completo del rebranding Android 0.15.0, manteniendo el identificador preview y la firma anterior.
+- [ ] Prueba de actualización 0.14.0 → 0.15.0 en teléfono sin desinstalar.
+- [ ] Preparar capturas e icono Play de 512 px, política pública, Families, Data Safety y AAB final firmado.

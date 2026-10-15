@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Icono Colorimbo, C multicolor"><rect width="512" height="512" rx="110" fill="#FFF8EE"/><g transform="translate(0 0) scale(4.74074074)">
+<path d="M29 42 C30 27 42 19 58 21" fill="none" stroke="#3B82F6" stroke-width="19" stroke-linecap="round"/>
+<path d="M58 21 C69 21 77 25 80 33" fill="none" stroke="#FECB3B" stroke-width="19" stroke-linecap="round"/>
+<path d="M29 42 C23 57 27 72 43 80" fill="none" stroke="#22C55E" stroke-width="19" stroke-linecap="round"/>
+<path d="M43 80 C57 87 72 80 80 71" fill="none" stroke="#FF6B6B" stroke-width="19" stroke-linecap="round"/>
+<g fill="none" stroke-linecap="round" stroke-width="3">
+<path d="M31 35 C36 27 44 25 48 24" stroke="#A6D3FF"/>
+<path d="M65 23 Q71 24 74 28" stroke="#FFF0AE"/>
+<path d="M25 51 Q24 57 27 62" stroke="#A9FFCD"/>
+<path d="M57 81 Q63 81 68 77" stroke="#FFD0D0"/>
+</g>
+<path d="M13 33 Q15 29 17 32 L23 38 Q24 40 20 41Z" fill="#FECB3B"/>
+<path d="M12 55 Q11 51 16 52 L23 55 Q26 57 22 60Z" fill="#FF6B6B"/>
+<path d="M91 43 Q91 40 94 39 Q98 38 97 43 L92 50 Q89 53 88 50Z" fill="#3B82F6"/>
+<path d="M91 61 Q95 57 99 60 Q101 63 97 65 L91 68 Q88 68 88 65Z" fill="#22C55E"/>
+</g></svg>

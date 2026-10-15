@@ -27,9 +27,9 @@ export function HomeScreen({ onStart, onSettings }: { onStart: () => void; onSet
         </View>
         <View style={styles.welcome}>
           <Text accessibilityRole="header" style={styles.homeTitle}>
-            Colores
+            Colorimbo
           </Text>
-          <Text style={styles.subtitle}>¡Vamos a colorear!</Text>
+          <Text style={styles.subtitle}>Toca y colorea</Text>
           <Pressable
             testID="start-coloring"
             accessibilityRole="button"

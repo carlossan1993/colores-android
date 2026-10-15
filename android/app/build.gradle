@@ -43,8 +43,8 @@ android {
         applicationId "com.carlossan1993.colores"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 14
-        versionName "0.14.0"
+        versionCode 15
+        versionName "0.15.0"
     }
 
     buildTypes {
@@ -64,7 +64,7 @@ android {
             versionNameSuffix "-preview"
             signingConfig stablePreviewReady ? signingConfigs.getByName("stablePreview") : signingConfigs.debug
             debuggable false
-            resValue "string", "app_name", "Colores · Prueba"
+            resValue "string", "app_name", "Colorimbo · Prueba"
         }
     }
 }
