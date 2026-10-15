@@ -21,6 +21,22 @@ if (System.getenv("COLORES_REQUIRE_STABLE_PREVIEW") == "true" && !stablePreviewR
     throw new GradleException("La firma estable solicitada no está configurada")
 }
 
+// La firma de publicación es distinta de la firma preview. Sin las dos
+// variables de entorno la variante release continúa SIN firmar (preflight).
+def playUploadKeystore = System.getenv("COLORIMBO_PLAY_UPLOAD_KEYSTORE")
+def playUploadPassword = System.getenv("COLORIMBO_PLAY_UPLOAD_PASSWORD")
+def playUploadReady = playUploadKeystore != null &&
+    !playUploadKeystore.isEmpty() &&
+    playUploadPassword != null &&
+    !playUploadPassword.isEmpty()
+
+if (System.getenv("COLORIMBO_REQUIRE_PLAY_UPLOAD") == "true" && !playUploadReady) {
+    throw new GradleException("Faltan credenciales para firmar AAB de Google Play")
+}
+if (playUploadReady && !file(playUploadKeystore).isFile()) {
+    throw new GradleException("No existe el keystore temporal de carga para Play")
+}
+
 android {
     signingConfigs {
         if (stablePreviewReady) {
@@ -29,6 +45,15 @@ android {
                 storePassword = stablePreviewPassword
                 keyAlias = "colorespreview"
                 keyPassword = stablePreviewPassword
+                storeType = "PKCS12"
+            }
+        }
+        if (playUploadReady) {
+            create("playUpload") {
+                storeFile = file(playUploadKeystore)
+                storePassword = playUploadPassword
+                keyAlias = "colorimboupload"
+                keyPassword = playUploadPassword
                 storeType = "PKCS12"
             }
         }
@@ -53,7 +78,10 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            // Intentionally unsigned until the Play release stage configures Secrets.
+            // PR builds stay unsigned; ONLY a manual main workflow supplies upload secrets.
+            if (playUploadReady) {
+                signingConfig signingConfigs.getByName("playUpload")
+            }
             minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
