@@ -1,8 +1,8 @@
-package com.carlossan1993.colores
+package com.colorimbo.app
 
 import android.app.Application
-import com.carlossan1993.colores.storage.ProgressStoragePackage
-import com.carlossan1993.colores.storage.CompletionSoundPackage
+import com.colorimbo.app.storage.ProgressStoragePackage
+import com.colorimbo.app.storage.CompletionSoundPackage
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost

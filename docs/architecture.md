@@ -28,7 +28,7 @@ Proyecto creado con Community CLI 20.2.0 y React Native 0.87.1, con su plantilla
 
 Node 24.19.0, JDK 17, Gradle 9.4.1 con checksum, compile SDK 36, target SDK 36, build tools 36.0.0 y NDK 27.1.12297006. La base conserva React Native y Gradle de la plantilla; se fija el SDK estable 36 porque CI confirmó que el instalador oficial no ofrece `platforms;android-37`. Los requisitos de Play se revisarán de nuevo antes de publicar.
 
-Paquete provisional: `com.carlossan1993.colores`. Debe quedar definido antes de publicar. Nombre provisional: **Colores**. Paquetes separados `.debug` y `.preview` evitan interferir con la futura versión de producción.
+Identificador público de producción aprobado: `com.colorimbo.app`. El namespace, la actividad nativa y el código Kotlin están alineados a la marca. Para proteger las actualizaciones y los dibujos ya guardados en los teléfonos de prueba se conserva **solo en preview** el identificador anterior `com.carlossan1993.colores.preview`; el APK firmado de pruebas no es el paquete que se publicará. La disponibilidad efectiva de `com.colorimbo.app` se debe confirmar desde Play Console antes de registrar la app. El identificador de debug usa el sufijo `.debug` del paquete nuevo.
 
 ## Compilación y firma
 

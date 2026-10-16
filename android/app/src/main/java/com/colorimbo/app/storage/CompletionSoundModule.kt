@@ -1,4 +1,4 @@
-package com.carlossan1993.colores.storage
+package com.colorimbo.app.storage
 
 import android.media.AudioManager
 import android.media.ToneGenerator

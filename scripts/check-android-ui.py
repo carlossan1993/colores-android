@@ -15,7 +15,7 @@ from pathlib import Path
 from android_ui_helpers import pixel_launcher_close_button
 
 PACKAGE = "com.carlossan1993.colores.preview"
-ACTIVITY = f"{PACKAGE}/com.carlossan1993.colores.MainActivity"
+ACTIVITY = f"{PACKAGE}/com.colorimbo.app.MainActivity"
 OUTPUT = Path("ui-artifacts")
 OUTPUT.mkdir(exist_ok=True)
 

@@ -12,12 +12,15 @@ assert.match(manifest, /android:screenOrientation="sensorLandscape"/);
 assert.match(manifest, /android:allowBackup="false"/);
 assert.match(manifest, /android:usesCleartextTraffic="false"/);
 assert.match(gradle, /debuggableVariants = \["debug"\]/);
-assert.match(gradle, /applicationIdSuffix "\.preview"/);
+assert.match(gradle, /namespace "com\.colorimbo\.app"/);
+assert.match(gradle, /applicationId "com\.colorimbo\.app"/);
+assert.match(gradle, /variant\.applicationId\.set\("com\.carlossan1993\.colores\.preview"\)/);
 assert.match(gradle, /debuggable false/);
 assert.equal(app.name, 'Colorimbo');
+assert.equal(JSON.parse(read('package.json')).codegenConfig.android.javaPackageName, 'com.colorimbo.app.storage');
 assert.match(read('index.js'), /AppRegistry.registerComponent/);
 assert.match(
-  read('android/app/src/main/java/com/carlossan1993/colores/MainActivity.kt'),
+  read('android/app/src/main/java/com/colorimbo/app/MainActivity.kt'),
   /getMainComponentName\(\): String = "Colorimbo"/,
 );
 assert.match(

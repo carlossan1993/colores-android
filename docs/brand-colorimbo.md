@@ -47,7 +47,7 @@ Estado: **nombre, lema y dirección gráfica A aprobados**. Desarrollo de assets
 
 ## Restricciones para preservar datos
 
-- `applicationId` actual ni `applicationIdSuffix` preview: podría romper continuidad de datos y actualizaciones locales.
+- Mantener el **identificador de preview** explícito sin variarlo, para preservar las actualizaciones y dibujos de prueba. El **identificador release** se alinea con la marca: `com.colorimbo.app` (PR #28).
 - Claves de firma de prueba o de publicación.
 - El nombre visible ya puede pasar a «Colorimbo», siempre conservando las rutas, datos y el paquete Android.
 - La política de privacidad pública requiere URL verificable antes de Play Console.
@@ -59,3 +59,7 @@ Estado: **nombre, lema y dirección gráfica A aprobados**. Desarrollo de assets
 3. Verificar que `colorimbo.app@gmail.com` está creado y recibe correo.
 4. Preparar PR específico de assets, textos, cambio de marca, y pruebas Android sin cambiar el paquete de preview sin plan de migración.
 5. Publicar política de privacidad con dirección estable, completar Families/Data Safety y AAB de producción firmado.
+
+## Identificador Android de publicación (PR #28)
+
+El producto público usa `com.colorimbo.app`, con clases Android y Codegen bajo `com.colorimbo.app`. La distribución de prueba mantiene exclusivamente su ID histórico `com.carlossan1993.colores.preview`, pues cambiarlo borraría la continuidad de datos entre instalaciones. El identificador público no revela claves ni contraseñas. El nombre de cuenta de GitHub y las URL de GitHub Pages siguen siendo públicos: renombrar el paquete **no los oculta**. La disponibilidad en Play Console aún debe verificarse al crear la ficha.
