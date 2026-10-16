@@ -237,6 +237,7 @@ export function ColoringScreen({
             ]}
           >
             {heading}
+            {!layout.bottomPalette ? audioToggle : null}
             {layout.bottomPalette ? (
               <View style={styles.compactTools}>
                 {tools}
@@ -274,8 +275,8 @@ export function ColoringScreen({
               {
                 width: layout.panelWidth,
                 padding: layout.panelPadding,
-                // On compact landscape phones, 4dp spacing keeps all four
-                // palette rows at their full 48dp touch target height.
+                // Sound lives in the drawing header in sidebar layouts.
+                // Keep all four palette rows and tools at their 48dp touch targets.
                 gap: layout.tablet ? layout.sectionGap : 4,
               },
             ]}
@@ -293,7 +294,6 @@ export function ColoringScreen({
             </View>
             {colors}
             {tools}
-            {audioToggle}
           </View>
         )}
       </View>
