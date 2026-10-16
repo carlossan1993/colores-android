@@ -44,9 +44,7 @@ def snapshot(name):
             adb("exec-out", "screencap", "-p")
         )
         print(f"Acknowledging Android immersive tutorial before {name}", flush=True)
-        left, top, right, bottom = map(
-            int, re.findall(r"\\d+", immersive_ok.attrib["bounds"])
-        )
+        left, top, right, bottom = bounds(immersive_ok)
         shell("input", "tap", (left + right) // 2, (top + bottom) // 2)
         time.sleep(0.4)
     raise AssertionError("Android immersive tutorial repeatedly blocked UI")
