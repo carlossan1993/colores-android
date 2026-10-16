@@ -2,7 +2,7 @@
 
 Este archivo es un registro de pendientes, no una declaración de cumplimiento. Los requisitos externos se verificarán nuevamente en la etapa 10.
 
-- [x] Colorimbo confirmado como nombre de marca; lema «Toca y colorea» y dirección A aprobados. Falta comprobar marca a nivel jurídico y definir paquete de producción y edades objetivo.
+- [x] Colorimbo confirmado como nombre de marca; lema «Toca y colorea» y dirección A aprobados. Falta comprobar marca a nivel jurídico y confirmar grupo superior del público infantil.
 - [x] Correo de contacto **colorimbo.app@gmail.com** aprobado, creado y operativo según confirmación del responsable.
 - [ ] Verificar cuenta de Play Console y los requisitos vigentes de pruebas y registro.
 - [ ] Completar comportamiento V1 y catálogo validado.
@@ -13,6 +13,8 @@ Este archivo es un registro de pendientes, no una declaración de cumplimiento. 
 - [ ] Completar Data Safety, público infantil/Families y clasificación IARC coherentes con la app.
 - [x] Fuente: targetSdk 36 (requisito de nueva app desde 31-08-2026). Falta verificar compatibilidad de bibliotecas y paquete final.
 - [ ] Revisar target SDK, compatibilidad de librerías nativas (incluido soporte 16 KB) y formato exigidos por Play.
+- [x] Definido identificador de producción `com.colorimbo.app` y renombradas clases Android (PR #28). Preview existente conservado para actualizaciones.
+- [ ] Verificar que `com.colorimbo.app` esté disponible al crear la app en Google Play Console; comprobar AAB/manifiesto final antes de subir.
 - [ ] Configurar clave de carga en Secrets y Google Play App Signing.
 - [ ] Generar y probar AAB firmado desde Actions.
 - [ ] Preparar icono definitivo, capturas y ficha de la tienda.

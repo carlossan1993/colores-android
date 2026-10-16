@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.18.0 — Identidad Android definitiva de producción
+
+- Paquete público de producción y namespace nativo: `com.colorimbo.app`.
+- Se trasladan todas las clases Kotlin y codegen Android a `com.colorimbo.app` y `com.colorimbo.app.storage`.
+- Se conserva explícitamente el identificador de pruebas `com.carlossan1993.colores.preview` y la misma firma para que los dibujos de las instalaciones de prueba sigan actualizándose.
+- Se ajusta la automatización del emulador a la nueva actividad nativa; se mantienen el almacenamiento privado, permisos, funcionalidad offline y versión de prueba 0.18.0 (`versionCode` 18).
+- Una versión de producción con el nuevo paquete **no se instala como actualización de otra app de producción con identificador distinto**. La disponibilidad definitiva del paquete se confirma al dar de alta el producto en Play Console.
+
+
 ## 0.17.0 — Modo inmersivo y confirmación de salida
 
 - La actividad Android oculta barras del sistema en modo inmersivo; el deslizamiento del borde revela temporalmente las barras y Android mantiene la salida mediante Inicio/Recientes.
