@@ -11,7 +11,7 @@ import xml.etree.ElementTree as ET
 from android_ui_helpers import pixel_launcher_close_button
 
 PACKAGE = "com.carlossan1993.colores.preview"
-ACTIVITY = f"{PACKAGE}/com.colorimbo.app.MainActivity"
+ACTIVITY = None  # Set from the installed APK manifest for each test phase.
 OUTPUT = Path("upgrade-artifacts")
 OUTPUT.mkdir(exist_ok=True)
 TOOLS = Path(os.environ["ANDROID_HOME"]) / "build-tools" / "36.0.0"
@@ -29,15 +29,25 @@ def shell(*args):
     return adb("shell", *args)
 
 
+def parse_badging(badging):
+    """Read the package, version and actual launcher activity from each APK."""
+    package = re.search(r"^package:\s+name='([^']+)'\s+versionCode='(\d+)'", badging, re.M)
+    launcher = re.search(r"^launchable-activity:\s+name='([^']+)'", badging, re.M)
+    assert package is not None, "APK metadata missing package/version"
+    assert launcher is not None, "APK metadata missing launcher activity"
+    activity = launcher.group(1)
+    assert activity and " " not in activity, "Invalid launcher activity"
+    return package.group(1), int(package.group(2)), activity
+
+
 def apk_info(path):
     badging = command(TOOLS / "aapt2", "dump", "badging", path)
-    m = re.search(r"package:\s+name='([^']+)'\s+versionCode='(\d+)'", badging)
-    assert m is not None, f"Missing APK metadata: {path}"
+    package, version, activity = parse_badging(badging)
     command(TOOLS / "apksigner", "verify", "--verbose", path)
     cert = command(TOOLS / "apksigner", "verify", "--print-certs", path)
     s = re.search(r"Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)", cert)
     assert s is not None, f"Missing signer: {path}"
-    return m.group(1), int(m.group(2)), s.group(1).lower()
+    return package, version, s.group(1).lower(), activity
 
 
 def snapshot(label):
@@ -159,14 +169,21 @@ def capture(label):
 
 
 def test_upgrade(old_apk, new_apk):
+    global ACTIVITY
     old, new = apk_info(old_apk), apk_info(new_apk)
     assert old[0] == new[0] == PACKAGE, "Package identifiers differ"
     assert old[2] == new[2], "Certificates differ: upgrade would erase app data"
     assert new[1] > old[1], "versionCode did not increase"
     print(f"Same signer, versionCode {old[1]} -> {new[1]}.", flush=True)
+    print(f"Launcher activities: {old[3]} -> {new[3]}.", flush=True)
 
+    ACTIVITY = f"{PACKAGE}/{old[3]}"
     adb("install", old_apk)
     shell("pm", "clear", PACKAGE)  # Isolate the freshly installed baseline only.
+    # CI emulator only: do not let Android's first immersive-mode tutorial
+    # obscure the upgraded application's screen during accessibility checks.
+    shell("settings", "put", "secure", "immersive_mode_confirmations", "confirmed")
+    assert shell("settings", "get", "secure", "immersive_mode_confirmations") == "confirmed"
     shell("settings", "put", "system", "accelerometer_rotation", 0)
     shell("settings", "put", "system", "user_rotation", 1)
     shell("wm", "size", "360x640")
@@ -196,6 +213,7 @@ def test_upgrade(old_apk, new_apk):
     install_result = adb("install", "-r", new_apk)  # Never uninstall or clear updated data.
     assert "Success" in install_result, f"Android refused upgrade: {install_result}"
     print("adb install -r succeeded: no uninstall, no pm clear.", flush=True)
+    ACTIVITY = f"{PACKAGE}/{new[3]}"
     shell("am", "start", "-W", "-n", ACTIVITY)
     open_house()
     root = progress(2, "updated-house")

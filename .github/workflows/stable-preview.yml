@@ -58,6 +58,8 @@ jobs:
 
       - run: npm ci --no-audit --no-fund
       - run: npm run verify
+      - name: Verificar detección de actividades de actualización
+        run: python3 -m unittest discover -s scripts -p 'test_android_upgrade_metadata.py' -v
       - name: Instalar SDK Android estable
         run: >-
           "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
@@ -158,7 +160,7 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
-      - name: Actualizar 0.13 a 0.14 en modo avión y revisar guardado
+      - name: Actualizar APK histórico al actual sin borrar progreso
         uses: ReactiveCircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d # v2
         with:
           api-level: 35
