@@ -4,5 +4,6 @@ import { TurboModuleRegistry } from 'react-native';
 // Optional by design: absence of an audio module must never block coloring.
 export interface Spec extends TurboModule {
   playCompletion(): void;
+  setBackgroundMusicEnabled(enabled: boolean): void;
 }
 export default TurboModuleRegistry.get<Spec>('NativeCompletionSound');

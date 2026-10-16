@@ -3,6 +3,7 @@
 No certifica cumplimiento de Play Console. No usa ni publica claves privadas.
 """
 from pathlib import Path
+import hashlib
 import sys
 from zipfile import BadZipFile, ZipFile
 
@@ -24,6 +25,11 @@ def check_aab(path: Path) -> None:
             ]
             if missing:
                 raise SystemExit("AAB incompleto: " + ", ".join(missing))
+            music_path = "base/assets/colorimbo_music.mp3"
+            if music_path not in members:
+                raise SystemExit("AAB release sin música offline aprobada")
+            if hashlib.sha256(archive.read(music_path)).hexdigest() != "201f30745de622057c7f2834362882a4be8ba663a2164a8ecaece787c37ff796":
+                raise SystemExit("AAB incluye una melodía diferente de la aprobada")
             manifest_bytes = archive.read("base/manifest/AndroidManifest.xml")
             # The bundle manifest is protobuf, but package names are stored as
             # literal UTF-8 strings. This is a conservative extra assertion,

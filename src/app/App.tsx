@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  AppState,
   BackHandler,
   Pressable,
   StatusBar,
@@ -15,6 +16,7 @@ import { createInitialState } from '../coloring/coloringReducer';
 import { useProgress } from '../storage/useProgress';
 import { theme } from '../theme/theme';
 import { catalog } from '../content/catalog';
+import { setBackgroundMusicEnabled } from '../audio/backgroundMusic';
 import {
   adjacentDrawing,
   backRoute,
@@ -32,6 +34,23 @@ export default function App() {
   const { sessions, preferences, saveStatus } = progress;
   const selectedColor = preferences.selectedColor;
   const goBack = () => setRoute(backRoute(route));
+
+  // Keep a single looping soundtrack across all screens. Mute immediately
+  // when backgrounded; never start playback before preferences are restored.
+  useEffect(() => {
+    if (progress.loadState !== 'ready') {
+      return;
+    }
+    const update = (state: string) => {
+      setBackgroundMusicEnabled(preferences.soundEnabled && state === 'active');
+    };
+    update(AppState.currentState ?? 'inactive');
+    const listener = AppState.addEventListener('change', update);
+    return () => {
+      listener.remove();
+      setBackgroundMusicEnabled(false);
+    };
+  }, [progress.loadState, preferences.soundEnabled]);
   const openDrawing = (drawingId: string) => {
     const drawing = catalog.find(item => item.id === drawingId);
     if (drawing && access.canAccess(drawing)) {

@@ -1,5 +1,6 @@
 """Validate the actual APK, not just its source configuration."""
 import os
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
@@ -24,6 +25,11 @@ if unexpected:
 with ZipFile(apk) as archive:
     if archive.getinfo("assets/index.android.bundle").file_size == 0:
         raise SystemExit("Missing embedded JavaScript")
+    soundtrack = "assets/colorimbo_music.mp3"
+    if soundtrack not in archive.namelist():
+        raise SystemExit("APK sin música offline aprobada")
+    if hashlib.sha256(archive.read(soundtrack)).hexdigest() != "201f30745de622057c7f2834362882a4be8ba663a2164a8ecaece787c37ff796":
+        raise SystemExit("APK incluye una melodía diferente de la aprobada")
     if not any(name.startswith("lib/arm64-v8a/") for name in archive.namelist()):
         raise SystemExit("Missing native ARM64 libraries")
-print("APK verified: signed test build, ARM64, embedded JavaScript, no external permissions.")
+print("APK verified: signed test build, ARM64, embedded JavaScript, approved soundtrack, no external permissions.")
