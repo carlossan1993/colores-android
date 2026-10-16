@@ -1,10 +1,19 @@
 """Regression tests: 0.14 and 0.18 preview have different launcher classes."""
 import os
+import importlib.util
+from pathlib import Path
 import unittest
 
 # Metadata parsing must be testable without downloading the Android SDK.
 os.environ.setdefault("ANDROID_HOME", "/tmp/colorimbo-test-android-home")
-from check_android_upgrade import parse_badging, PACKAGE
+# The actual CI script has a hyphen in its filename, so import by path.
+spec = importlib.util.spec_from_file_location(
+    "check_android_upgrade", Path(__file__).with_name("check-android-upgrade.py")
+)
+assert spec is not None and spec.loader is not None
+upgrade = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(upgrade)
+parse_badging, PACKAGE = upgrade.parse_badging, upgrade.PACKAGE
 
 
 class ApkIdentityTests(unittest.TestCase):
