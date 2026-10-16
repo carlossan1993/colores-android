@@ -87,6 +87,22 @@ def has(root, test_id):
     )
 
 
+def available_color(root, *hex_colors):
+    """Find the actual color swatch in the installed baseline, never assume its vintage."""
+    for hex_color in hex_colors:
+        test_id = f"color-{hex_color.upper().lstrip('#')}"
+        if has(root, test_id):
+            return test_id
+    raise AssertionError(f"No matching palette color: {', '.join(hex_colors)}")
+
+
+def press_color(*hex_colors):
+    """Support both the original primary palette and the 0.16+ primaries."""
+    test_id = available_color(snapshot("baseline-palette"), *hex_colors)
+    press(test_id)
+    return test_id
+
+
 def press(test_id, next_test_id=None, scroll=False):
     """Tap a UI control; on navigation require the destination to be visible.
 
@@ -200,11 +216,11 @@ def test_upgrade(old_apk, new_apk):
     assert find(snapshot("baseline-muted"), "sound-toggle").attrib.get("checked") == "false"
     press("color-66BE96")
     paint(270, 75, "baseline-house-roof")
-    press("color-62AFE2")
+    press_color("0A35F5", "62AFE2")
     paint(160, 250, "baseline-house-wall")
     progress(2, "baseline-house")
     press("drawing-next")
-    press("color-EF6B6B")
+    press_color("F54536", "EF6B6B")
     paint(320, 40, "baseline-castle")
     progress(1, "baseline-castle")
     capture("before-upgrade")
