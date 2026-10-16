@@ -33,7 +33,7 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
           <Text style={styles.heading}>Sonidos</Text>
           <View style={styles.soundRow}>
             <View style={styles.explanation}>
-              <Text style={styles.rowTitle}>Sonido al terminar</Text>
+              <Text style={styles.rowTitle}>Música y efectos de sonido</Text>
               <Text testID="settings-sound-status" style={styles.description}>
                 {soundEnabled ? 'Activado' : 'Silenciado'}
               </Text>
@@ -86,7 +86,7 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
           ) : null}
         </View>
         <Text testID="settings-version" style={styles.version}>
-          Colorimbo · versión 0.18.0 (prueba)
+          Colorimbo · versión 0.19.0 (prueba)
         </Text>
       </ScrollView>
     </SafeAreaView>
