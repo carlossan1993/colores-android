@@ -29,10 +29,27 @@ def shell(*args):
 
 
 def snapshot(name):
-    shell("uiautomator", "dump", "/sdcard/colores-ui.xml")
-    xml = adb("exec-out", "cat", "/sdcard/colores-ui.xml")
-    (OUTPUT / f"{name}.xml").write_bytes(xml)
-    return ET.fromstring(xml)
+    # Android can display its first-use full-screen tutorial again after an
+    # emulator Launcher ANR/focus recovery, not only on cold launch. Clear it
+    # before ANY UI assertion, including immediately after screen changes.
+    for attempt in range(3):
+        shell("uiautomator", "dump", "/sdcard/colores-ui.xml")
+        xml = adb("exec-out", "cat", "/sdcard/colores-ui.xml")
+        root = ET.fromstring(xml)
+        immersive_ok = immersive_intro_ok_button(root)
+        if immersive_ok is None:
+            (OUTPUT / f"{name}.xml").write_bytes(xml)
+            return root
+        (OUTPUT / f"{name}-android-fullscreen-onboarding-{attempt + 1}.png").write_bytes(
+            adb("exec-out", "screencap", "-p")
+        )
+        print(f"Acknowledging Android immersive tutorial before {name}", flush=True)
+        left, top, right, bottom = map(
+            int, re.findall(r"\\d+", immersive_ok.attrib["bounds"])
+        )
+        shell("input", "tap", (left + right) // 2, (top + bottom) // 2)
+        time.sleep(0.4)
+    raise AssertionError("Android immersive tutorial repeatedly blocked UI")
 
 
 def bounds(node):
@@ -133,22 +150,8 @@ def assert_target(node, size):
 
 def press_view(test_id, name, scroll=False):
     recoveries = 0
-    immersive_intros = 0
     for attempt in range(10):
         root = snapshot(name)
-        # The first immersive launch may show Android's own full-screen
-        # instructions over an otherwise healthy Colorimbo Home screen.
-        # Only acknowledge the exact OS-owned immersive tutorial.
-        immersive_ok = immersive_intro_ok_button(root)
-        if immersive_ok is not None:
-            if immersive_intros >= 1:
-                raise AssertionError("Android full-screen tutorial reappeared")
-            capture(f"{name}-android-fullscreen-onboarding")
-            print("Acknowledging Android immersive-mode tutorial", flush=True)
-            tap(immersive_ok)
-            immersive_intros += 1
-            time.sleep(0.5)
-            continue
         # Launcher can ANR before any first action (including opening Settings).
         # Only dismiss the exact Android system dialog, never a COLORES ANR.
         system_close = pixel_launcher_close_button(root)
