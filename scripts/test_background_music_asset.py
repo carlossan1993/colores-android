@@ -2,8 +2,16 @@
 from pathlib import Path
 import tempfile
 import unittest
+import importlib.util
 
-from verify_background_music import verify_music, APPROVED_BYTES
+# Import the actual hyphenated script by file path, not a guessed module name.
+spec = importlib.util.spec_from_file_location(
+    "verify_background_music", Path(__file__).with_name("verify-background-music.py")
+)
+assert spec is not None and spec.loader is not None
+validator = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(validator)
+verify_music, APPROVED_BYTES = validator.verify_music, validator.APPROVED_BYTES
 
 
 class BackgroundMusicAssetTests(unittest.TestCase):
