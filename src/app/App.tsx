@@ -44,7 +44,7 @@ export default function App() {
     const update = (state: string) => {
       setBackgroundMusicEnabled(preferences.soundEnabled && state === 'active');
     };
-    update(AppState.currentState);
+    update(AppState.currentState ?? 'inactive');
     const listener = AppState.addEventListener('change', update);
     return () => {
       listener.remove();
