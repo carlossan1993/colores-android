@@ -20,7 +20,7 @@ def verify_music(path: Path = AUDIO) -> None:
     digest = hashlib.sha256(content).hexdigest()
     if digest != APPROVED_SHA256:
         raise SystemExit("El MP3 no coincide con la muestra musical aprobada (SHA-256)")
-    if not (content.startswith(b"ID3") or content.startswith(b"\\xff\\xfb")):
+    if not (content.startswith(b"ID3") or content.startswith(b"\xff\xfb")):
         raise SystemExit("MP3 sin cabecera reconocida")
     print("OK: MP3 aprobado y exacto incluido offline (32.0 s, 597056 bytes).")
 
