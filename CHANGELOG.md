@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.19.0 — Música infantil Colorimbo en bucle (pendiente de adjuntar MP3 aprobado)
+
+- Música original aprobada de 32 segundos incluida en el APK: **solo** el archivo exacto validado por SHA-256.
+- Reproducción local con Android MediaPlayer e isLooping; sin API, transmisión ni permisos nuevos.
+- Volumen bajo (20 %), controlado por la preferencia existente `soundEnabled`; desactivar Sonido también silencia el efecto de finalización.
+- La música sigue al navegar por dibujos y categorías, y se pausa automáticamente cuando Android envía la app a segundo plano.
+- No altera progreso ni esquema de datos. Versión de pruebas 0.19.0, `versionCode` 19.
+- Esta implementación **no se puede considerar finalizada** hasta subir `android/app/src/main/assets/colorimbo_music.mp3` con la huella exacta de la muestra aprobada, y superar las pruebas de CI.
+
+
 ## 0.18.0 — Identidad Android definitiva de producción
 
 - Paquete público de producción y namespace nativo: `com.colorimbo.app`.
