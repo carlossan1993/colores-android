@@ -31,10 +31,12 @@ En una instalación o dispositivo nuevo, Android puede mostrar una vez el aviso
 **“Viewing full screen” / “Got it”** para explicar cómo volver a mostrar las barras.
 Es comportamiento normal del sistema, no una pantalla creada por Colorimbo.
 
-En el emulador de GitHub Actions, el ensayo identifica específicamente
-`android:id/immersive_cling_title` y `android:id/ok` pertenecientes al paquete
-`android`, cierra el aviso y continúa las pruebas. Nunca cierra cuadros arbitrarios
-de la app. No se han suprimido ni cambiado los avisos de seguridad para usuarios reales.
+En el **emulador desechable de GitHub Actions**, se establece la opción oficial
+de pruebas de Android `settings put secure immersive_mode_confirmations confirmed`
+antes de instalar la app. Esto evita el aviso de educación del sistema durante
+la automatización, sin simular pulsaciones sobre coordenadas potencialmente
+desactualizadas. El ajuste no se solicita ni aplica en los teléfonos de usuarios,
+donde Android conserva el aviso del primer uso y los gestos de salida.
 
 ## Evidencia automatizada
 
