@@ -26,6 +26,10 @@ jobs:
           cache: npm
       - run: npm ci --no-audit --no-fund
       - run: npm run verify
+      - name: Probar verificador de música offline
+        run: python3 -m unittest discover -s scripts -p 'test_background_music_asset.py' -v
+      - name: Exigir MP3 original aprobado dentro del APK
+        run: python3 scripts/verify-background-music.py
       - name: Pruebas del manejador ANR del emulador
         run: python3 -m unittest discover -s scripts -p 'test_android_ui_helpers.py'
       - name: Probar lanzadores de las dos versiones Android
