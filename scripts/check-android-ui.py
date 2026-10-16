@@ -12,7 +12,7 @@ import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from android_ui_helpers import immersive_intro_ok_button, pixel_launcher_close_button
+from android_ui_helpers import pixel_launcher_close_button
 
 PACKAGE = "com.carlossan1993.colores.preview"
 ACTIVITY = f"{PACKAGE}/com.carlossan1993.colores.MainActivity"
@@ -29,26 +29,10 @@ def shell(*args):
 
 
 def snapshot(name):
-    # Android can display its first-use full-screen tutorial again after an
-    # emulator Launcher ANR/focus recovery, not only on cold launch. Clear it
-    # before ANY UI assertion, including immediately after screen changes.
-    for attempt in range(3):
-        shell("uiautomator", "dump", "/sdcard/colores-ui.xml")
-        xml = adb("exec-out", "cat", "/sdcard/colores-ui.xml")
-        root = ET.fromstring(xml)
-        immersive_ok = immersive_intro_ok_button(root)
-        if immersive_ok is None:
-            (OUTPUT / f"{name}.xml").write_bytes(xml)
-            return root
-        (OUTPUT / f"{name}-android-fullscreen-onboarding-{attempt + 1}.png").write_bytes(
-            adb("exec-out", "screencap", "-p")
-        )
-        print(f"Acknowledging Android immersive tutorial before {name}", flush=True)
-        left, top, right, bottom = bounds(immersive_ok)
-        shell("input", "tap", (left + right) // 2, (top + bottom) // 2)
-        time.sleep(0.4)
-    raise AssertionError("Android immersive tutorial repeatedly blocked UI")
-
+    shell("uiautomator", "dump", "/sdcard/colores-ui.xml")
+    xml = adb("exec-out", "cat", "/sdcard/colores-ui.xml")
+    (OUTPUT / f"{name}.xml").write_bytes(xml)
+    return ET.fromstring(xml)
 
 def bounds(node):
     return tuple(map(int, re.findall(r"\d+", node.attrib["bounds"])))
@@ -573,6 +557,12 @@ def exercise_persistence(apk):
 
 results = {}
 try:
+    # Official AOSP UI-test practice: mark the Android OS immersive-mode
+    # education dialog as already acknowledged on this disposable emulator.
+    # Otherwise a stale UI dump can make an automated tap hit Colorimbo.
+    # This is EMULATOR SETUP ONLY; no setting is changed on users' phones.
+    shell("settings", "put", "secure", "immersive_mode_confirmations", "confirmed")
+    assert shell("settings", "get", "secure", "immersive_mode_confirmations") == "confirmed"
     adb("install", "-r", sys.argv[1])
     shell("settings", "put", "system", "accelerometer_rotation", 0)
     shell("settings", "put", "system", "user_rotation", 1)
