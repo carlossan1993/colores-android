@@ -43,8 +43,8 @@ android {
         applicationId "com.carlossan1993.colores"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 16
-        versionName "0.16.0"
+        versionCode 17
+        versionName "0.17.0"
     }
 
     buildTypes {
