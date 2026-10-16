@@ -180,6 +180,10 @@ def test_upgrade(old_apk, new_apk):
     ACTIVITY = f"{PACKAGE}/{old[3]}"
     adb("install", old_apk)
     shell("pm", "clear", PACKAGE)  # Isolate the freshly installed baseline only.
+    # CI emulator only: do not let Android's first immersive-mode tutorial
+    # obscure the upgraded application's screen during accessibility checks.
+    shell("settings", "put", "secure", "immersive_mode_confirmations", "confirmed")
+    assert shell("settings", "get", "secure", "immersive_mode_confirmations") == "confirmed"
     shell("settings", "put", "system", "accelerometer_rotation", 0)
     shell("settings", "put", "system", "user_rotation", 1)
     shell("wm", "size", "360x640")
