@@ -297,7 +297,7 @@ def exercise(name, width, height, full_controls=False):
             press_view(f"category-{category}", name, scroll=True)
             capture(f"{name}-gallery-{category}")
             press_view(f"drawing-{drawing}", name)
-            press_view("color-EF6B6B", name)
+            press_view("color-F54536", name)
             root = stable_layout(snapshot(f"{name}-{drawing}"), name)
             left, top, right, bottom = bounds(find(root, "drawing-canvas"))
             iw, ih = right - left - 4, bottom - top - 4
@@ -326,7 +326,7 @@ def exercise(name, width, height, full_controls=False):
         ):
             press_view(f"category-{category}", name, scroll=True)
             press_view(f"drawing-{drawing}", name, scroll=True)
-            press_view("color-EF6B6B", name)
+            press_view("color-F54536", name)
             root = stable_layout(snapshot(f"{name}-{drawing}-opened"), name)
             left, top, right, bottom = bounds(find(root, "drawing-canvas"))
             iw, ih = right - left - 4, bottom - top - 4
@@ -351,7 +351,7 @@ def exercise(name, width, height, full_controls=False):
         ):
             press_view(f"category-{category}", name, scroll=True)
             press_view(f"drawing-{drawing}", name, scroll=True)
-            press_view("color-EF6B6B", name)
+            press_view("color-F54536", name)
             root = stable_layout(snapshot(f"{name}-{drawing}-opened"), name)
             left, top, right, bottom = bounds(find(root, "drawing-canvas"))
             iw, ih = right - left - 4, bottom - top - 4
@@ -377,7 +377,7 @@ def exercise(name, width, height, full_controls=False):
         ):
             press_view(f"category-{category}", name, scroll=True)
             press_view(f"drawing-{drawing}", name, scroll=True)
-            press_view("color-EF6B6B", name)
+            press_view("color-F54536", name)
             root = stable_layout(snapshot(f"{name}-{drawing}-opened"), name)
             left, top, right, bottom = bounds(find(root, "drawing-canvas"))
             iw, ih = right - left - 4, bottom - top - 4
@@ -403,7 +403,7 @@ def exercise(name, width, height, full_controls=False):
         ):
             press_view(f"category-{category}", name, scroll=True)
             press_view(f"drawing-{drawing}", name, scroll=True)
-            press_view("color-EF6B6B", name)
+            press_view("color-F54536", name)
             root = stable_layout(snapshot(f"{name}-{drawing}-opened"), name)
             left, top, right, bottom = bounds(find(root, "drawing-canvas"))
             iw, ih = right - left - 4, bottom - top - 4
@@ -422,7 +422,7 @@ def exercise(name, width, height, full_controls=False):
         press_view("start-coloring", name)
         press_view("category-fruits", name, scroll=True)
         press_view("drawing-apple_001", name)
-        press_view("color-EF6B6B", name)
+        press_view("color-F54536", name)
         root = stable_layout(snapshot(f"{name}-apple-completion-opened"), name)
         left, top, right, bottom = bounds(find(root, "drawing-canvas"))
         iw, ih = right - left - 4, bottom - top - 4
@@ -492,17 +492,17 @@ def exercise_persistence(apk):
     wait_saved(name)
     press_view("color-66BE96", name)
     paint_point(name, 270, 75)
-    press_view("color-62AFE2", name)
+    press_view("color-0A35F5", name)
     paint_point(name, 160, 250)
     progress(2, name)
     press_view("drawing-next", name)
-    press_view("color-EF6B6B", name)
+    press_view("color-F54536", name)
     paint_point(name, 320, 40)
     progress(1, name)
     restart_house(name)
     root = progress(2, name)
     assert find(root, "sound-toggle").attrib.get("checked") == "false"
-    assert find(root, "color-EF6B6B").attrib.get("selected") == "true"
+    assert find(root, "color-F54536").attrib.get("selected") == "true"
     assert find(root, "action-undo").attrib.get("enabled") == "false"
     capture("persistence-house-restored")
     press_view("drawing-next", name)

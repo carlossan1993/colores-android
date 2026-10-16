@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.16.0 — Colores primarios aprobados
+
+- Rojo `#F54536`, azul `#0A35F5` y amarillo `#FAF332` sustituyen únicamente sus tres tonos anteriores.
+- Se mantienen los 12 controles, el borrador blanco y el orden de la paleta.
+- Las preferencias previamente seleccionadas de esos tres colores se traducen a los nuevos tonos; **las zonas de los dibujos guardados se conservan con su color original**.
+- Versión de prueba Android 0.16.0 (`versionCode` 16), sin cambiar el identificador del paquete, la firma ni el esquema de almacenamiento.
+- El identificador de producción `com.colorimbo.app` se abordará en otro PR posterior.
+
+
 ## 0.15.0 — Identidad Colorimbo (PR 21)
 
 - Nombre visible Colorimbo, lema «Toca y colorea» e identidad visual aprobada.

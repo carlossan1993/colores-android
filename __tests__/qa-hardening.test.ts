@@ -28,7 +28,7 @@ test('QA: all 40 drawings and preferences survive a complete offline save and re
     expect(getDrawingProgress(sessions[drawing.id].colors, drawing.regionIds).status).toBe('completed');
   }
 
-  const preferences = { selectedColor: '#62AFE2', soundEnabled: false };
+  const preferences = { selectedColor: '#0A35F5', soundEnabled: false };
   const serialized = encodeSnapshot(sessions, preferences, emptySnapshot());
   // Android's native progress module rejects snapshots larger than 256 KiB.
   expect(serialized.length).toBeLessThan(262144);

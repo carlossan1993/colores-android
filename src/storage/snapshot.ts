@@ -3,6 +3,13 @@ import { catalog } from '../content/catalog';
 import type { Sessions } from '../coloring/sessionReducer';
 import { palette } from '../theme/palette';
 
+// Conservar colores pintados; migrar únicamente la preferencia seleccionada.
+const legacyPrimarySelection: Readonly<Record<string, string>> = {
+  '#EF6B6B': '#F54536',
+  '#62AFE2': '#0A35F5',
+  '#F4D35E': '#FAF332',
+};
+
 export const SCHEMA_VERSION = 1;
 export type Preferences = { selectedColor: string; soundEnabled: boolean };
 export type Snapshot = {
@@ -67,11 +74,12 @@ export function decodeSnapshot(raw: string | null): Snapshot {
     snapshot.drawings[id] = colors;
   }
   const color = value.preferences.selectedColor;
-  if (
-    typeof color === 'string' &&
-    palette.some(item => item.color === color.toUpperCase())
-  ) {
-    snapshot.preferences.selectedColor = color.toUpperCase();
+  if (typeof color === 'string') {
+    const normalized = color.toUpperCase();
+    const selected = legacyPrimarySelection[normalized] ?? normalized;
+    if (palette.some(item => item.color === selected)) {
+      snapshot.preferences.selectedColor = selected;
+    }
   }
   if (typeof value.preferences.soundEnabled === 'boolean') {
     snapshot.preferences.soundEnabled = value.preferences.soundEnabled;
