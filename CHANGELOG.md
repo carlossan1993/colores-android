@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.17.0 — Modo inmersivo y confirmación de salida
+
+- La actividad Android oculta barras del sistema en modo inmersivo; el deslizamiento del borde revela temporalmente las barras y Android mantiene la salida mediante Inicio/Recientes.
+- Al pulsar Atrás en Inicio, Colorimbo pregunta si se desea salir; se puede cancelar para seguir coloreando.
+- Atrás desde dibujos, galerías y Ajustes conserva la navegación previa sin abrir diálogos innecesarios.
+- Sin nuevos permisos ni SDKs, y sin cambios de applicationId, firma o almacenamiento. La versión 0.17.0 (versionCode 17) permite actualizaciones del APK de pruebas firmado.
+- Pendiente validar en dispositivo físico, especialmente Samsung con navegación de tres botones y navegación por gestos.
+
+
 ## 0.16.0 — Colores primarios aprobados
 
 - Rojo `#F54536`, azul `#0A35F5` y amarillo `#FAF332` sustituyen únicamente sus tres tonos anteriores.

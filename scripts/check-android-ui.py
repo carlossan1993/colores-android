@@ -34,7 +34,6 @@ def snapshot(name):
     (OUTPUT / f"{name}.xml").write_bytes(xml)
     return ET.fromstring(xml)
 
-
 def bounds(node):
     return tuple(map(int, re.findall(r"\d+", node.attrib["bounds"])))
 
@@ -539,11 +538,31 @@ def exercise_persistence(apk):
     press_view("drawing-next", name)
     progress(0, name)
     capture("persistence-erased-restored")
-    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "mute_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design"}
+
+    # Back from Home must show a parental-style confirmation, not exit instantly.
+    # System Home/Recents gestures remain outside our control.
+    press_view("coloring-back", name)
+    press_view("browse-back", name)
+    press_view("browse-back", name)
+    assert find(snapshot("exit-home"), "start-coloring") is not None
+    shell("input", "keyevent", 4)
+    dialog = snapshot("exit-confirmation")
+    assert dialog_button(dialog, "Seguir coloreando") is not None
+    assert dialog_button(dialog, "Salir") is not None
+    capture("exit-confirmation")
+    tap(dialog_button(dialog, "Seguir coloreando"))
+    assert find(snapshot("exit-cancelled"), "start-coloring") is not None
+    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "mute_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design", "exit_cancel_keeps_app_open": "passed"}
 
 
 results = {}
 try:
+    # Official AOSP UI-test practice: mark the Android OS immersive-mode
+    # education dialog as already acknowledged on this disposable emulator.
+    # Otherwise a stale UI dump can make an automated tap hit Colorimbo.
+    # This is EMULATOR SETUP ONLY; no setting is changed on users' phones.
+    shell("settings", "put", "secure", "immersive_mode_confirmations", "confirmed")
+    assert shell("settings", "get", "secure", "immersive_mode_confirmations") == "confirmed"
     adb("install", "-r", sys.argv[1])
     shell("settings", "put", "system", "accelerometer_rotation", 0)
     shell("settings", "put", "system", "user_rotation", 1)

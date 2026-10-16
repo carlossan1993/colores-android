@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   BackHandler,
   Pressable,
   StatusBar,
@@ -43,7 +44,16 @@ export default function App() {
       'hardwareBackPress',
       () => {
         if (route.screen === 'home') {
-          return false;
+          Alert.alert(
+            '¿Quieres salir de Colorimbo?',
+            'Tus dibujos y colores guardados estarán aquí cuando regreses.',
+            [
+              { text: 'Seguir coloreando', style: 'cancel' },
+              { text: 'Salir', onPress: () => BackHandler.exitApp() },
+            ],
+            { cancelable: true },
+          );
+          return true;
         }
         setRoute(backRoute(route));
         return true;

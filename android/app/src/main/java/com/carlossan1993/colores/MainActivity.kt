@@ -1,11 +1,26 @@
 package com.carlossan1993.colores
 
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 
 class MainActivity : ReactActivity() {
+
+  // Hide Android navigation controls during coloring, but keep the system's
+  // swipe-to-reveal escape gestures available. Restore after dialogs and resume.
+  override fun onWindowFocusChanged(hasFocus: Boolean) {
+    super.onWindowFocusChanged(hasFocus)
+    if (hasFocus) {
+      val controller = WindowCompat.getInsetsController(window, window.decorView)
+      controller.systemBarsBehavior =
+          WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+      controller.hide(WindowInsetsCompat.Type.systemBars())
+    }
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
