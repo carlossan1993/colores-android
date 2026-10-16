@@ -37,10 +37,10 @@ android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
-    namespace "com.carlossan1993.colores"
+    namespace "com.colorimbo.app"
 
     defaultConfig {
-        applicationId "com.carlossan1993.colores"
+        applicationId "com.colorimbo.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 17
@@ -60,7 +60,8 @@ android {
         preview {
             initWith release
             matchingFallbacks = ["release"]
-            applicationIdSuffix ".preview"
+            // Preserve the existing test install and its saved drawings.
+            applicationId "com.carlossan1993.colores.preview"
             versionNameSuffix "-preview"
             signingConfig stablePreviewReady ? signingConfigs.getByName("stablePreview") : signingConfigs.debug
             debuggable false

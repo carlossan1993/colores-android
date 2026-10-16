@@ -1,4 +1,4 @@
-package com.carlossan1993.colores
+package com.colorimbo.app
 
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat

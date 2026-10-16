@@ -1,4 +1,4 @@
-package com.carlossan1993.colores.storage
+package com.colorimbo.app.storage
 
 import android.content.Context
 import com.facebook.react.bridge.Promise
