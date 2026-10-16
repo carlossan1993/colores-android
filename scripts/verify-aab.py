@@ -24,6 +24,14 @@ def check_aab(path: Path) -> None:
             ]
             if missing:
                 raise SystemExit("AAB incompleto: " + ", ".join(missing))
+            manifest_bytes = archive.read("base/manifest/AndroidManifest.xml")
+            # The bundle manifest is protobuf, but package names are stored as
+            # literal UTF-8 strings. This is a conservative extra assertion,
+            # not a substitute for Play Console's final package verification.
+            if b"com.colorimbo.app" not in manifest_bytes:
+                raise SystemExit("AAB release sin el identificador com.colorimbo.app")
+            if b"com.carlossan1993.colores" in manifest_bytes:
+                raise SystemExit("Identificador Android antiguo encontrado en el manifiesto público")
             dex = [
                 name for name, item in members.items()
                 if name.startswith("base/dex/classes")
