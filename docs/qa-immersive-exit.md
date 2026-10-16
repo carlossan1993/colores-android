@@ -25,6 +25,17 @@ Mantener la zona de dibujo a pantalla completa en teléfonos Android, ocultando 
 - Se mantiene el paquete actual y la firma preview para conservar compatibilidad de actualización. El cambio posterior a `com.colorimbo.app` se ejecutará en otro PR.
 - No se agregan permisos, bibliotecas de terceros, conexiones a Internet, rastreadores ni lógica que modifique los dibujos.
 
+## Aviso del sistema en el primer uso
+
+En una instalación o dispositivo nuevo, Android puede mostrar una vez el aviso
+**“Viewing full screen” / “Got it”** para explicar cómo volver a mostrar las barras.
+Es comportamiento normal del sistema, no una pantalla creada por Colorimbo.
+
+En el emulador de GitHub Actions, el ensayo identifica específicamente
+`android:id/immersive_cling_title` y `android:id/ok` pertenecientes al paquete
+`android`, cierra el aviso y continúa las pruebas. Nunca cierra cuadros arbitrarios
+de la app. No se han suprimido ni cambiado los avisos de seguridad para usuarios reales.
+
 ## Evidencia automatizada
 
 La prueba Jest verifica diálogo, navegación previa y llamada a `BackHandler.exitApp` solo tras confirmar. GitHub Actions compila APK/AAB y realiza prueba de interfaz en emulador, incluida la **cancelación** del diálogo. La comprobación real del gesto de revelación de barras requiere revisión en dispositivo físico.
