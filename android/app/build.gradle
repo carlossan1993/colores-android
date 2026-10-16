@@ -60,14 +60,19 @@ android {
         preview {
             initWith release
             matchingFallbacks = ["release"]
-            // Preserve the existing test install and its saved drawings.
-            applicationId "com.carlossan1993.colores.preview"
             versionNameSuffix "-preview"
             signingConfig stablePreviewReady ? signingConfigs.getByName("stablePreview") : signingConfigs.debug
             debuggable false
             resValue "string", "app_name", "Colorimbo · Prueba"
         }
     }
+}
+
+// The AGP Application Variant API may override the final manifest app ID.
+// A buildType block does not support applicationId directly. Keep the exact
+// historic preview ID to preserve the offline saved drawings on tester phones.
+androidComponents.onVariants(androidComponents.selector().withBuildType("preview")) { variant ->
+    variant.applicationId.set("com.carlossan1993.colores.preview")
 }
 
 dependencies {
