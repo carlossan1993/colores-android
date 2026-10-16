@@ -14,7 +14,7 @@ assert.match(manifest, /android:usesCleartextTraffic="false"/);
 assert.match(gradle, /debuggableVariants = \["debug"\]/);
 assert.match(gradle, /namespace "com\.colorimbo\.app"/);
 assert.match(gradle, /applicationId "com\.colorimbo\.app"/);
-assert.match(gradle, /applicationId "com\.carlossan1993\.colores\.preview"/);
+assert.match(gradle, /variant\.applicationId\.set\("com\.carlossan1993\.colores\.preview"\)/);
 assert.match(gradle, /debuggable false/);
 assert.equal(app.name, 'Colorimbo');
 assert.equal(JSON.parse(read('package.json')).codegenConfig.android.javaPackageName, 'com.colorimbo.app.storage');
