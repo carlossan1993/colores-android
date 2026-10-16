@@ -12,7 +12,7 @@ import time
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from android_ui_helpers import pixel_launcher_close_button
+from android_ui_helpers import immersive_intro_ok_button, pixel_launcher_close_button
 
 PACKAGE = "com.carlossan1993.colores.preview"
 ACTIVITY = f"{PACKAGE}/com.carlossan1993.colores.MainActivity"
@@ -133,8 +133,22 @@ def assert_target(node, size):
 
 def press_view(test_id, name, scroll=False):
     recoveries = 0
+    immersive_intros = 0
     for attempt in range(10):
         root = snapshot(name)
+        # The first immersive launch may show Android's own full-screen
+        # instructions over an otherwise healthy Colorimbo Home screen.
+        # Only acknowledge the exact OS-owned immersive tutorial.
+        immersive_ok = immersive_intro_ok_button(root)
+        if immersive_ok is not None:
+            if immersive_intros >= 1:
+                raise AssertionError("Android full-screen tutorial reappeared")
+            capture(f"{name}-android-fullscreen-onboarding")
+            print("Acknowledging Android immersive-mode tutorial", flush=True)
+            tap(immersive_ok)
+            immersive_intros += 1
+            time.sleep(0.5)
+            continue
         # Launcher can ANR before any first action (including opening Settings).
         # Only dismiss the exact Android system dialog, never a COLORES ANR.
         system_close = pixel_launcher_close_button(root)
