@@ -3,6 +3,7 @@ import os
 import importlib.util
 from pathlib import Path
 import unittest
+import xml.etree.ElementTree as ET
 
 # Metadata parsing must be testable without downloading the Android SDK.
 os.environ.setdefault("ANDROID_HOME", "/tmp/colorimbo-test-android-home")
@@ -52,6 +53,30 @@ class ApkIdentityTests(unittest.TestCase):
             parse_badging(
                 "launchable-activity: name='com.colorimbo.app.MainActivity'\n"
             )
+
+
+class PaletteUpgradeCompatibilityTests(unittest.TestCase):
+    @staticmethod
+    def palette(*swatches):
+        nodes = "".join(
+            f'<node resource-id="com.carlossan1993.colores.preview:id/color-{color}"/>'
+            for color in swatches
+        )
+        return ET.fromstring(f"<hierarchy>{nodes}</hierarchy>")
+
+    def test_old_preview_uses_original_blue_and_red(self):
+        root = self.palette("62AFE2", "EF6B6B")
+        self.assertEqual(upgrade.available_color(root, "0A35F5", "62AFE2"), "color-62AFE2")
+        self.assertEqual(upgrade.available_color(root, "F54536", "EF6B6B"), "color-EF6B6B")
+
+    def test_current_preview_uses_approved_blue_and_red(self):
+        root = self.palette("0A35F5", "F54536")
+        self.assertEqual(upgrade.available_color(root, "0A35F5", "62AFE2"), "color-0A35F5")
+        self.assertEqual(upgrade.available_color(root, "F54536", "EF6B6B"), "color-F54536")
+
+    def test_missing_color_fails_instead_of_painting_another(self):
+        with self.assertRaisesRegex(AssertionError, "No matching palette color"):
+            upgrade.available_color(self.palette("66BE96"), "0A35F5", "62AFE2")
 
 
 if __name__ == "__main__":
