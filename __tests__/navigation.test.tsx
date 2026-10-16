@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackHandler } from 'react-native';
+import { Alert, BackHandler } from 'react-native';
 import ReactTestRenderer from 'react-test-renderer';
 import { Path } from 'react-native-svg';
 import App from '../App';
@@ -60,6 +60,8 @@ test('session state isolates drawing IDs and rejects unknown regions and drawing
 
 test('home, every category, gallery previews, next/previous, undo and Android Back preserve the session', async () => {
   const handlers: (() => boolean | null | undefined)[] = [];
+  const dialog = jest.spyOn(Alert, 'alert').mockImplementation(() => {});
+  const exitApp = jest.spyOn(BackHandler, 'exitApp').mockImplementation(() => {});
   const back = jest
     .spyOn(BackHandler, 'addEventListener')
     .mockImplementation((_name, handler) => {
@@ -156,12 +158,27 @@ test('home, every category, gallery previews, next/previous, undo and Android Ba
     );
     await press('browse-back');
     await press('browse-back');
-    expect(handlers[handlers.length - 1]()).toBe(false);
+    let homeBack: boolean | null | undefined;
+    await ReactTestRenderer.act(() => {
+      homeBack = handlers[handlers.length - 1]();
+    });
+    expect(homeBack).toBe(true);
+    expect(dialog).toHaveBeenCalledTimes(1);
+    expect(dialog.mock.calls[0][0]).toBe('¿Quieres salir de Colorimbo?');
+    const exitChoices = dialog.mock.calls[0][2]!;
+    expect(exitChoices.find(choice => choice.text === 'Seguir coloreando')?.style).toBe('cancel');
+    expect(exitApp).not.toHaveBeenCalled();
+    await ReactTestRenderer.act(() => {
+      exitChoices.find(choice => choice.text === 'Salir')!.onPress!();
+    });
+    expect(exitApp).toHaveBeenCalledTimes(1);
   } finally {
     if (renderer) {
       await ReactTestRenderer.act(() => renderer.unmount());
     }
     back.mockRestore();
+    dialog.mockRestore();
+    exitApp.mockRestore();
   }
 });
 
