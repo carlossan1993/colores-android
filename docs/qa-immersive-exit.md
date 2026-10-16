@@ -39,3 +39,17 @@ de la app. No se han suprimido ni cambiado los avisos de seguridad para usuarios
 ## Evidencia automatizada
 
 La prueba Jest verifica diálogo, navegación previa y llamada a `BackHandler.exitApp` solo tras confirmar. GitHub Actions compila APK/AAB y realiza prueba de interfaz en emulador, incluida la **cancelación** del diálogo. La comprobación real del gesto de revelación de barras requiere revisión en dispositivo físico.
+
+## Ajuste de distribución tras la prueba compacta (PR 27)
+
+Al probar un emulador horizontal de 640 × 360 dp con modo inmersivo,
+la cuarta fila del selector de colores resultó parcialmente recortada.
+Se reubicó el control de sonido en la cabecera del dibujo cuando
+la paleta usa barra lateral; en pantallas pequeñas con paleta inferior
+el sonido conserva su lugar en los controles compactos. Esto libera
+espacio vertical **sin reducir los botones de 48 dp** ni ocultar colores.
+
+- [ ] Verificar 12 colores completamente visibles y accesibles en 640 × 360 dp.
+- [ ] Verificar sonido en cabecera y controles deshacer/rehacer/reiniciar en lateral.
+- [ ] Comprobar que no se alteran pintura, guardado y barra lateral en tablet.
+
