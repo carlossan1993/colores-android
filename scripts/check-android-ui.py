@@ -539,7 +539,21 @@ def exercise_persistence(apk):
     press_view("drawing-next", name)
     progress(0, name)
     capture("persistence-erased-restored")
-    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "mute_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design"}
+
+    # Back from Home must show a parental-style confirmation, not exit instantly.
+    # System Home/Recents gestures remain outside our control.
+    press_view("coloring-back", name)
+    press_view("browse-back", name)
+    press_view("browse-back", name)
+    assert find(snapshot("exit-home"), "start-coloring") is not None
+    shell("input", "keyevent", 4)
+    dialog = snapshot("exit-confirmation")
+    assert dialog_button(dialog, "Seguir coloreando") is not None
+    assert dialog_button(dialog, "Salir") is not None
+    capture("exit-confirmation")
+    tap(dialog_button(dialog, "Seguir coloreando"))
+    assert find(snapshot("exit-cancelled"), "start-coloring") is not None
+    return {"offline_force_stop_restore": "passed", "selected_color_restore": "passed", "mute_restore": "passed", "separate_drawings": "passed", "same_apk_in_place_install": "passed", "reset_and_erase_restore": "passed", "history_after_restart": "empty by design", "exit_cancel_keeps_app_open": "passed"}
 
 
 results = {}
