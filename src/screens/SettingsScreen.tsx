@@ -86,7 +86,7 @@ export function SettingsScreen({ soundEnabled, onToggleSound, onBack }: Props) {
           ) : null}
         </View>
         <Text testID="settings-version" style={styles.version}>
-          Colorimbo · versión 0.16.0 (prueba)
+          Colorimbo · versión 0.17.0 (prueba)
         </Text>
       </ScrollView>
     </SafeAreaView>
