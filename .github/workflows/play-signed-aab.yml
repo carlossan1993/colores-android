@@ -1,0 +1,100 @@
+name: Play · Generar AAB firmado (manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: colorimbo-play-upload-release
+  cancel-in-progress: false
+
+jobs:
+  signed-aab:
+    name: AAB firmado con clave privada de carga
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@4c125117fe7c5aed11272ec4213f602f012f89f2 # v5
+      - name: Validar secretos (sin imprimir sus valores)
+        shell: bash
+        env:
+          UPLOAD_B64: ${{ secrets.COLORIMBO_PLAY_UPLOAD_KEYSTORE_BASE64 }}
+          UPLOAD_PASSWORD: ${{ secrets.COLORIMBO_PLAY_UPLOAD_KEYSTORE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          if [ -z "$UPLOAD_B64" ] || [ -z "$UPLOAD_PASSWORD" ]; then
+            echo "::error::Configura los dos secretos de la clave de carga. Consulta docs/firma-upload-play.md"
+            exit 1
+          fi
+      - name: Reconstruir keystore temporal fuera del checkout
+        shell: bash
+        env:
+          UPLOAD_B64: ${{ secrets.COLORIMBO_PLAY_UPLOAD_KEYSTORE_BASE64 }}
+          COLORIMBO_PLAY_UPLOAD_PASSWORD: ${{ secrets.COLORIMBO_PLAY_UPLOAD_KEYSTORE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          umask 077
+          install -d -m 700 "$RUNNER_TEMP/colorimbo-signing"
+          printf '%s' "$UPLOAD_B64" | base64 --decode > "$RUNNER_TEMP/colorimbo-signing/upload.p12"
+          chmod 600 "$RUNNER_TEMP/colorimbo-signing/upload.p12"
+          keytool -list -storetype PKCS12 \
+            -keystore "$RUNNER_TEMP/colorimbo-signing/upload.p12" \
+            -alias colorimboupload \
+            -storepass:env COLORIMBO_PLAY_UPLOAD_PASSWORD > /dev/null
+          echo "COLORIMBO_PLAY_UPLOAD_KEYSTORE=$RUNNER_TEMP/colorimbo-signing/upload.p12" >> "$GITHUB_ENV"
+      - run: npm ci --no-audit --no-fund
+      - run: npm run verify
+      - name: Instalar herramientas Android
+        run: >-
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          "platforms;android-36" "build-tools;36.0.0" "ndk;27.1.12297006"
+      - name: Generar AAB release firmado con clave de carga
+        working-directory: android
+        env:
+          COLORIMBO_REQUIRE_PLAY_UPLOAD: 'true'
+          COLORIMBO_PLAY_UPLOAD_PASSWORD: ${{ secrets.COLORIMBO_PLAY_UPLOAD_KEYSTORE_PASSWORD }}
+        run: ./gradlew :app:bundleRelease --no-daemon --max-workers=2 -PreactNativeArchitectures=arm64-v8a,x86_64
+      - name: Verificar AAB firmado y certificado público
+        shell: bash
+        env:
+          COLORIMBO_PLAY_UPLOAD_PASSWORD: ${{ secrets.COLORIMBO_PLAY_UPLOAD_KEYSTORE_PASSWORD }}
+        run: |
+          set -euo pipefail
+          aab="android/app/build/outputs/bundle/release/app-release.aab"
+          python3 scripts/verify-signed-aab.py "$aab"
+          jarsigner -verify -verbose -certs "$aab" > "$RUNNER_TEMP/colorimbo-signing/jarsigner-check.txt"
+          grep -q 'jar verified' "$RUNNER_TEMP/colorimbo-signing/jarsigner-check.txt" || {
+            echo "::error::La firma JAR del AAB no fue verificada"
+            exit 1
+          }
+          mkdir -p artifacts
+          cp "$aab" artifacts/colorimbo-play-firmado.aab
+          sha256sum artifacts/colorimbo-play-firmado.aab > artifacts/SHA256SUMS.txt
+          keytool -exportcert -rfc -storetype PKCS12 \
+            -keystore "$COLORIMBO_PLAY_UPLOAD_KEYSTORE" \
+            -storepass:env COLORIMBO_PLAY_UPLOAD_PASSWORD \
+            -alias colorimboupload > artifacts/CERTIFICADO-PUBLICO-PLAY.pem
+          echo "AAB firmado para carga MANUAL en Play Console. No publicado."
+      - name: Publicar exclusivamente AAB y comprobantes públicos
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: colorimbo-play-aab-${{ github.run_number }}
+          path: artifacts/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Borrar keystore temporal (siempre)
+        if: always()
+        shell: bash
+        run: rm -rf "$RUNNER_TEMP/colorimbo-signing"
