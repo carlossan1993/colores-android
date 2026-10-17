@@ -5,7 +5,48 @@ No certifica cumplimiento de Play Console. No usa ni publica claves privadas.
 from pathlib import Path
 import hashlib
 import sys
+from struct import unpack_from
 from zipfile import BadZipFile, ZipFile
+
+
+# Android 15+ / Google Play: shared libraries on 64-bit devices need 16 KiB
+# PT_LOAD alignment. This checks ELF alignment, NOT bundle zip alignment
+# or runtime behavior on an actual 16 KiB-page device.
+PAGE_16K = 16 * 1024
+REQUIRED_64BIT_ABIS = ("arm64-v8a", "x86_64")
+
+
+def check_elf_16kb(name: str, content: bytes) -> int:
+    if len(content) < 64 or content[:4] != b"\x7fELF":
+        raise SystemExit(f"ELF nativo inválido: {name}")
+    if content[4] != 2 or content[5] not in (1, 2):
+        raise SystemExit(f"ELF 64-bit inválido/no compatible: {name}")
+    order = "<" if content[5] == 1 else ">"
+    phoff = unpack_from(order + "Q", content, 32)[0]
+    phentsize = unpack_from(order + "H", content, 54)[0]
+    phnum = unpack_from(order + "H", content, 56)[0]
+    if phentsize < 56 or phnum == 0 or phoff + phentsize * phnum > len(content):
+        raise SystemExit(f"Cabeceras ELF inválidas: {name}")
+    count = 0
+    for i in range(phnum):
+        pos = phoff + i * phentsize
+        p_type = unpack_from(order + "I", content, pos)[0]
+        if p_type != 1:  # PT_LOAD
+            continue
+        count += 1
+        p_offset = unpack_from(order + "Q", content, pos + 8)[0]
+        p_vaddr = unpack_from(order + "Q", content, pos + 16)[0]
+        p_align = unpack_from(order + "Q", content, pos + 48)[0]
+        if (p_align < PAGE_16K or (p_align & (p_align - 1))
+                or p_offset % PAGE_16K != p_vaddr % PAGE_16K):
+            raise SystemExit(
+                f"Biblioteca nativa no compatible 16 KB: {name}, "
+                f"segmento LOAD {i}, alineación {p_align} bytes. "
+                "Actualizar dependencia/toolchain y compilar de nuevo."
+            )
+    if not count:
+        raise SystemExit(f"ELF sin segmentos LOAD: {name}")
+    return count
 
 
 def check_aab(path: Path) -> None:
@@ -55,6 +96,17 @@ def check_aab(path: Path) -> None:
                 raise SystemExit(
                     f"AAB sin DEX o bibliotecas nativas: dex={len(dex)}, ABIs={arch}"
                 )
+            elf_segments = 0
+            elf_libraries = 0
+            for name in sorted(members):
+                if (name.endswith(".so") and any(
+                    name.startswith(f"base/lib/{abi}/")
+                    for abi in REQUIRED_64BIT_ABIS
+                )):
+                    elf_libraries += 1
+                    elf_segments += check_elf_16kb(name, archive.read(name))
+            if not elf_libraries:
+                raise SystemExit("AAB sin bibliotecas 64-bit para revisar 16 KB")
             signatures = [
                 name for name in members
                 if name.upper().startswith("META-INF/")
@@ -72,7 +124,9 @@ def check_aab(path: Path) -> None:
                 "OK: App Bundle estructural sin firma, NO apto todavía para Play Console.\n"
                 f"Archivo: {path.name}; bytes: {path.stat().st_size}; "
                 f"DEX: {len(dex)}; ABIs: {', '.join(arch)}.\n"
-                "Incluye BundleConfig, manifiesto, JavaScript y bibliotecas nativas."
+                "Incluye BundleConfig, manifiesto, JavaScript y bibliotecas nativas.\n"
+                f"ELF 16 KB: {elf_libraries} bibliotecas 64-bit; {elf_segments} segmentos LOAD OK.\n"
+                "PENDIENTE: validar empaquetado ZIP y ejecución real con páginas de 16 KB."
             )
     except BadZipFile as error:
         raise SystemExit(f"AAB ilegible: {error}") from error
